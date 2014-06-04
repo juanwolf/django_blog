@@ -40,3 +40,14 @@ class PostTest(TestCase):
         self.assertEquals(only_post.pub_date.hour, post.pub_date.hour)
         self.assertEquals(only_post.pub_date.minute, post.pub_date.minute)
         self.assertEquals(only_post.pub_date.second, post.pub_date.second)
+
+class AdminTest(LiveServerTestCase):
+    def test_login(self):
+        # Create client
+        c = Client()
+
+        # Get login page
+        response = c.get('/admin/')
+
+        # Check response code
+        self.assertEquals(response.status_code, 200)
