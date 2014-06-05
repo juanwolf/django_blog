@@ -23,6 +23,7 @@ class PostTest(TestCase):
         post.title = 'My first post'
         post.text = 'This is my first post that is so awesome'
         post.pub_date = timezone.now()
+        post.slug = 'my-first-post'
 
         # Save it
         post.save()
@@ -98,7 +99,8 @@ class AdminTest(LiveServerTestCase):
             'title': 'My first post',
             'text': 'This is my first post',
             'pub_date_0': '2014-06-05',
-            'pub_date_1': '00:00:04'
+            'pub_date_1': '00:00:04',
+            'slug': 'my-first-post',
         }, follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -115,6 +117,7 @@ class AdminTest(LiveServerTestCase):
         post.title = 'My first post'
         post.text = 'This is my first blog post'
         post.pub_date = timezone.now()
+        post.slug = 'my-first-post'
         post.save()
         # Log in
         self.client.login(username=self.username, password=self.password)
@@ -126,7 +129,8 @@ class AdminTest(LiveServerTestCase):
             'title': 'My second post',
             'text': 'This is my second blog post',
             'pub_date_0': '2014-06-04',
-            'pub_date_1': '22:00:04'
+            'pub_date_1': '22:00:04',
+            'slug': 'my-first-post',
         }, follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -146,6 +150,7 @@ class AdminTest(LiveServerTestCase):
         post.title = 'My first post'
         post.text = 'This is my first blog post'
         post.pub_date = timezone.now()
+        post.slug = 'my-first-post'
         post.save()
 
         # Check new post saved
@@ -180,6 +185,7 @@ class PostViewTest(LiveServerTestCase):
         post.title = "My first post !!"
         post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
         post.pub_date = timezone.now()
+        post.slug = 'my-first-post'
         post.save()
 
         # Check post saved
@@ -197,6 +203,44 @@ class PostViewTest(LiveServerTestCase):
 
         self.assertTrue(bytes(str(post.pub_date.year), 'utf-8') in response.content)
         self.assertTrue(bytes(str(post.pub_date.strftime('%b')), 'utf-8') in response.content)
+        self.assertTrue(bytes(str(post.pub_date.day), 'utf-8') in response.content)
+
+        # Check the link is marked up properly
+        self.assertTrue(
+            bytes('<a href="http://127.0.0.1:8000/">my first blog post</a>', 'utf-8')
+            in response.content)
+
+    def test_post_page(self):
+        # Create the post
+        post = Post()
+        post.title = 'My first post'
+        post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
+        post.pub_date = timezone.now()
+        post.slug = 'my-first-post'
+        post.save()
+
+        # Check new post saved
+        all_posts = Post.objects.all()
+        self.assertEqual(len(all_posts), 1)
+        only_post = all_posts[0]
+        self.assertEqual(only_post, post)
+
+        # Get the post URL
+        post_url = only_post.get_absolute_url()
+
+        # Fetch the post
+        response = self.client.get(post_url)
+        self.assertEqual(response.status_code, 200)
+
+        # Check the post title is in the response
+        self.assertTrue(bytes(post.title, 'utf-8') in response.content)
+
+        # Check the post text is in the response
+        self.assertTrue(bytes(markdown.markdown(post.text), 'utf-8') in response.content)
+
+        # Check the post date is in the response
+        self.assertTrue(bytes(str(post.pub_date.year), 'utf-8') in response.content)
+        self.assertTrue(bytes(post.pub_date.strftime('%b'), 'utf-8') in response.content)
         self.assertTrue(bytes(str(post.pub_date.day), 'utf-8') in response.content)
 
         # Check the link is marked up properly
