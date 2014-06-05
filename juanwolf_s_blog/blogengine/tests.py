@@ -2,10 +2,31 @@ import markdown
 from django.contrib.auth.models import User
 from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
-from blogengine.models import Post
+from blogengine.models import Post, Category
 
 
 class PostTest(TestCase):
+
+    def test_create_category(self):
+        # Create the category
+        category = Category()
+
+        # Add attributes
+        category.name = 'python'
+        category.description = 'The Python programming language'
+
+        # Save it
+        category.save()
+
+        # Check we can find it
+        all_categories = Category.objects.all()
+        self.assertEqual(len(all_categories), 1)
+        only_category = all_categories[0]
+        self.assertEqual(only_category, category)
+
+        # Check attributes
+        self.assertEqual(only_category.name, 'python')
+        self.assertEqual(only_category.description, 'The Python programming language')
 
     def test_create_empty_post(self):
         # create a new empty post
@@ -16,6 +37,12 @@ class PostTest(TestCase):
         self.assertEqual(post, first_post)
 
     def test_create_post(self):
+        # Create the category
+        category = Category()
+        category.name = 'python'
+        category.description = 'The Python programming language'
+        category.save()
+
         # Create the post
         post = Post()
 
@@ -24,7 +51,7 @@ class PostTest(TestCase):
         post.text = 'This is my first post that is so awesome'
         post.pub_date = timezone.now()
         post.slug = 'my-first-post'
-
+        post.category = category
         # Save it
         post.save()
 
@@ -43,6 +70,10 @@ class PostTest(TestCase):
         self.assertEqual(only_post.pub_date.hour, post.pub_date.hour)
         self.assertEqual(only_post.pub_date.minute, post.pub_date.minute)
         self.assertEqual(only_post.pub_date.second, post.pub_date.second)
+        self.assertEqual(only_post.category.name, 'python')
+        self.assertEqual(only_post.category.description, 'The Python programming language')
+
+
 
 class AdminTest(LiveServerTestCase):
     def setUp(self):
@@ -87,6 +118,80 @@ class AdminTest(LiveServerTestCase):
 
         # Check 'Log in' in response
         self.assertTrue(bytes('Log in', 'utf-8') in response.content)
+
+    def test_create_category(self):
+        # Log in
+        login = self.client.login(username=self.username, password=self.password)
+        self.assertTrue(login)
+
+        # Check response code
+        response = self.client.get('/admin/blogengine/category/add/')
+        self.assertEqual(response.status_code, 200)
+
+        # Create the new category
+        response = self.client.post('/admin/blogengine/category/add/', {
+            'name': 'python',
+            'description': 'The Python programming language'},
+            follow=True)
+        self.assertEqual(response.status_code, 200)
+
+        # Check added successfully
+        self.assertTrue(bytes('added successfully', 'utf-8') in response.content)
+
+        # Check new category now in database
+        all_categories = Category.objects.all()
+        self.assertEqual(len(all_categories), 1)
+
+    def test_edit_category(self):
+        # Create the category
+        category = Category()
+        category.name = 'python'
+        category.description = 'The Python programming language'
+        category.save()
+
+        # Log in
+        login = self.client.login(username=self.username, password=self.password)
+        self.assertTrue(login)
+
+        # Edit the category
+        response = self.client.post('/admin/blogengine/category/' + str(category.id) + '/', {
+            'name': 'perl',
+            'description': 'The Perl programming language'
+            }, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+        # Check changed successfully
+        self.assertTrue(bytes('changed successfully', 'utf-8') in response.content)
+
+        # Check category amended
+        all_categories = Category.objects.all()
+        self.assertEqual(len(all_categories), 1)
+        only_category = all_categories[0]
+        self.assertEqual(only_category.name, 'perl')
+        self.assertEqual(only_category.description, 'The Perl programming language')
+
+    def test_delete_category(self):
+        # Create the category
+        category = Category()
+        category.name = 'python'
+        category.description = 'The Python programming language'
+        category.save()
+
+        # Log in
+        login = self.client.login(username=self.username, password=self.password)
+        self.assertTrue(login)
+        # Delete the category
+        response = self.client.post('/admin/blogengine/category/' + str(category.id) + '/delete/', {
+            'post': 'yes'
+        }, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+        # Check deleted successfully
+        self.assertTrue(bytes('deleted successfully', 'utf-8') in response.content)
+
+        # Check category deleted
+        all_categories = Category.objects.all()
+        self.assertEqual(len(all_categories), 0)
 
     def test_create_post(self):
         login = self.client.login(username=self.username, password=self.password)
@@ -180,12 +285,19 @@ class PostViewTest(LiveServerTestCase):
         self.client = Client()
 
     def test_index(self):
+        # Create the category
+        category = Category()
+        category.name = 'python'
+        category.description = 'The Python programming language'
+        category.save()
+
         #Create the post
         post = Post()
         post.title = "My first post !!"
         post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
         post.pub_date = timezone.now()
         post.slug = 'my-first-post'
+        post.category = category
         post.save()
 
         # Check post saved
@@ -211,12 +323,19 @@ class PostViewTest(LiveServerTestCase):
             in response.content)
 
     def test_post_page(self):
+        # Create the category
+        category = Category()
+        category.name = 'python'
+        category.description = 'The Python programming language'
+        category.save()
+
         # Create the post
         post = Post()
         post.title = 'My first post'
         post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
         post.pub_date = timezone.now()
         post.slug = 'my-first-post'
+        post.category = category
         post.save()
 
         # Check new post saved
