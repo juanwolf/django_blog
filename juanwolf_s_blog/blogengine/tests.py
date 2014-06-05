@@ -1,3 +1,4 @@
+import markdown
 from django.contrib.auth.models import User
 from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
@@ -177,20 +178,29 @@ class PostViewTest(LiveServerTestCase):
         #Create the post
         post = Post()
         post.title = "My first post !!"
-        post.text = "My awesome first post"
+        post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
         post.pub_date = timezone.now()
         post.save()
+
         # Check post saved
         all_posts = Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         self.assertEqual(all_posts[0], post)
+
         # Check the index response
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
+
         # Check the content of the page
         self.assertTrue(bytes(post.title, 'utf-8') in response.content)
-        self.assertTrue(bytes(post.text, 'utf-8') in response.content)
+        self.assertTrue(bytes(markdown.markdown(post.text), 'utf-8') in response.content)
+
         self.assertTrue(bytes(str(post.pub_date.year), 'utf-8') in response.content)
         self.assertTrue(bytes(str(post.pub_date.strftime('%b')), 'utf-8') in response.content)
         self.assertTrue(bytes(str(post.pub_date.day), 'utf-8') in response.content)
+
+        # Check the link is marked up properly
+        self.assertTrue(
+            bytes('<a href="http://127.0.0.1:8000/">my first blog post</a>', 'utf-8')
+            in response.content)
 
