@@ -166,3 +166,31 @@ class AdminTest(LiveServerTestCase):
         # Check post amended
         all_posts = Post.objects.all()
         self.assertEqual(len(all_posts), 0)
+
+
+class PostViewTest(LiveServerTestCase):
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_index(self):
+        #Create the post
+        post = Post()
+        post.title = "My first post !!"
+        post.text = "My awesome first post"
+        post.pub_date = timezone.now()
+        post.save()
+        # Check post saved
+        all_posts = Post.objects.all()
+        self.assertEqual(len(all_posts), 1)
+        self.assertEqual(all_posts[0], post)
+        # Check the index response
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        # Check the content of the page
+        self.assertTrue(bytes(post.title, 'utf-8') in response.content)
+        self.assertTrue(bytes(post.text, 'utf-8') in response.content)
+        self.assertTrue(bytes(str(post.pub_date.year), 'utf-8') in response.content)
+        self.assertTrue(bytes(str(post.pub_date.strftime('%b')), 'utf-8') in response.content)
+        self.assertTrue(bytes(str(post.pub_date.day), 'utf-8') in response.content)
+
