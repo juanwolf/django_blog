@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta content="width=device-width, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %} Juan Wolf's blog {% endblock%}</title>
+    {% load staticfiles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/stylesheet.css' %}" />
+</head>
+
+<body>
+<header>
+    <navbar>
+        <a id="brand" href="http://juanwolf.fr">juanwolf.fr</a>
+        <ul id="menu-link-list" class="nav nav-pills nav-stacked">
+            <li class="active">
+                <a href="http://juanwolf.fr">
+                    <i class="fa fa-home fa-fw"></i>
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="http://blog.juanwolf.fr">
+                    <i class="fa fa-comment-o fa-fw"></i>
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="http://resume.juanwolf.fr">
+                    <i class="fa fa-file-text-o fa-fw"></i>
+                    CV
+                </a>
+            </li>
+            <li>
+                <a href="http://slides.juanwolf.fr">
+                    <i class="fa fa-bullhorn fa-fw"></i>
+                    Slides
+                </a>
+            </li>
+            <li>
+                <a href="http://didit.juanwolf.fr">
+                    <i class="fa fa-rocket fa-fw"></i>
+                    Did It
+                </a>
+            </li>
+            <li id="language-selection-item">
+                <select id="language-selection-select">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </li>
+        </ul>
+
+        <a id="menu-button">
+            <i class="fa fa-bars fa-2x"></i>
+        </a>
+    </navbar>
+</header>
+
+<div id="container">
+    {% block content %} {% endblock %}
+</div>
+
+<footer>
+    <div id="footer-section">
+        <ul id="footer-sections">
+            <li><a href="http://about.juanwolf.fr">A propos</a></li>
+            <li><a href="mailto:contact@juanwolf.fr">Contact</a></li>
+        </ul>
+
+        <ul id="footer-social-network">
+            <li>
+                <a href="https://facebook.com/jenpoul" class="fa fa-facebook fa-2x"></a>
+            </li>
+            <li>
+                <a href='https://twitter.com/juan__wolf' class="fa fa-twitter fa-2x"></a>
+            </li>
+            <li>
+                <a href="https://plus.google.com/101870222559537773141/" class="fa fa-google-plus fa-2x"></a>
+            </li>
+            <li>
+                <a href="https://github.com/juanwolf" class="fa fa-github fa-2x"></a>
+            </li>
+            <li>
+                <a href="https://bitbucket.com/juanwolf" class="fa fa-bitbucket fa-2x"></a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/profile/view?id=218328783" class="fa fa-linkedin-square fa-2x"></a>
+            </li>
+        </ul>
+    </div>
+    <script src="{% static 'js/lib/JQuery1.11.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <!-- Piwik -->
+    <script type="text/javascript">
+              var _paq = _paq || [];
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.juanwolf.fr/";
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['setSiteId', 1]);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+                g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+              })();
+            </script>
+    <noscript><p><img src="http://stats.juanwolf.fr/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+</footer>
+</body>
+</html>
