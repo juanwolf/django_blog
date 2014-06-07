@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
 from blogengine.models import Post, Category
+import feedparser
 
 
 class PostTest(TestCase):
@@ -415,5 +416,47 @@ class PostViewTest(LiveServerTestCase):
         # Check the link is marked up properly
         self.assertTrue(bytes('<a href="http://127.0.0.1:8000/">my first blog post</a>',
                               'utf-8') in response.content)
+
+
+class FeedTest(LiveServerTestCase):
+
+    def test_all_post_feed(self):
+        # Create the category
+        category = Category()
+        category.name = 'python'
+        category.description = 'The Python programming language'
+        category.save()
+
+        # Create a post
+        post = Post()
+        post.title = 'My first post'
+        post.text = 'This is my first blog post'
+        post.slug = 'my-first-post'
+        post.pub_date = timezone.now()
+        post.category = category
+
+        # Save it
+        post.save()
+
+        # Check we can find it
+        all_posts = Post.objects.all()
+        self.assertEqual(len(all_posts), 1)
+        only_post = all_posts[0]
+        self.assertEqual(only_post, post)
+
+        # Fetch the feed
+        response = self.client.get('/feeds/posts/')
+        self.assertEqual(response.status_code, 200)
+
+        # Parse the feed
+        feed = feedparser.parse(response.content)
+
+        # Check length
+        self.assertEqual(len(feed.entries), 1)
+
+        # Check post retrieved is the correct one
+        feed_post = feed.entries[0]
+        self.assertEqual(feed_post.title, post.title)
+        self.assertEqual(feed_post.description, post.text)
 
 
