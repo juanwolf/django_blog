@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'south',
     'blogengine',
     'django.contrib.syndication',
+    'django_summernote'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -95,3 +96,21 @@ STATICFILES_DIRS = (
 
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+# Summernote configuration
+SUMMERNOTE_CONFIG = {
+    # Using SummernoteWidget - iframe mode
+    'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
+
+    # Using Summernote Air-mode
+    'airMode': False,
+
+    # Change editor size
+    'width': '100%',
+    'height': '480',
+
+    # Or, set editor language/locale forcely
+    'lang': 'fr-FR',
+
+
+}

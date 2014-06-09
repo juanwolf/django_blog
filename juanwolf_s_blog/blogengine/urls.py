@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 from django.views.generic import ListView, DetailView
 from blogengine.models import Post, Category
 from blogengine.views import CategoryListView, PostsFeed
@@ -23,4 +23,7 @@ urlpatterns = patterns('',
 
     # Post RSS feed
     url(r'^feeds/posts/$', PostsFeed()),
+
+    # Summernote
+    url(r'^summernote/', include('django_summernote.urls'))
 )

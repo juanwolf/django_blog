@@ -1,4 +1,3 @@
-import markdown
 from django.contrib.auth.models import User
 from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
@@ -7,7 +6,6 @@ import feedparser
 
 
 class PostTest(TestCase):
-
     def test_create_category(self):
         # Create the category
         category = Category()
@@ -75,7 +73,6 @@ class PostTest(TestCase):
         self.assertEqual(only_post.category.description, 'The Python programming language')
 
 
-
 class AdminTest(LiveServerTestCase):
     def setUp(self):
         self.client = Client()
@@ -132,8 +129,8 @@ class AdminTest(LiveServerTestCase):
         # Create the new category
         response = self.client.post('/admin/blogengine/category/add/', {
             'name': 'python',
-            'description': 'The Python programming language'},
-            follow=True)
+            'description': 'The Python programming language'}
+            , follow=True)
         self.assertEqual(response.status_code, 200)
 
         # Check added successfully
@@ -157,8 +154,8 @@ class AdminTest(LiveServerTestCase):
         # Edit the category
         response = self.client.post('/admin/blogengine/category/' + str(category.id) + '/', {
             'name': 'perl',
-            'description': 'The Perl programming language'
-            }, follow=True)
+            'description': 'The Perl programming language'}
+            , follow=True)
         self.assertEqual(response.status_code, 200)
 
         # Check changed successfully
@@ -281,7 +278,6 @@ class AdminTest(LiveServerTestCase):
 
 
 class PostViewTest(LiveServerTestCase):
-
     def setUp(self):
         self.client = Client()
 
@@ -292,10 +288,10 @@ class PostViewTest(LiveServerTestCase):
         category.description = 'The Python programming language'
         category.save()
 
-        #Create the post
+        # Create the post
         post = Post()
         post.title = "My first post !!"
-        post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
+        post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.pub_date = timezone.now()
         post.slug = 'my-first-post'
         post.category = category
@@ -312,7 +308,7 @@ class PostViewTest(LiveServerTestCase):
 
         # Check the content of the page
         self.assertTrue(bytes(post.title, 'utf-8') in response.content)
-        self.assertTrue(bytes(markdown.markdown(post.text), 'utf-8') in response.content)
+        self.assertTrue(bytes(post.text, 'utf-8') in response.content)
 
         # Check the post category is in the response
         self.assertTrue(bytes(post.category.name, 'utf-8') in response.content)
@@ -336,7 +332,7 @@ class PostViewTest(LiveServerTestCase):
         # Create the post
         post = Post()
         post.title = 'My first post'
-        post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
+        post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.pub_date = timezone.now()
         post.slug = 'my-first-post'
         post.category = category
@@ -359,7 +355,7 @@ class PostViewTest(LiveServerTestCase):
         self.assertTrue(bytes(post.title, 'utf-8') in response.content)
 
         # Check the post text is in the response
-        self.assertTrue(bytes(markdown.markdown(post.text), 'utf-8') in response.content)
+        self.assertTrue(bytes(post.text, 'utf-8') in response.content)
         # Check the category is in the response
         self.assertTrue(bytes(post.category.name, 'utf-8') in response.content)
 
@@ -383,7 +379,7 @@ class PostViewTest(LiveServerTestCase):
         # Create the post
         post = Post()
         post.title = 'My first post'
-        post.text = 'This is [my first blog post](http://127.0.0.1:8000/)'
+        post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.slug = 'my-first-post'
         post.pub_date = timezone.now()
         post.category = category
@@ -406,7 +402,7 @@ class PostViewTest(LiveServerTestCase):
         self.assertTrue(bytes(post.category.name, 'utf-8') in response.content)
 
         # Check the post text is in the response
-        self.assertTrue(bytes(markdown.markdown(post.text), 'utf-8') in response.content)
+        self.assertTrue(bytes(post.text, 'utf-8') in response.content)
 
         # Check the post date is in the response
         self.assertTrue(bytes(str(post.pub_date.year), 'utf-8') in response.content)
@@ -419,7 +415,6 @@ class PostViewTest(LiveServerTestCase):
 
 
 class FeedTest(LiveServerTestCase):
-
     def test_all_post_feed(self):
         # Create the category
         category = Category()
@@ -458,5 +453,3 @@ class FeedTest(LiveServerTestCase):
         feed_post = feed.entries[0]
         self.assertEqual(feed_post.title, post.title)
         self.assertEqual(feed_post.description, post.text)
-
-
