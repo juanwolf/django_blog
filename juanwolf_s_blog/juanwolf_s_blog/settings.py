@@ -111,6 +111,4 @@ SUMMERNOTE_CONFIG = {
 
     # Or, set editor language/locale forcely
     'lang': 'fr-FR',
-
-
 }

@@ -2,9 +2,12 @@
 
     {% block content %}
         <div class="post">
-        <h1>{{ object.title }}</h1>
-        <h3>{{ object.pub_date }}</h3>
-        {{ object.text | safe }}
+            <h1>{{ object.title }}</h1>
+            <h3>{{ object.pub_date }}</h3>
+            {{ object.text | safe }}
+            {% for tag in post.tags.all %}
+            <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+            {% endfor %}
         </div>
         <a href="{{ object.category.get_absolute_url }}">{{ object.category.name }}</a>
 
@@ -19,5 +22,4 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
 {% endblock %}

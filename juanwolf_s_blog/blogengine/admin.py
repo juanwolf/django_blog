@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blogengine.models import Post, Category
+from blogengine.models import Post, Category, Tag
 from django_summernote.admin import SummernoteModelAdmin
 
 class PostAdmin(SummernoteModelAdmin):
@@ -7,3 +7,4 @@ class PostAdmin(SummernoteModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category)
+admin.site.register(Tag)

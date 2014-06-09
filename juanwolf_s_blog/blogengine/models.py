@@ -2,6 +2,21 @@ from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    slug = models.SlugField(max_length=40, unique=True, blank=True, null=True)
+
+    def save(self):
+        if not self.slug:
+            self.slug = slugify(str(self.name))
+        super(Tag, self).save()
+
+    def get_absolute_url(self):
+        return "/tag/%s/" % (self.slug)
+
+    def __unicode__(self):
+        return self.name
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -28,6 +43,7 @@ class Post(models.Model):
     text = models.TextField(default="")
     slug = models.SlugField(max_length=40, unique=True)
     category = models.ForeignKey(Category, blank=True, null=True)
+    tags = models.ManyToManyField(Tag)
 
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)
