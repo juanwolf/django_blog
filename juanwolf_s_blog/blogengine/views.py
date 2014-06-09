@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.views.generic import ListView
 from blogengine.models import Category, Post, Tag
+from django.utils.translation import ugettext as _
 
 
 class CategoryListView(ListView):
@@ -22,10 +23,11 @@ class TagListView(ListView):
         except Tag.DoesNotExist:
             return Post.objects.none()
 
+
 class PostsFeed(Feed):
-    title = "RSS feed - posts"
+    title = _("RSS feed - posts")
     link = "feeds/posts/"
-    description = "RSS feed - blog posts"
+    description = _("RSS feed - blog posts")
 
     def items(self):
         return Post.objects.order_by('-pub_date')

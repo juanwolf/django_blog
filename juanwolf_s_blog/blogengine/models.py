@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
@@ -17,6 +19,7 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -35,15 +38,16 @@ class Category(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = _('categories')
+
 
 class Post(models.Model):
-    title = models.CharField(max_length=200, default="")
     pub_date = models.DateTimeField(default=datetime.now)
-    text = models.TextField(default="")
-    slug = models.SlugField(max_length=40, unique=True)
     category = models.ForeignKey(Category, blank=True, null=True)
     tags = models.ManyToManyField(Tag)
+    title = models.CharField(max_length=200, default="")
+    text = models.TextField(default="")
+    slug = models.SlugField(max_length=40, unique=True)
 
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)

@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.utils.translation import gettext_lazy as _
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -39,7 +40,8 @@ INSTALLED_APPS = (
     'south',
     'blogengine',
     'django.contrib.syndication',
-    'django_summernote'
+    'django_summernote',
+    'modeltranslation',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'juanwolf_s_blog.urls'
@@ -72,16 +75,17 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
 USE_TZ = True
+TIME_ZONE = 'Europe/London'
+LANGUAGE_CODE = 'en'
+USE_I18N = True
+USE_L10N = True
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+)
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/

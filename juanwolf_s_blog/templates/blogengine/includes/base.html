@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-
+{% load i18n %}
 <html lang="en">
 <head>
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% block title %} Juan Wolf's blog {% endblock%}</title>
+    <title>{% block title %} {% trans "Juan Wolf's blog" %} {% endblock %}</title>
     {% load staticfiles %}
     <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/stylesheet.css' %}" />
 </head>
@@ -17,7 +17,7 @@
             <li class="active">
                 <a href="http://juanwolf.fr">
                     <i class="fa fa-home fa-fw"></i>
-                    Accueil
+                    {% trans 'Home' %}
                 </a>
             </li>
             <li>
@@ -29,13 +29,13 @@
             <li>
                 <a href="http://resume.juanwolf.fr">
                     <i class="fa fa-file-text-o fa-fw"></i>
-                    CV
+                    {% trans 'Resume' %}
                 </a>
             </li>
             <li>
                 <a href="http://slides.juanwolf.fr">
                     <i class="fa fa-bullhorn fa-fw"></i>
-                    Slides
+                    {% trans 'Chat' %}
                 </a>
             </li>
             <li>
@@ -65,7 +65,7 @@
 <footer>
     <div id="footer-section">
         <ul id="footer-sections">
-            <li><a href="http://about.juanwolf.fr">A propos</a></li>
+            <li><a href="http://about.juanwolf.fr">{% trans 'About' %}</a></li>
             <li><a href="mailto:contact@juanwolf.fr">Contact</a></li>
         </ul>
 
