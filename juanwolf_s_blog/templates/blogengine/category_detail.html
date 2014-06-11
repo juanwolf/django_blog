@@ -1,0 +1,9 @@
+{% extends "blogengine/includes/base.html" %}
+   {% block  content %}
+   <h1> {{ category.name }} </h1>
+   <p class="description category-desc"> {{ category.description}}</p>
+   {% for post in post_list %}
+        {% include "blogengine/includes/post_template.html" %}
+   {% endfor %}
+
+   {% endblock %}

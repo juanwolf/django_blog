@@ -579,6 +579,7 @@ class PostViewTest(LiveServerTestCase):
 
         # Check the category name is in the response
         self.assertTrue(bytes(post.category.name, 'utf-8') in response.content)
+        self.assertTrue(bytes(category.description, 'utf-8') in response.content)
 
         # Check the post text is in the response
         self.assertTrue(bytes(post.text, 'utf-8') in response.content)

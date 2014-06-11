@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import include, url, patterns
 from django.views.generic import ListView, DetailView
 from blogengine.models import Post, Category, Tag
-from blogengine.views import CategoryListView, PostsFeed, TagListView
+from blogengine.views import CategoryDetailView, CategoryListView, PostsFeed, TagDetailView
 
 urlpatterns = patterns('',
     # Index
@@ -16,10 +16,12 @@ urlpatterns = patterns('',
         )),
 
     # Categories
-    url(r'^category/(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryListView.as_view(
+    url(r'^category/?$', CategoryListView.as_view(model=Category)),
+    url(r'^category/(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryDetailView.as_view(
         paginate_by=5,
         model=Category,
         )),
+
 
     # Post RSS feed
     url(r'^feeds/posts/$', PostsFeed()),
@@ -28,8 +30,10 @@ urlpatterns = patterns('',
     url(r'^summernote/', include('django_summernote.urls')),
 
     # Tags
-    url(r'^tag/(?P<slug>[a-zA-Z0-9-]+)/?$', TagListView.as_view(
+    url(r'^tag/(?P<slug>[a-zA-Z0-9-]+)/?$', TagDetailView.as_view(
         paginate_by=5,
         model=Tag,
         )),
+    # Internationalization
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 )
