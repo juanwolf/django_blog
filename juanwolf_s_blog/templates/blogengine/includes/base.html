@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 {% load i18n %}
-<html lang="en">
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% block title %} {% trans "Juan Wolf's blog" %} {% endblock %}</title>
+    <title>{% block title %}{% endblock %} {% trans "Juan Wolf's blog" %}</title>
     {% load staticfiles %}
     <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/stylesheet.css' %}" />
 </head>
@@ -33,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="http://slides.juanwolf.fr">
+                <a href="http://chat.juanwolf.fr">
                     <i class="fa fa-bullhorn fa-fw"></i>
                     {% trans 'Chat' %}
                 </a>
@@ -45,20 +47,24 @@
                 </a>
             </li>
             <li id="language-selection-item">
-                <select id="language-selection-select">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
+                <form action="/i18n/setlang/" method="post">
+                    <input name="next" type="hidden" value="" />
+                    <select name="language" id="language-select-blog">
+                    {% for lang in LANGUAGES %}
+                        <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                    {% endfor %}
+                    </select>
+                    {% csrf_token %}
+                </form>
             </li>
         </ul>
-
         <a id="menu-button">
             <i class="fa fa-bars fa-2x"></i>
         </a>
     </navbar>
 </header>
 
-<div id="container">
+<div id="blog-container">
     {% block content %} {% endblock %}
 </div>
 
