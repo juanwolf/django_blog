@@ -48,10 +48,15 @@
             </li>
             <li id="language-selection-item">
                 <form action="/i18n/setlang/" method="post">
-                    <input name="next" type="hidden" value="" />
+                    <input name="next" type="hidden"
+                           {% block language-redirection %}{% endblock %}/>
                     <select name="language" id="language-select-blog">
                     {% for lang in LANGUAGES %}
-                        <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                        <option value="{{ lang.0 }}"
+                            {% if LANGUAGE_CODE == lang.0  %}
+                                selected="selected"
+                            {% endif %}
+                        >{{ lang.1 }}</option>
                     {% endfor %}
                     </select>
                     {% csrf_token %}
@@ -65,6 +70,7 @@
 </header>
 
 <div id="blog-container">
+    {% include "blogengine/category_list.html" %}
     {% block content %} {% endblock %}
 </div>
 

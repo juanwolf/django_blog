@@ -81,8 +81,8 @@ LANGUAGE_CODE = 'en'
 USE_I18N = True
 USE_L10N = True
 LANGUAGES = (
-    ('en', _('English')),
-    ('fr', _('French')),
+    ('en', 'English'),
+    ('fr', 'Français'),
 )
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-09 23:23+0200\n"
+"POT-Creation-Date: 2014-06-12 09:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,60 +17,91 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: blogengine/models.py:41
+#: blogengine/models.py:35
+#, fuzzy
+msgid "category"
+msgstr "category"
+
+#: blogengine/models.py:42
 msgid "categories"
-msgstr ""
+msgstr "categories"
 
-#: blogengine/views.py:28
+#: blogengine/views.py:92
 msgid "RSS feed - posts"
-msgstr ""
+msgstr "RSS feed - posts"
 
-#: blogengine/views.py:30
+#: blogengine/views.py:94
 msgid "RSS feed - blog posts"
-msgstr ""
+msgstr "RSS feed - blog posts"
 
-#: juanwolf_s_blog/settings.py:84
-msgid "English"
-msgstr ""
+#: templates/blogengine/category_list.html:5
+#, fuzzy
+msgid "Home blog"
+msgstr "Home blog"
 
-#: juanwolf_s_blog/settings.py:85
-msgid "French"
-msgstr ""
+#: templates/blogengine/post_detail.html:16
+msgid "Please enable JavaScript to view the "
+msgstr "Please enable JavaScript to view the"
 
-#: templates/blogengine/post_detail.html:23
-msgid ""
-"Please enable JavaScript to view the <a href=\"http://disqus.com/?"
-"ref_noscript\">comments powered by Disqus.</a>"
-msgstr ""
+#: templates/blogengine/post_detail.html:16
+#, fuzzy
+msgid "comments powered by Disqus."
+msgstr "comments powered by <span class=\"logo-disqus\">Disqus</span>"
 
-#: templates/blogengine/post_detail.html:24
-msgid "comments powered by <span class=\"logo-disqus\">Disqus</span>"
-msgstr ""
+#: templates/blogengine/post_detail.html:17
+msgid "comments powered by"
+msgstr "comment powered by"
 
-#: templates/blogengine/post_list.html:17
+#: templates/blogengine/post_list.html:9
 msgid "Previous Page"
-msgstr ""
+msgstr "Previous Page"
 
-#: templates/blogengine/post_list.html:20
+#: templates/blogengine/post_list.html:12
 msgid "Next Page"
-msgstr ""
+msgstr "Next Page"
 
-#: templates/blogengine/includes/base.html:7
+#: templates/blogengine/includes/base.html:9
 msgid "Juan Wolf's blog"
-msgstr ""
+msgstr "Juan Wolf's blog"
 
-#: templates/blogengine/includes/base.html:20
+#: templates/blogengine/includes/base.html:22
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
-#: templates/blogengine/includes/base.html:32
+#: templates/blogengine/includes/base.html:34
 msgid "Resume"
-msgstr ""
+msgstr "Resume"
 
-#: templates/blogengine/includes/base.html:38
+#: templates/blogengine/includes/base.html:40
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
-#: templates/blogengine/includes/base.html:68
+#: templates/blogengine/includes/base.html:79
 msgid "About"
-msgstr ""
+msgstr "About"
+
+#: templates/blogengine/includes/post_template.html:4
+msgid "Last edit:"
+msgstr "Last edit:"
+
+#: templates/blogengine/includes/post_template.html:6
+#, fuzzy
+msgid "Category:"
+msgstr "category:"
+
+#: templates/blogengine/includes/post_template.html:9
+msgid "Tags:"
+msgstr "Tags"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "French"
+#~ msgstr "French"
+
+#~ msgid ""
+#~ "Please enable JavaScript to view the <a href=\"http://disqus.com/?"
+#~ "ref_noscript\">comments powered by Disqus.</a>"
+#~ msgstr ""
+#~ "Please enable JavaScript to view the <a href=\"http://disqus.com/?"
+#~ "ref_noscript\">comments powered by Disqus.</a>"

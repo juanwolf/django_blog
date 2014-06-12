@@ -1,4 +1,11 @@
 {% extends "blogengine/includes/base.html" %}
+   {% block language-redirection %}
+        {% if get_current_language == "en" %}
+            value={{ category.get_absolute_url_fr }}
+        {% else %}
+            value={{ category.get_absolute_url_en }}
+        {% endif %}
+    {% endblock %}
    {% block  content %}
    <h1> {{ category.name }} </h1>
    <p class="description category-desc"> {{ category.description}}</p>

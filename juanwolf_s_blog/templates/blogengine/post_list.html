@@ -1,8 +1,8 @@
 {% extends "blogengine/includes/base.html" %}
     {% block content %}
         {% load i18n %}
-        {% for post in object_list %}
-        {% include 'blogengine/includes/post_template.html' %}
+        {% for post in post_list %}
+        {% include 'blogengine/includes/post_template.html'  %}
 
         {% endfor %}
         {% if page_obj.has_previous %}

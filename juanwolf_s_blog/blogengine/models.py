@@ -17,6 +17,12 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return "/tag/%s/" % (self.slug)
 
+    def get_absolute_url_fr(self):
+        return "/tag/%s/" % (self.slug_fr)
+
+    def get_absolute_url_en(self):
+        return "/tag/%s/" % (self.slug_en)
+
     def __unicode__(self):
         return self.name
 
@@ -32,7 +38,14 @@ class Category(models.Model):
         super(Category, self).save()
 
     def get_absolute_url(self):
-        return "/category/%s/" % (self.slug)
+        url = "/category/%s/" % self.slug
+        return url
+
+    def get_absolute_url_fr(self):
+        return "/category/%s/" % (self.slug_fr)
+
+    def get_absolute_url_en(self):
+        return "/category/%s/" % (self.slug_en)
 
     def __str__(self):
         return self.name
@@ -51,6 +64,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)
+
+    def get_absolute_url_en(self):
+        return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug_en)
+
+    def get_absolute_url_fr(self):
+         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug_fr)
 
     def __str__(self):
         return self.title

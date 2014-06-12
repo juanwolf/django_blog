@@ -1,7 +1,14 @@
 {% extends "blogengine/includes/base.html" %}
-    {% block title %} {{ object.title }} -  {% endblock %}
+    {% block title %} {{ post.title }} -  {% endblock %}
+    {% block language-redirection %}
+        {% if get_current_language == "en" %}
+            value={{ post.get_absolute_url_fr }}
+        {% else %}
+            value={{ post.get_absolute_url_en }}
+        {% endif %}
+{% endblock %}
     {% block content %}
-        {% include "blogengine/includes/post_template.html" with post=object %}
+        {% include "blogengine/includes/post_template.html" with post=post %}
 
         <div id="disqus_thread"></div>
         <script type="text/javascript">
