@@ -1,18 +1,15 @@
-<div id="category-block">
-    {% load i18n %}
-    <ul>
-        <li>
-            <a href="/">{% trans 'Home blog' %}</a>
-        </li>
-    {% for category in categories %}
-        <li>
-            <a href="{{ category.get_absolute_url }}">
-                {{ category.name }}
-            </a>
-            </li>
-    {% endfor %}
-        <li>
-            <a href="/feeds/posts/">RSS</a>
-        </li>
-    </ul>
-</div>
+
+{% load i18n %}
+<li>
+<a href="/">{% trans 'Home' %}</a>
+</li>
+{% for category in categories %}
+<li>
+    <a href="{{ category.get_absolute_url }}">
+        {{ category.name }}
+    </a>
+    </li>
+{% endfor %}
+<li>
+    <a href="/feeds/posts/">RSS</a>
+</li>

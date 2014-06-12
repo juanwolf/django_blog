@@ -16,36 +16,7 @@
     <navbar>
         <a id="brand" href="http://juanwolf.fr">juanwolf.fr</a>
         <ul id="menu-link-list" class="nav nav-pills nav-stacked">
-            <li class="active">
-                <a href="http://juanwolf.fr">
-                    <i class="fa fa-home fa-fw"></i>
-                    {% trans 'Home' %}
-                </a>
-            </li>
-            <li>
-                <a href="http://blog.juanwolf.fr">
-                    <i class="fa fa-comment-o fa-fw"></i>
-                    Blog
-                </a>
-            </li>
-            <li>
-                <a href="http://resume.juanwolf.fr">
-                    <i class="fa fa-file-text-o fa-fw"></i>
-                    {% trans 'Resume' %}
-                </a>
-            </li>
-            <li>
-                <a href="http://chat.juanwolf.fr">
-                    <i class="fa fa-bullhorn fa-fw"></i>
-                    {% trans 'Chat' %}
-                </a>
-            </li>
-            <li>
-                <a href="http://didit.juanwolf.fr">
-                    <i class="fa fa-rocket fa-fw"></i>
-                    Did It
-                </a>
-            </li>
+            {% include "blogengine/category_list.html" %}
             <li id="language-selection-item">
                 <form action="/i18n/setlang/" method="post">
                     <input name="next" type="hidden"
@@ -70,7 +41,6 @@
 </header>
 
 <div id="blog-container">
-    {% include "blogengine/category_list.html" %}
     {% block content %} {% endblock %}
 </div>
 
