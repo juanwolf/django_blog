@@ -2,6 +2,7 @@ Django==1.6.5
 South==0.8.4
 dj-database-url==0.3.0
 dj-static==0.0.5
+django-modeltranslation==0.7.3
 django-summernote==0.5.11
 django-toolbelt==0.0.1
 feedparser==5.1.3
