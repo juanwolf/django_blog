@@ -13,7 +13,7 @@
 
 <body>
 <header>
-    <navbar>
+    <navbar id="blog-navbar">
         <a id="brand" href="http://juanwolf.fr">juanwolf.fr</a>
         <ul id="menu-link-list" class="nav nav-pills nav-stacked">
             {% include "blogengine/category_list.html" %}
@@ -44,7 +44,7 @@
     {% block content %} {% endblock %}
 </div>
 
-<footer>
+<footer id="blog-footer">
     <div id="footer-section">
         <ul id="footer-sections">
             <li><a href="http://about.juanwolf.fr">{% trans 'About' %}</a></li>
