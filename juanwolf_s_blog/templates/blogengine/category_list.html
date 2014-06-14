@@ -1,7 +1,7 @@
 
 {% load i18n %}
 <li>
-<a href="/">{% trans 'Home' %}</a>
+<a id="link-home-blog" href="/">{% trans 'Home' %}</a>
 </li>
 {% for category in categories %}
 <li>
@@ -11,5 +11,5 @@
     </li>
 {% endfor %}
 <li>
-    <a href="/feeds/posts/">RSS</a>
+    <a id="link-rss" href="/feeds/posts/">RSS</a>
 </li>
