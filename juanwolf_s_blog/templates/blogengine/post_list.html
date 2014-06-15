@@ -2,7 +2,7 @@
     {% block content %}
         {% load i18n %}
         {% for post in post_list %}
-        {% include 'blogengine/includes/post_template.html'  %}
+        {% include 'blogengine/post_preview_template.html'  %}
 
         {% endfor %}
         {% if page_obj.has_previous %}

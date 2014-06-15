@@ -86,6 +86,22 @@ class PostDetailView(IndexView):
         # Call the base implementation first to get a context
         # Add in a querySet the category
         context = self.get_context_categories()
+        posts = Post.objects.order_by('-pub_date')
+        post = self.get_queryset()
+        i = 0
+        while not(posts[i] == post) :
+            i += 1
+        context['has_next_post'] = i > 0
+        if context['has_next_post'] :
+            context['next_post'] = posts[i - 1]
+
+        context['has_previous_post'] = i <= len(posts)
+        if context['has_previous_post'] :
+            context['previous_post'] = posts[i + 1]
+
+
+
+
         return context
 
 class PostsFeed(Feed):

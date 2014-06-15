@@ -9,7 +9,7 @@
     {% block content %}
     <h1>{{ tag.name }}</h1>
     <p>{{ tag.description }}</p>
-    {% for post in object_list %}
-        {% include "blogengine/includes/post_template.html" %}
+    {% for post in object_list %
+            {% include "blogengine/post_preview_template.html" %}
     {% endfor %}
     {% endblock %}
