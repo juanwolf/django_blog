@@ -38,14 +38,14 @@ class Category(models.Model):
         super(Category, self).save()
 
     def get_absolute_url(self):
-        url = "/category/%s/" % self.slug
+        url = "/%s/" % self.slug
         return url
 
     def get_absolute_url_fr(self):
-        return "/category/%s/" % (self.slug_fr)
+        return "/%s/" % (self.slug_fr)
 
     def get_absolute_url_en(self):
-        return "/category/%s/" % (self.slug_en)
+        return "/%s/" % (self.slug_en)
 
     def __str__(self):
         return self.name

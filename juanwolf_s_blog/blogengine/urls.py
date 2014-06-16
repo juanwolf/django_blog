@@ -17,8 +17,7 @@ urlpatterns = patterns('',
         )),
 
     # Categories
-    url(r'^category/?$', CategoryListView.as_view(model=Category)),
-    url(r'^category/(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryDetailView.as_view(
+    url(r'^(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryDetailView.as_view(
         paginate_by=5,
         model=Category,
         )),

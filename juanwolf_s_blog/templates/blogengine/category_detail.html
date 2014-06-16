@@ -1,6 +1,6 @@
 {% extends "blogengine/includes/base.html" %}
    {% block language-redirection %}
-        {% if get_current_language == "en" %}
+        {% if LANGUAGE_CODE == "en" %}
             value={{ category.get_absolute_url_fr }}
         {% else %}
             value={{ category.get_absolute_url_en }}
