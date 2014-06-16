@@ -6,9 +6,13 @@
 
         {% endfor %}
         {% if page_obj.has_previous %}
-            <a href="/{{ page_obj.previous_page_number }}/">{% trans 'Previous Page' %}</a>
+            <a id="previous-page" href="/{{ page_obj.previous_page_number }}/">
+                &lsaquo; {% trans 'Newer posts' %}
+            </a>
         {% endif %}
         {% if page_obj.has_next %}
-            <a href="/{{ page_obj.next_page_number }}/">{% trans 'Next Page' %}</a>
+            <a id="next-page" href="/{{ page_obj.next_page_number }}/">
+                {% trans 'Older posts' %} &rsaquo;
+            </a>
         {% endif %}
     {% endblock %}
