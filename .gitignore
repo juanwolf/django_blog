@@ -3,3 +3,4 @@
 *.sh
 juanwolf_s_blog/django-summernote/*
 *.mo
+/media/
