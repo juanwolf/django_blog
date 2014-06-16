@@ -3,7 +3,10 @@
         {% load i18n %}
         {% for post in post_list %}
         {% include 'blogengine/post_preview_template.html'  %}
-
+        {% empty %}
+            <p> {% trans "There's no post for the moment" %}  =(
+                {% trans "All our engineers are working on it. We'll fix this problem soon." %}
+            </p>
         {% endfor %}
         <nav class="pagination">
         {% if page_obj.has_previous %}

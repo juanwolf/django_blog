@@ -11,5 +11,9 @@
     <p>{{ tag.description }}</p>
     {% for post in object_list %}
             {% include "blogengine/post_preview_template.html" %}
+    {% empty %}
+            <p> {% trans "There's no post for this tag for the moment" %} =(
+                {% trans "All our engineers are working on it. We'll fix this problem soon." %}
+            </p>
     {% endfor %}
     {% endblock %}

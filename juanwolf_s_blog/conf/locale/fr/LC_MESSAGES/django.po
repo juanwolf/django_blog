@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-16 16:27+0200\n"
+"POT-Creation-Date: 2014-06-16 22:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,29 +21,59 @@ msgstr ""
 msgid "categories"
 msgstr "catégories"
 
-#: blogengine/views.py:108
+#: blogengine/views.py:106
 msgid "RSS feed - posts"
 msgstr "Flux RSS - Articles"
 
-#: blogengine/views.py:110
+#: blogengine/views.py:108
 msgid "RSS feed - blog posts"
 msgstr "Flux RSS - Articles du blog"
+
+#: templates/blogengine/404.html:5
+msgid "HEY, WHAT ARE YOU DOING HERE ?!!"
+msgstr "HEY, QU'EST QUE TU FAIS ICI ?!!"
+
+#: templates/blogengine/404.html:11
+msgid ""
+"My pandas saw you going to a bad URL, it's ok for this time but try not to "
+"do it again."
+msgstr ""
+"Mes pandas vous ont vu vous rendre sur une mauvaise URL, ça ira pour cette "
+"fois mais que ça ne se reproduise pas."
+
+#: templates/blogengine/category_detail.html:16
+msgid "There's no post in this category for the moment"
+msgstr "Il n'y a pas d'article pour cette catégorie pour le moment"
+
+#: templates/blogengine/category_detail.html:17
+#: templates/blogengine/post_list.html:8
+#: templates/blogengine/tag_detail.html:16
+msgid "All our engineers are working on it. We'll fix this problem soon."
+msgstr "Nos ingénieurs sont en train de plancher dessus. Ce problème sera résolu rapidement."
 
 #: templates/blogengine/category_list.html:3
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/blogengine/post_list.html:11
+#: templates/blogengine/post_list.html:7
+msgid "There's no post for the moment"
+msgstr "Il n'y a pas d'article disponible pour le moment"
+
+#: templates/blogengine/post_list.html:14
 msgid "Newer posts"
 msgstr "Nouveaux articles"
 
-#: templates/blogengine/post_list.html:16
+#: templates/blogengine/post_list.html:19
 msgid "Older posts"
 msgstr "Anciens articles"
 
 #: templates/blogengine/post_preview_template.html:5
 msgid "Read this post"
 msgstr "Lire cet article"
+
+#: templates/blogengine/tag_detail.html:15
+msgid "There's no post for this tag for the moment"
+msgstr "Il n'y a pas d'article lié à ce tag pour le moment"
 
 #: templates/blogengine/includes/base.html:9
 msgid "Juan Wolf's blog"
@@ -74,7 +104,6 @@ msgid "comments powered by"
 msgstr "Commentaires fournis par"
 
 #: templates/blogengine/includes/post_template.html:20
-#, fuzzy
 msgid "Previous post"
 msgstr "Page précédente"
 
