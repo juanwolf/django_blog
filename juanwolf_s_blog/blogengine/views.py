@@ -1,4 +1,5 @@
 from django.contrib.syndication.views import Feed
+from django.shortcuts import render_to_response
 from django.views.generic import ListView, View
 from blogengine.models import Category, Post, Tag
 from django.utils.translation import ugettext as _
@@ -98,11 +99,8 @@ class PostDetailView(IndexView):
         context['has_previous_post'] = i <= len(posts)
         if context['has_previous_post'] :
             context['previous_post'] = posts[i + 1]
-
-
-
-
         return context
+
 
 class PostsFeed(Feed):
     title = _("RSS feed - posts")
@@ -117,3 +115,13 @@ class PostsFeed(Feed):
 
     def item_description(self, item):
         return item.text
+
+
+class PageNotFoundView(IndexView):
+    template_name = 'blogengine/404.html'
+
+    def get_queryset(self):
+        return Post.objects.none
+
+    def get_context_data(self, **kwargs):
+        return self.get_context_categories()

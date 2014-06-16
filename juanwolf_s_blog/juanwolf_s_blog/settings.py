@@ -25,7 +25,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost']
 
 
 # Application definition
@@ -99,6 +99,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     '/home/juanwolf/juanwolf.fr/',
 )
+
+MEDIA_ROOT = 'media/'
+MEDIA_URL = '/media/'
 
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]

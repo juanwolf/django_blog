@@ -2,7 +2,8 @@ from django.conf.urls import include, url, patterns
 from django.views.generic import ListView, DetailView
 from blogengine.models import Post, Category, Tag
 from blogengine.views import PostListView, CategoryDetailView, CategoryListView, PostsFeed, TagDetailView, \
-    PostDetailView
+    PostDetailView, PageNotFoundView
+from juanwolf_s_blog import settings
 
 urlpatterns = patterns('',
     # Index
@@ -22,7 +23,6 @@ urlpatterns = patterns('',
         model=Category,
         )),
 
-
     # Post RSS feed
     url(r'^feeds/posts/$', PostsFeed()),
 
@@ -37,3 +37,10 @@ urlpatterns = patterns('',
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}),
+        url('^test/404testing/$', PageNotFoundView.as_view()),)
+
+handler404 = 'blogengine.views.page_not_found'
