@@ -85,6 +85,8 @@ LANGUAGES = (
     ('fr', 'Français'),
 )
 
+LOCALE_PATHS = ('conf/locale/',)
+
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 # Static files (CSS, JavaScript, Images)

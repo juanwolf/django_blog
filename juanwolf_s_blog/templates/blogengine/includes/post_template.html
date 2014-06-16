@@ -17,13 +17,13 @@
     <a href="http://disqus.com" class="dsq-brlink">{% trans 'comments powered by' %} <span class="logo-disqus">Disqus</span></a>
     {% if has_previous_post %}
     <a id="previous-article" href="{{previous_post.get_absolute_url}}">
-        &lsaquo;&lsaquo; {% trans 'Previous article' %}:
+        &lsaquo;&lsaquo; {% trans 'Previous post' %}:
         {{previous_post.title}}
     </a>
     {% endif %}
     {% if has_next_post %}
     <a id="next-article" href="{{next_post.get_absolute_url}}">
-        {% trans 'Next article' %}:
+        {% trans 'Next post' %}:
         {{next_post.title}} &rsaquo;&rsaquo;
     </a>
     {% endif %}

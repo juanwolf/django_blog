@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-12 09:59+0100\n"
+"POT-Creation-Date: 2014-06-16 16:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,84 +17,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: blogengine/models.py:35
-#, fuzzy
-msgid "category"
-msgstr "catégorie"
-
-#: blogengine/models.py:42
+#: blogengine/models.py:54
 msgid "categories"
 msgstr "catégories"
 
-#: blogengine/views.py:92
+#: blogengine/views.py:108
 msgid "RSS feed - posts"
 msgstr "Flux RSS - Articles"
 
-#: blogengine/views.py:94
+#: blogengine/views.py:110
 msgid "RSS feed - blog posts"
 msgstr "Flux RSS - Articles du blog"
 
-#: templates/blogengine/category_list.html:5
-#, fuzzy
-msgid "Home blog"
-msgstr "Accueil du blog"
+#: templates/blogengine/category_list.html:3
+msgid "Home"
+msgstr "Accueil"
 
-#: templates/blogengine/post_detail.html:16
-msgid "Please enable JavaScript to view the "
-msgstr "Veuillez activer JavaScript pour voir les"
+#: templates/blogengine/post_list.html:11
+msgid "Newer posts"
+msgstr "Nouveaux articles"
 
-#: templates/blogengine/post_detail.html:16
-#, fuzzy
-msgid "comments powered by Disqus."
-msgstr "Commentaires fournis par Disqus"
+#: templates/blogengine/post_list.html:16
+msgid "Older posts"
+msgstr "Anciens articles"
 
-#: templates/blogengine/post_detail.html:17
-msgid "comments powered by"
-msgstr "Commentaires fournis par"
-
-#: templates/blogengine/post_list.html:9
-msgid "Previous Page"
-msgstr "Page précédente"
-
-#: templates/blogengine/post_list.html:12
-msgid "Next Page"
-msgstr "Page suivante"
+#: templates/blogengine/post_preview_template.html:5
+msgid "Read this post"
+msgstr "Lire cet article"
 
 #: templates/blogengine/includes/base.html:9
 msgid "Juan Wolf's blog"
 msgstr "Blog de Juan Wolf"
 
-#: templates/blogengine/includes/base.html:22
-msgid "Home"
-msgstr "Accueil"
-
-#: templates/blogengine/includes/base.html:34
-msgid "Resume"
-msgstr "CV"
-
-#: templates/blogengine/includes/base.html:40
-msgid "Chat"
-msgstr "Chat"
-
-#: templates/blogengine/includes/base.html:79
+#: templates/blogengine/includes/base.html:50
 msgid "About"
 msgstr "A propos"
 
-#: templates/blogengine/includes/post_template.html:4
-msgid "Last edit:"
-msgstr "Dernière édition :"
-
-#: templates/blogengine/includes/post_template.html:6
-#, fuzzy
+#: templates/blogengine/includes/base_post.html:6
 msgid "Category:"
 msgstr "Catégorie :"
 
-#: templates/blogengine/includes/post_template.html:9
+#: templates/blogengine/includes/base_post.html:9
 msgid "Tags:"
 msgstr "Tags :"
 
-#~ msgid "English"
-#~ msgstr "Anglais"
+#: templates/blogengine/includes/post_template.html:16
+msgid "Please enable JavaScript to view the "
+msgstr "Veuillez activer JavaScript pour voir les"
 
-#~ msgid "French"
-#~ msgstr "Français"
+#: templates/blogengine/includes/post_template.html:16
+msgid "comments powered by Disqus."
+msgstr "Commentaires fournis par Disqus."
+
+#: templates/blogengine/includes/post_template.html:17
+msgid "comments powered by"
+msgstr "Commentaires fournis par"
+
+#: templates/blogengine/includes/post_template.html:20
+#, fuzzy
+msgid "Previous post"
+msgstr "Page précédente"
+
+#: templates/blogengine/includes/post_template.html:26
+msgid "Next post"
+msgstr "Article suivant"
