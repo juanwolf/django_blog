@@ -5,6 +5,7 @@
         {% include 'blogengine/post_preview_template.html'  %}
 
         {% endfor %}
+        <nav class="pagination">
         {% if page_obj.has_previous %}
             <a id="previous-page" href="/{{ page_obj.previous_page_number }}/">
                 &lsaquo; {% trans 'Newer posts' %}
@@ -15,4 +16,5 @@
                 {% trans 'Older posts' %} &rsaquo;
             </a>
         {% endif %}
+        </nav>
     {% endblock %}
