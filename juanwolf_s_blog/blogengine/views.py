@@ -97,7 +97,7 @@ class PostDetailView(IndexView):
         if context['has_next_post'] :
             context['next_post'] = posts[i - 1]
 
-        context['has_previous_post'] = i <= len(posts)
+        context['has_previous_post'] = (i + 1) < len(posts)
         if context['has_previous_post'] :
             context['previous_post'] = posts[i + 1]
         return context
