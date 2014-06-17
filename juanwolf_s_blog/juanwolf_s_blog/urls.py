@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
-from blogengine.views import PageNotFoundView
-from juanwolf_s_blog import settings
+from blogengine.views import PageNotFoundView, PageNotFoundViewBis
 
 admin.autodiscover()
 
