@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed
-from django.shortcuts import render_to_response
-from django.views.generic import ListView, View
+from django.shortcuts import render_to_response, render, get_object_or_404
+from django.views.generic import ListView, View, TemplateView
 from blogengine.models import Category, Post, Tag
 from django.utils.translation import ugettext as _
 
@@ -12,7 +12,6 @@ class IndexView(ListView):
         return context
 
 
-
 class CategoryDetailView(IndexView):
     template_name = "blogengine/category_detail.html"
     context_object_name = "post_list"
@@ -20,7 +19,7 @@ class CategoryDetailView(IndexView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            category = Category.objects.get(slug=slug)
+            category = get_object_or_404(Category, slug=slug)
             return Post.objects.filter(category=category)
         except Category.DoesNotExist:
             return Post.objects.none()
@@ -48,7 +47,7 @@ class TagDetailView(IndexView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            tag = Tag.objects.get(slug_en=slug)
+            tag = get_object_or_404(Tag, slug=slug)
             return tag.post_set.all()
         except Tag.DoesNotExist:
             return Post.objects.none()
@@ -75,13 +74,15 @@ class PostListView(IndexView):
         context = self.get_context_categories()
         return context
 
+
 class PostDetailView(IndexView):
     template_name = "blogengine/post_detail.html"
     context_object_name = "post"
 
     def get_queryset(self):
         slug = self.kwargs['slug']
-        return Post.objects.get(slug=slug)
+        post = get_object_or_404(Post, slug=slug)
+        return post
 
     def get_context_data(self):
         # Call the base implementation first to get a context
@@ -118,10 +119,11 @@ class PostsFeed(Feed):
 
 
 class PageNotFoundView(IndexView):
-    template_name = 'blogengine/404.html'
+    template_name = 'blogengine/page_not_found.html'
 
     def get_queryset(self):
-        return Post.objects.none
+        Post.objects.none
 
-    def get_context_data(self, **kwargs):
-        return self.get_context_categories()
+    def get_context_data(self):
+        context = self.get_context_categories()
+        return context

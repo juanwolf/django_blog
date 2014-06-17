@@ -2,7 +2,7 @@ from django.conf.urls import include, url, patterns
 from django.views.generic import ListView, DetailView
 from blogengine.models import Post, Category, Tag
 from blogengine.views import PostListView, CategoryDetailView, CategoryListView, PostsFeed, TagDetailView, \
-    PostDetailView, PageNotFoundView
+    PostDetailView, PageNotFoundView, PageNotFoundViewBis
 from juanwolf_s_blog import settings
 
 urlpatterns = patterns('',
@@ -43,4 +43,3 @@ if settings.DEBUG:
         'document_root': settings.MEDIA_ROOT}),
         url('^test/404testing/$', PageNotFoundView.as_view()),)
 
-handler404 = 'blogengine.views.page_not_found'
