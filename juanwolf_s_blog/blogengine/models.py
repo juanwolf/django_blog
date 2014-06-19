@@ -17,12 +17,6 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return "/tag/%s/" % (self.slug)
 
-    def get_absolute_url_fr(self):
-        return "/tag/%s/" % (self.slug_fr)
-
-    def get_absolute_url_en(self):
-        return "/tag/%s/" % (self.slug_en)
-
     def __unicode__(self):
         return self.name
 
@@ -41,12 +35,6 @@ class Category(models.Model):
         url = "/%s/" % self.slug
         return url
 
-    def get_absolute_url_fr(self):
-        return "/%s/" % (self.slug_fr)
-
-    def get_absolute_url_en(self):
-        return "/%s/" % (self.slug_en)
-
     def __str__(self):
         return self.name
 
@@ -56,11 +44,11 @@ class Category(models.Model):
 
 class Post(models.Model):
     pub_date = models.DateTimeField(default=datetime.now)
-    category = models.ForeignKey(Category, blank=True, null=True)
-    tags = models.ManyToManyField(Tag)
+    category = models.ForeignKey(Category)
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
     title = models.CharField(max_length=200, default="")
     text = models.TextField(default="")
-    slug = models.SlugField(max_length=40, unique=True)
+    slug = models.SlugField(max_length=50, unique=True)
 
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)

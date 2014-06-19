@@ -1,11 +1,15 @@
 {% extends "blogengine/includes/base.html" %}
 {% block language-redirection %}
-{% if get_current_language == "en" %}
-    value={{ tag.get_absolute_url_fr }}
-{% else %}
-    value={{ tag.get_absolute_url_en }}
-{% endif %}
-{% endblock %}
+{% load i18n %}
+    {% if LANGUAGE_CODE == "en" %}
+        {% language 'fr' %}
+        value={{ tag.get_absolute_url }}
+        {% endlanguage %}
+    {% else %}
+        {% language 'en' %}
+        value={{ tag.get_absolute_url }}
+        {%  endlanguage %}
+    {% endif %}
     {% block content %}
     {% load i18n %}
     <h1>{{ tag.name }}</h1>

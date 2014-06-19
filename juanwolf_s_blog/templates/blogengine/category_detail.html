@@ -1,10 +1,15 @@
 {% extends "blogengine/includes/base.html" %}
    {% block language-redirection %}
-        {% if LANGUAGE_CODE == "en" %}
-            value={{ category.get_absolute_url_fr }}
-        {% else %}
-            value={{ category.get_absolute_url_en }}
-        {% endif %}
+        {% load i18n %}
+    {% if LANGUAGE_CODE == "en" %}
+        {% language 'fr' %}
+        value={{ category.get_absolute_url }}
+        {% endlanguage %}
+    {% else %}
+        {% language 'en' %}
+        value={{ category.get_absolute_url }}
+        {%  endlanguage %}
+    {% endif %}
     {% endblock %}
    {% block  content %}
    {% load i18n %}

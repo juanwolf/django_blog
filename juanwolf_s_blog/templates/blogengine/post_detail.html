@@ -1,10 +1,15 @@
 {% extends "blogengine/includes/base.html" %}
 {% block title %} {{ post.title }} -  {% endblock %}
 {% block language-redirection %}
-    {% if get_current_language == "en" %}
-        value={{ post.get_absolute_url_fr }}
+    {% load i18n %}
+    {% if LANGUAGE_CODE == "en" %}
+        {% language 'fr' %}
+        value={{ post.get_absolute_url }}
+        {% endlanguage %}
     {% else %}
-        value={{ post.get_absolute_url_en }}
+        {% language 'en' %}
+        value={{ post.get_absolute_url }}
+        {%  endlanguage %}
     {% endif %}
 {% endblock %}
 

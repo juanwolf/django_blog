@@ -18,7 +18,8 @@
         <ul id="menu-link-list" class="nav nav-pills nav-stacked">
             {% include "blogengine/category_list.html" %}
             <li id="language-selection-item">
-                <form action="/i18n/setlang/" method="post">
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
                     <input name="next" type="hidden"
                            {% block language-redirection %}{% endblock %}/>
                     <select name="language" id="language-select-blog">
@@ -30,7 +31,7 @@
                         >{{ lang.1 }}</option>
                     {% endfor %}
                     </select>
-                    {% csrf_token %}
+
                 </form>
             </li>
         </ul>
@@ -75,7 +76,6 @@
     </div>
     <script src="{% static 'js/lib/JQuery1.11.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
-    <!-- Piwik -->
     <!-- Piwik -->
     <script type="text/javascript">
       var _paq = _paq || [];
