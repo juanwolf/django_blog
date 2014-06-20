@@ -1,8 +1,11 @@
 from django.contrib.syndication.views import Feed
-from django.shortcuts import render_to_response, render, get_object_or_404
-from django.views.generic import ListView, View, TemplateView
+from django.http import Http404
+from django.shortcuts import get_object_or_404
+from django.utils import translation
+from django.views.generic import ListView
 from blogengine.models import Category, Post, Tag
 from django.utils.translation import ugettext as _
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class IndexView(ListView):
@@ -19,17 +22,35 @@ class CategoryDetailView(IndexView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            category = get_object_or_404(Category, slug=slug)
+            category = Category.objects.get(slug_en=slug)
+            translation.activate("en")
             return Post.objects.filter(category=category)
-        except Category.DoesNotExist:
-            return Post.objects.none()
+        except ObjectDoesNotExist:
+            pass
+
+        try:
+            category = Category.objects.get(slug_fr=slug)
+            translation.activate("fr")
+            return Post.objects.filter(category=category)
+        except ObjectDoesNotExist:
+            raise Http404
 
     def get_context_data(self):
         # Call the base implementation first to get a context
         # Add in a querySet the category
         context = self.get_context_categories()
         slug = self.kwargs['slug']
-        context['category'] = Category.objects.get(slug=slug)
+        request = self.request
+        try:
+            context['category'] = Category.objects.get(slug_en=slug)
+            translation.activate("en")
+        except ObjectDoesNotExist:
+            pass
+        try:
+            context['category'] = Category.objects.get(slug_fr=slug)
+            translation.activate("fr")
+        except ObjectDoesNotExist:
+            pass
         return context
 
 
@@ -47,7 +68,7 @@ class TagDetailView(IndexView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            tag = get_object_or_404(Tag, slug=slug)
+            tag = get_object_or_404(Tag, slug__contains=slug)
             return tag.post_set.all()
         except Tag.DoesNotExist:
             return Post.objects.none()
@@ -81,8 +102,19 @@ class PostDetailView(IndexView):
 
     def get_queryset(self):
         slug = self.kwargs['slug']
-        post = get_object_or_404(Post, slug=slug)
-        return post
+        try:
+            post = Post.objects.get(slug_en=slug)
+            translation.activate("en")
+            return post
+        except ObjectDoesNotExist:
+            pass
+
+        try:
+            post = Post.objects.get(slug_fr=slug)
+            translation.activate("fr")
+            return post
+        except ObjectDoesNotExist:
+            raise Http404
 
     def get_context_data(self):
         # Call the base implementation first to get a context

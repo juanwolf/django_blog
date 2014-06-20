@@ -1,7 +1,6 @@
 from django.conf.urls import include, url, patterns
-from django.views.generic import ListView, DetailView
 from blogengine.models import Post, Category, Tag
-from blogengine.views import PostListView, CategoryDetailView, CategoryListView, PostsFeed, TagDetailView, \
+from blogengine.views import PostListView, CategoryDetailView, PostsFeed, TagDetailView, \
     PostDetailView, PageNotFoundView
 from juanwolf_s_blog import settings
 

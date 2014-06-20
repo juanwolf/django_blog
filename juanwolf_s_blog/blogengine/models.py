@@ -53,12 +53,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)
 
-    def get_absolute_url_en(self):
-        return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug_en)
-
-    def get_absolute_url_fr(self):
-         return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug_fr)
-
     def __str__(self):
         return self.title
 
