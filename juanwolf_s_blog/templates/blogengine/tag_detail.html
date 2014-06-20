@@ -1,6 +1,6 @@
 {% extends "blogengine/includes/base.html" %}
 {% block language-redirection %}
-{% load i18n %}
+    {% load i18n %}
     {% if LANGUAGE_CODE == "en" %}
         {% language 'fr' %}
         value={{ tag.get_absolute_url }}
@@ -10,7 +10,8 @@
         value={{ tag.get_absolute_url }}
         {%  endlanguage %}
     {% endif %}
-    {% block content %}
+{% endblock %}
+{% block content %}
     {% load i18n %}
     <h1>{{ tag.name }}</h1>
     <p>{{ tag.description }}</p>
@@ -21,4 +22,4 @@
                 {% trans "All our engineers are working on it. We'll fix this problem soon." %}
             </p>
     {% endfor %}
-    {% endblock %}
+{% endblock %}
