@@ -10,8 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from django.utils.translation import gettext_lazy as _
-import blogengine
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -33,11 +32,9 @@ ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sitemaps',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -46,6 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'django_summernote',
     'modeltranslation',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,8 +109,7 @@ MEDIA_URL = '/media/'
 
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'blogengine.template_context_preprocessor.get_current_path',
 )
 

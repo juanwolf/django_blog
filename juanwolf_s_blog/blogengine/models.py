@@ -45,7 +45,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     pub_date = models.DateTimeField(default=datetime.now)
-    category = models.ForeignKey(Category, default=Category.objects.filter(slug='autre'))
+    category = models.ForeignKey(Category)
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     title = models.CharField(max_length=200, default="")
     text = models.TextField(default="")
