@@ -1,9 +1,13 @@
 from django.conf.urls import include, url, patterns
-from blogengine.models import Post, Category, Tag
+from django.contrib.sitemaps.views import sitemap
+from blogengine.models import Post, Category, Tag, BlogSitemap
 from blogengine.views import PostListView, CategoryDetailView, PostsFeed, TagDetailView, \
     PostDetailView, PageNotFoundView
 from juanwolf_s_blog import settings
 
+sitemaps = {
+    'blog': BlogSitemap
+}
 urlpatterns = patterns('',
     # Index
     url(r'^(?P<page>\d+)?/?$', PostListView.as_view(
@@ -35,6 +39,8 @@ urlpatterns = patterns('',
         )),
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
+        {'sitemaps': sitemaps}),
 )
 if settings.DEBUG:
     urlpatterns += patterns('',

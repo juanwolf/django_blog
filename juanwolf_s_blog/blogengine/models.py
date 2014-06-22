@@ -1,3 +1,4 @@
+from django.contrib.sitemaps import Sitemap
 from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
@@ -44,7 +45,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     pub_date = models.DateTimeField(default=datetime.now)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, default=Category.objects.filter(slug='autre'))
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     title = models.CharField(max_length=200, default="")
     text = models.TextField(default="")
@@ -58,3 +59,15 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-pub_date"]
+
+
+class BlogSitemap(Sitemap):
+    changefreq = "always"
+    priority = 0.5
+    i18n = True
+
+    def items(self):
+        return Post.objects.all()
+
+    def lastmod(self, obj):
+        return obj.pub_date

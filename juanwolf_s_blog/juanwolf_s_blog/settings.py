@@ -33,9 +33,11 @@ ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
 # Application definition
 
 INSTALLED_APPS = (
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sitemaps',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -55,6 +57,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 )
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'juanwolf_s_blog.urls'
 
