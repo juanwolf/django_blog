@@ -1,7 +1,34 @@
 {% extends "blogengine/includes/base_post.html" %}
+
 {% block post_content %}
     <div class="post-content">
         {{ post.text | safe }}
+    </div>
+    <div id="share-buttons"><style type="text/css">
+
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}</style>
+        <p>
+            {% load i18n %}
+            {% trans 'Share this post on:' %}
+        </p>
+        <!-- Facebook -->
+        <a href="http://www.facebook.com/sharer.php?u={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a>
+        <!-- Twitter -->
+        <a href="http://twitter.com/share?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
+        <!-- Google+ -->
+        <a href="https://plus.google.com/share?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
+        <!-- Digg -->
+        <a href="http://www.digg.com/submit?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
+        <!-- Reddit -->
+        <a href="http://reddit.com/submit?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
+        <!-- LinkedIn -->
+        <a href="http://www.linkedin.com/shareArticle?mini=true&url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" /></a>
     </div>
     <div id="disqus_thread"></div>
     <script type="text/javascript">

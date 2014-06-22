@@ -9,6 +9,7 @@
     <title>{% block title %}{% endblock %} {% trans "Juan Wolf's blog" %}</title>
     {% load staticfiles %}
     <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/stylesheet.css' %}" />
+    {% block head_block %} {% endblock %}
 </head>
 
 <body>

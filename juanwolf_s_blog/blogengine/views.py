@@ -68,7 +68,7 @@ class TagDetailView(IndexView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            tag = get_object_or_404(Tag, slug__contains=slug)
+            tag = get_object_or_404(Tag, slug=slug)
             return tag.post_set.all()
         except Tag.DoesNotExist:
             return Post.objects.none()
@@ -154,7 +154,7 @@ class PageNotFoundView(IndexView):
     template_name = 'blogengine/page_not_found.html'
 
     def get_queryset(self):
-        Post.objects.none
+        return Post.objects.none()
 
     def get_context_data(self):
         context = self.get_context_categories()

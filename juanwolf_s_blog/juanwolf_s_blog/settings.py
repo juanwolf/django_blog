@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.utils.translation import gettext_lazy as _
+import blogengine
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -21,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '&n7c--zvj(gzrufi08464k1y1$teq052d=o#u7_+^9s+3+)5ot'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = False
 
-TEMPLATE_DEBUG = False 
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
 
@@ -104,6 +106,10 @@ MEDIA_URL = '/media/'
 
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'blogengine.template_context_preprocessor.get_current_path',
+)
 
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
@@ -115,7 +121,7 @@ SUMMERNOTE_CONFIG = {
 
     # Change editor size
     'width': '100%',
-    'height': '400',
+    'height': '450',
 
     # Or, set editor language/locale forcely
     'lang': 'fr-FR',
