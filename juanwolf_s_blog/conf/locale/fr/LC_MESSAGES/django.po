@@ -95,7 +95,7 @@ msgstr "Tags :"
 
 #: templates/blogengine/includes/post_template.html:18
 msgid "Share this post on:"
-msgstr "Partager cet article sur:"
+msgstr "Partagez cet article sur:"
 
 #: templates/blogengine/includes/post_template.html:43
 msgid "Please enable JavaScript to view the "
