@@ -40,7 +40,8 @@ urlpatterns = patterns('',
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
-        {'sitemaps': sitemaps}),
+        {'sitemaps': sitemaps,
+         'template_name': 'blogengine/custom_sitemap.html'}),
 )
 if settings.DEBUG:
     urlpatterns += patterns('',
