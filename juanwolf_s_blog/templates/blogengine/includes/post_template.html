@@ -33,6 +33,10 @@ display: inline;
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'juanwolfsblog'; // required: replace example with your forum shortname
+        var disqus_identifier = '{{ post.get_absolute_url }}' // Define to identify the current page
+        var disqus_config = function () {
+            this.language = "{{ LANGUAGE_CODE }}";
+        };
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
