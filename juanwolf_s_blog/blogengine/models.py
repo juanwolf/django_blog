@@ -52,7 +52,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=50, unique=True)
 
     def get_absolute_url(self):
-        return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)
+        return "/%s/%s/" % (self.category.slug, self.slug)
 
     def __str__(self):
         return self.title
