@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
 from django.utils import translation
 from django.views.generic import ListView
 from blogengine.models import Category, Post, Tag
@@ -150,12 +151,7 @@ class PostsFeed(Feed):
         return item.text
 
 
-class PageNotFoundView(IndexView):
-    template_name = 'blogengine/page_not_found.html'
-
-    def get_queryset(self):
-        return Post.objects.none()
-
-    def get_context_data(self):
-        context = self.get_context_categories()
-        return context
+def page_not_found_view(request, template_name='blogengine/page_not_found.html'):
+    context = RequestContext(request)
+    context['categories'] = Category.objects.all()
+    return render_to_response(template_name, context)
