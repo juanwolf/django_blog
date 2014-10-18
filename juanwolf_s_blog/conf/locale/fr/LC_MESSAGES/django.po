@@ -111,7 +111,7 @@ msgstr "Commentaires fournis par"
 
 #: templates/blogengine/includes/post_template.html:47
 msgid "Previous post"
-msgstr "Page précédente"
+msgstr "Article précédent"
 
 #: templates/blogengine/includes/post_template.html:53
 msgid "Next post"
