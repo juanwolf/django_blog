@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from blogengine.views import PageNotFoundView
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -8,4 +7,4 @@ urlpatterns = patterns('',
     url(r'', include('blogengine.urls')),
 )
 
-handler404 = PageNotFoundView.as_view()
+handler404 = 'blogengine.views.page_not_found_view'

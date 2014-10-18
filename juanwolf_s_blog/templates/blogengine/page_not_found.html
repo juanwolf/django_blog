@@ -4,8 +4,7 @@
      {% load staticfiles %}
     <p id="not-found-title"> {% trans 'HEY, WHAT ARE YOU DOING HERE ?!!' %}</p>
         <div id="image-not-found">
-
-            <img src='{% static "img/panda-invasion-2.png" %}' alt="My pandas are watching you" />
+            <img src='{% static "img/panda-invasion-2.png" %}' alt="{%  trans 'My pandas are watching you' %}" />
         </div>
     <p id="not-found-text">
         {% trans "My pandas saw you going to a bad URL, it's ok for this time but try not to do it again." %}
