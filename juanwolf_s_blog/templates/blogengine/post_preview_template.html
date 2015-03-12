@@ -1,6 +1,6 @@
 {%extends "blogengine/includes/base_post.html" %}
     {% block post_content %}
-    <p class="post-content">{{ post.text | safe | truncatewords_html:75  }}</p>
+    <p class="post-content">{{ post.text | safe | truncatewords_html:100  }}</p>
     {% load i18n %}
     <a href="{{post.get_absolute_url}}">{% trans "Read this post" %} &rsaquo;</a>
     {% endblock %}
