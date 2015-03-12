@@ -10,4 +10,4 @@ gunicorn==18.0
 psycopg2==2.5.3
 pystache==0.5.4
 static==1.0.2
-django-jenkins
+django-jenkins==0.16.4
