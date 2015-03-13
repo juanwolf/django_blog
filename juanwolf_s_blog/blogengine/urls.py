@@ -1,9 +1,7 @@
 from django.conf.urls import include, url, patterns
-from django.contrib.sitemaps.views import sitemap
 from blogengine.models import Post, Category, Tag, BlogSitemap
 from blogengine.views import PostListView, CategoryDetailView, PostsFeed, TagDetailView, \
     PostDetailView
-from juanwolf_s_blog import settings
 
 sitemaps = {
     'blog': BlogSitemap
@@ -44,9 +42,4 @@ urlpatterns = patterns('',
          'template_name': 'blogengine/custom_sitemap.html'}),
 )
 
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': settings.MEDIA_ROOT}),
-        url('^test/404testing/$', PageNotFoundView.as_view()),)
 
