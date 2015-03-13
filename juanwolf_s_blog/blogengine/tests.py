@@ -159,8 +159,14 @@ class AdminTest(LiveServerTestCase):
         # Create the new category
         response = self.client.post('/admin/blogengine/category/add/', {
             'name': 'python',
+            'name_en': 'python',
+            'name_fr': 'python',
             'description': 'The Python programming language',
-            'slug': 'python'}
+            'description_fr': 'The Python programming language',
+            'description_en': 'The Python programming language',
+            'slug': 'python',
+            'slug_en': 'python',
+            'slug_fr': 'python'}
             , follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -185,8 +191,14 @@ class AdminTest(LiveServerTestCase):
         # Edit the category
         response = self.client.post('/admin/blogengine/category/' + str(category.id) + '/', {
             'name': 'perl',
+            'name_en': 'perl',
+            'name_fr': 'perl',
             'description': 'The Perl programming language',
-            'slug': 'perl'}
+            'description_fr': 'The Perl programming language',
+            'description_en': 'The Perl programming language',
+            'slug': 'perl',
+            'slug_en': 'perl',
+            'slug_fr': 'perl'}
             , follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -234,8 +246,14 @@ class AdminTest(LiveServerTestCase):
         # Create the new tag
         response = self.client.post('/admin/blogengine/tag/add/', {
             'name': 'python',
+            'name_en': 'python',
+            'name_fr': 'python',
             'description': 'The Python programming language',
-            'slug': 'python'
+            'description_fr': 'The Python programming language',
+            'description_en': 'The Python programming language',
+            'slug': 'python',
+            'slug_en': 'python',
+            'slug_fr': 'python'
         }, follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -260,8 +278,14 @@ class AdminTest(LiveServerTestCase):
         # Edit the tag
         response = self.client.post('/admin/blogengine/tag/' + str(tag.id) + '/', {
             'name': 'perl',
+            'name_en': 'perl',
+            'name_fr': 'perl',
             'description': 'The Perl programming language',
-            'slug': 'perl'
+            'description_fr': 'The Perl programming language',
+            'description_en': 'The Perl programming language',
+            'slug': 'perl',
+            'slug_en': 'perl',
+            'slug_fr': 'perl'
         }, follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -447,8 +471,6 @@ class PostViewTest(LiveServerTestCase):
         tag.name = 'perl'
         tag.description = 'The Perl programming language'
         tag.save()
-
-
 
         # Create the post
         post = Post()
