@@ -159,7 +159,8 @@ class AdminTest(LiveServerTestCase):
         # Create the new category
         response = self.client.post('/admin/blogengine/category/add/', {
             'name': 'python',
-            'description': 'The Python programming language'}
+            'description': 'The Python programming language',
+            'slug': 'python'}
             , follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -184,7 +185,8 @@ class AdminTest(LiveServerTestCase):
         # Edit the category
         response = self.client.post('/admin/blogengine/category/' + str(category.id) + '/', {
             'name': 'perl',
-            'description': 'The Perl programming language'}
+            'description': 'The Perl programming language',
+            'slug': 'perl'}
             , follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -221,7 +223,6 @@ class AdminTest(LiveServerTestCase):
         all_categories = Category.objects.all()
         self.assertEqual(len(all_categories), 0)
 
-
     def test_create_tag(self):
         # Log in
         login = self.client.login(username=self.username, password=self.password)
@@ -233,7 +234,8 @@ class AdminTest(LiveServerTestCase):
         # Create the new tag
         response = self.client.post('/admin/blogengine/tag/add/', {
             'name': 'python',
-            'description': 'The Python programming language'
+            'description': 'The Python programming language',
+            'slug': 'python'
         }, follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -258,7 +260,8 @@ class AdminTest(LiveServerTestCase):
         # Edit the tag
         response = self.client.post('/admin/blogengine/tag/' + str(tag.id) + '/', {
             'name': 'perl',
-            'description': 'The Perl programming language'
+            'description': 'The Perl programming language',
+            'slug': 'perl'
         }, follow=True)
         self.assertEqual(response.status_code, 200)
 
@@ -295,8 +298,6 @@ class AdminTest(LiveServerTestCase):
         # Check tag deleted
         all_tags = Tag.objects.all()
         self.assertEqual(len(all_tags), 0)
-
-
 
     def test_create_post(self):
         login = self.client.login(username=self.username, password=self.password)
