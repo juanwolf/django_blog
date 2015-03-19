@@ -21,7 +21,6 @@ class TagAdmin(ModelAdmin):
                            "slug_en": ("name_en",),
                            "slug_fr": ("name_fr",)}
 
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)

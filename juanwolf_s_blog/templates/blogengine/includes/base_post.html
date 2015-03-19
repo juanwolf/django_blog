@@ -12,6 +12,9 @@
             {% endfor %}
         </span>
     </p>
+    {% if post.image %}
+    <img src="{{  post.get_absolute_image_url }}" />
+    {% endif %}
     {% block post_content %}
     {% endblock %}
 </div>

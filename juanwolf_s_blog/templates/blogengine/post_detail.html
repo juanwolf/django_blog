@@ -1,4 +1,11 @@
 {% extends "blogengine/includes/base.html" %}
+{% if post.keywords %}
+    {% block head_block %}
+        <meta name="keywords" content="{{ post.keywords  }}" />
+    {% endblock %}
+{% endif %}
+
+
 {% block title %} {{ post.title }} -  {% endblock %}
 {% block language-redirection %}
     {% load i18n %}
@@ -12,9 +19,7 @@
         {%  endlanguage %}
     {% endif %}
 {% endblock %}
-{% block head_block %}
 
-{% endblock %}
 {% block content %}
     {% include "blogengine/includes/post_template.html" %}
 {% endblock %}

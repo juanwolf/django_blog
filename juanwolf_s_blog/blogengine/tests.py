@@ -1,6 +1,9 @@
+from unittest import mock
+from PIL import Image
 from django.contrib.auth.models import User
 from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
+from io import BytesIO
 from blogengine.models import Post, Category, Tag
 import feedparser
 
@@ -47,7 +50,6 @@ class PostTest(TestCase):
         # Check attributes
         self.assertEqual(only_tag.name, 'python')
         self.assertEqual(only_tag.description, 'The Python programming language')
-
 
     def test_create_post(self):
         # Create the category
@@ -341,6 +343,13 @@ class AdminTest(LiveServerTestCase):
         tag.description = 'The Python programming language'
         tag.save()
 
+        # Create the image
+        file_obj = BytesIO()
+        image    = Image.new("RGBA", size=(50,50), color=(256,0,0))
+        image.save(file_obj, 'png')
+        file_obj.name = 'test.png'
+        file_obj.seek(0)
+
         # Create the new post
         response = self.client.post('/admin/blogengine/post/add/', {
             'title': 'My first post',
@@ -348,11 +357,11 @@ class AdminTest(LiveServerTestCase):
             'pub_date_0': '2014-06-05',
             'pub_date_1': '00:00:04',
             'slug': 'my-first-post',
+            'image': file_obj,
             'category': str(category.id),
             'tags': str(tag.id),
         }, follow=True)
         self.assertEqual(response.status_code, 200)
-
         # Check added successfully
         self.assertTrue(bytes('added successfully', 'utf-8') in response.content)
 
@@ -372,6 +381,13 @@ class AdminTest(LiveServerTestCase):
         tag.name = 'python'
         tag.description = 'The Python programming language'
         tag.save()
+
+        # Create the image
+        file_obj = BytesIO()
+        image    = Image.new("RGBA", size=(50,50), color=(256,0,0))
+        image.save(file_obj, 'png')
+        file_obj.name = 'test.png'
+        file_obj.seek(0)
 
         # Create the post
         post = Post()
@@ -396,6 +412,7 @@ class AdminTest(LiveServerTestCase):
             'pub_date_1': '22:00:04',
             'slug': 'my-first-post',
             'category': category.id,
+            'image': file_obj,
             'tags': tag.id,
         }, follow=True)
         self.assertEqual(response.status_code, 200)
@@ -623,6 +640,12 @@ class PostViewTest(LiveServerTestCase):
         tag.description = 'The Python programming language'
         tag.save()
 
+        # Create the category
+        category = Category()
+        category.name = 'perl'
+        category.description = 'The Perl programming language'
+        category.save()
+
 
         # Create the post
         post = Post()
@@ -630,7 +653,9 @@ class PostViewTest(LiveServerTestCase):
         post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.slug = 'my-first-post'
         post.pub_date = timezone.now()
+        post.category = category
         post.save()
+
         post.tags.add(tag)
         post.save()
 
