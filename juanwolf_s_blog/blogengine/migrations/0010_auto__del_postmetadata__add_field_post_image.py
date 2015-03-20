@@ -8,9 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting model 'PostMetadata'
-        db.delete_table('blogengine_postmetadata')
-
         # Adding field 'Post.image'
         db.add_column('blogengine_post', 'image',
                       self.gf('django.db.models.fields.files.ImageField')(max_length=100, default=''),
@@ -18,12 +15,6 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        # Adding model 'PostMetadata'
-        db.create_table('blogengine_postmetadata', (
-            ('allmetadata_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['simple_seo.AllMetadata'], primary_key=True, unique=True)),
-        ))
-        db.send_create_signal('blogengine', ['PostMetadata'])
-
         # Deleting field 'Post.image'
         db.delete_column('blogengine_post', 'image')
 

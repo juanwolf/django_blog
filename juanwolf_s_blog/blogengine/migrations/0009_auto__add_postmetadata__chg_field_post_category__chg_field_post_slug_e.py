@@ -8,13 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'PostMetadata'
-        db.create_table('blogengine_postmetadata', (
-            ('allmetadata_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['simple_seo.AllMetadata'], unique=True, primary_key=True)),
-        ))
-        db.send_create_signal('blogengine', ['PostMetadata'])
-
-
         # Changing field 'Post.category'
         db.alter_column('blogengine_post', 'category_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['blogengine.Category']))
 
@@ -28,10 +21,6 @@ class Migration(SchemaMigration):
         db.alter_column('blogengine_post', 'slug', self.gf('django.db.models.fields.SlugField')(max_length=50, unique=True))
 
     def backwards(self, orm):
-        # Deleting model 'PostMetadata'
-        db.delete_table('blogengine_postmetadata')
-
-
         # Changing field 'Post.category'
         db.alter_column('blogengine_post', 'category_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['blogengine.Category'], null=True))
 
@@ -74,10 +63,6 @@ class Migration(SchemaMigration):
             'title_en': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'title_fr': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
-        'blogengine.postmetadata': {
-            'Meta': {'_ormbases': ['simple_seo.AllMetadata'], 'object_name': 'PostMetadata'},
-            'allmetadata_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['simple_seo.AllMetadata']", 'unique': 'True', 'primary_key': 'True'})
-        },
         'blogengine.tag': {
             'Meta': {'object_name': 'Tag'},
             'description': ('django.db.models.fields.TextField', [], {}),
@@ -91,34 +76,6 @@ class Migration(SchemaMigration):
             'slug_en': ('django.db.models.fields.SlugField', [], {'max_length': '40', 'unique': 'True', 'null': 'True', 'blank': 'True'}),
             'slug_fr': ('django.db.models.fields.SlugField', [], {'max_length': '40', 'unique': 'True', 'null': 'True', 'blank': 'True'})
         },
-        'simple_seo.allmetadata': {
-            'Meta': {'_ormbases': ['simple_seo.OpenGraphMetadata'], 'object_name': 'AllMetadata'},
-            'opengraphmetadata_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['simple_seo.OpenGraphMetadata']", 'unique': 'True', 'primary_key': 'True'}),
-            'twitter:card': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'twitter:description': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'twitter:image': ('simple_seo.fields.ImageMetaTagField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'twitter:title': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'twitter:url': ('simple_seo.fields.URLMetaTagField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
-        },
-        'simple_seo.basemetadata': {
-            'Meta': {'object_name': 'BaseMetadata'},
-            'author': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'description': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'keywords': ('simple_seo.fields.KeywordsTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'title': ('simple_seo.fields.TitleTagField', [], {'max_length': '68'}),
-            'view_name': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'unique': 'True', 'max_length': '250'})
-        },
-        'simple_seo.opengraphmetadata': {
-            'Meta': {'_ormbases': ['simple_seo.BaseMetadata'], 'object_name': 'OpenGraphMetadata'},
-            'basemetadata_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['simple_seo.BaseMetadata']", 'unique': 'True', 'primary_key': 'True'}),
-            'og:admins': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'og:description': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'og:image': ('simple_seo.fields.ImageMetaTagField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'og:title': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'og:type': ('simple_seo.fields.MetaTagField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'og:url': ('simple_seo.fields.URLMetaTagField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
-        }
     }
 
     complete_apps = ['blogengine']
