@@ -559,7 +559,7 @@ class PostViewTest(LiveServerTestCase):
         # Create the post
         post = Post()
         post.title = 'My first post'
-        post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
+        post.text = '<p>Intro</p><p>This is <a href="http://127.0.0.1:8000/">my first blog post</a></p>'
         post.pub_date = timezone.now()
         post.slug = 'my-first-post'
         post.category = category
@@ -582,9 +582,10 @@ class PostViewTest(LiveServerTestCase):
 
         # Check the post title is in the response
         self.assertTrue(bytes(post.title, 'utf-8') in response.content)
-
-        # Check the post text is in the response
-        self.assertTrue(bytes(post.text, 'utf-8') in response.content)
+        # Check the post introduction is in the response
+        self.assertTrue(bytes(post.get_introduction(), 'utf-8') in response.content)
+        # Check the post content is in the response
+        self.assertTrue(bytes(post.get_text_content(), 'utf-8') in response.content)
         # Check the category is in the response
         self.assertTrue(bytes(post.category.name, 'utf-8') in response.content)
         # Check the post tag is in the response
