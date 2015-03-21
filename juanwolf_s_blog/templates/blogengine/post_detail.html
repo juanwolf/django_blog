@@ -13,17 +13,21 @@
         <meta name="twitter:creator" content="@juan__wolf" />
         <meta name="twitter:title" content="{{ post.title }} - blog.juanwolf.fr" />
         <meta name="twitter:description" content="{{ post.get_introduction }}" />
+        {% if post.image %}
         <meta name="twitter:image" content="{{ post.get_absolute_image_url }}" />
-        <meta name="twitter:url" content="http://{{ site.domain }}{{ post.get_absolute_url }}" />
-        <meta name="og:url" content="http://{{ site.domain }}{{ post.get_absolute_url }}" />
+        {% endif %}
+        <meta name="twitter:url" content="{{ current_path }}" />
+        <meta name="og:url" content="{{ current_path }}" />
         <meta name="og:title" content="{{ post.title }} - blog.juanwolf.fr"/>
+            {% if post.image %}
         <meta name="og:image" content="{{ post.get_absolute_image_url }}"/>
+                {% endif %}
         <meta name="og:description" content="{{ post.get_introduction }}" />
         <meta name="og:locale" content="fr_FR">
         <meta name="og:author" content="Jean-Loup Adde" />
         <meta name="og:type" content="article" />
         {% language 'en' %}
-        <link rel="alternate" hreflang="en" href="http://{{ site.domain }}{{post.get_absolute_url}}" />
+        <link rel="alternate" hreflang="en" href="http://{{ site.domain }}{{ post.get_absolute_url }}" />
         {%  endlanguage %}
         {% else %}
         <meta name="description" content="{{ post.get_introduction }}">
@@ -36,17 +40,21 @@
         <meta name="twitter:creator" content="@juan__wolf" />
         <meta name="twitter:title" content="{{ post.title }} - blog.juanwolf.fr" />
         <meta name="twitter:description" content="{{ post.get_introduction }}" />
+        {% if post.image %}
         <meta name="twitter:image" content="{{ post.get_absolute_image_url }}" />
+        {% endif %}
         <meta name="twitter:url" content="http://{{ site.domain }}{{ post.get_absolute_url }}" />
         <meta name="og:url" content="http://{{ site.domain }}{{ post.get_absolute_url }}" />
         <meta name="og:title" content="{{ post.title }} - blog.juanwolf.fr"/>
+        {% if post.image %}
         <meta name="og:image" content="{{ post.get_absolute_image_url }}"/>
+        {% endif %}
         <meta name="og:description" content="{{ post.get_introduction }}" />
         <meta name="og:locale" content="en_GB">
         <meta name="og:author" content="Jean-Loup Adde" />
         <meta name="og:type" content="article" />
         {% language 'fr' %}
-            <link rel="alternate" hreflang="fr" href="{{post.get_absolute_url}}" />
+            <link rel="alternate" hreflang="fr" href="http://{{ site.domain }}{{post.get_absolute_url}}" />
         {%  endlanguage %}
         {% endif %}
     {% endblock %}
