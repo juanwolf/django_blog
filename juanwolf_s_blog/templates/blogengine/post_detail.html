@@ -43,8 +43,8 @@
         {% if post.image %}
         <meta name="twitter:image" content="{{ post.get_absolute_image_url }}" />
         {% endif %}
-        <meta name="twitter:url" content="http://{{ site }}{{ post.get_absolute_url }}" />
-        <meta name="og:url" content="http://{{ site }}{{ post.get_absolute_url }}" />
+        <meta name="twitter:url" content="{{ current_path }}" />
+        <meta name="og:url" content="{{ current_path }}" />
         <meta name="og:title" content="{{ post.title }} - blog.juanwolf.fr"/>
         {% if post.image %}
         <meta name="og:image" content="{{ post.get_absolute_image_url }}"/>
