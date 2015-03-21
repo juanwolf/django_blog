@@ -1,6 +1,15 @@
 {%extends "blogengine/includes/base_post.html" %}
     {% block post_content %}
-    <p class="post-content">{{ post.text | safe | truncatewords_html:100  }}</p>
+    {% if post.image %}
+    <div class="post-content-preview-with-img">
+        <p class="post-content-preview-text">{{ post.get_introduction | safe | truncatewords_html:100 }}</p>
+        <img class="post-content-preview-img" src="{{  post.get_absolute_image_url }}" />
+    </div>
+    {% else %}
+    <div class="post-content-preview">
+        <p class="post-content-preview-text">{{ post.get_introduction | safe | truncatewords_html:100 }}</p>
+    </div>
+    {% endif %}
     {% load i18n %}
     <a href="{{post.get_absolute_url}}">{% trans "Read this post" %} &rsaquo;</a>
     {% endblock %}

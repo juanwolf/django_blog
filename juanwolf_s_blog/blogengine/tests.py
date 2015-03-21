@@ -104,6 +104,20 @@ class PostTest(TestCase):
         self.assertEqual(only_post_tag.name, 'python')
         self.assertEqual(only_post_tag.description, 'The Python programming language')
 
+    def test_get_introduction(self):
+        # Create the post
+        post = Post()
+        # Add the text to the post
+        post.text = "<p>This is my first post that is so awesome</p><p>This a second paragraph</p>"
+        self.assertEqual(post.get_introduction(), "This is my first post that is so awesome")
+
+    def test_get_post_content(self):
+        # Create the post
+        post = Post()
+        # Add the text to the post
+        post.text = "<p>This is my first post that is so awesome</p><p>This a second paragraph</p>"
+        self.assertEqual(post.get_text_content(), "<p>This a second paragraph</p>")
+
 
 class AdminTest(LiveServerTestCase):
     def setUp(self):

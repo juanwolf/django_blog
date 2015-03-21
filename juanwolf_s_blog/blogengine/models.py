@@ -4,6 +4,7 @@ from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from xml.etree import ElementTree as etree
 from juanwolf_s_blog.settings import MEDIA_URL
 
 
@@ -65,6 +66,21 @@ class Post(models.Model):
 
     def get_absolute_image_url(self):
         return 'http://%s%s%s' % (Site.objects.get_current().domain, MEDIA_URL, self.image.name)
+
+    def get_introduction(self):
+        # Find first paragraph
+        all_paragraph = self.text.split("</p>")
+        # Delete p tag
+        paragraph_content = all_paragraph[0].replace("<p>", "")
+        return paragraph_content
+
+    @property
+    def get_text_content(self):
+        # Find first paragraph
+        introduction = self.get_introduction()
+        introduction_with_tag = "<p>%s</p>" % introduction
+        post_content = self.text[:-len(introduction_with_tag)]
+        return post_content
 
     def __str__(self):
         return self.title
