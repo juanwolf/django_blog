@@ -74,12 +74,12 @@ class Post(models.Model):
         paragraph_content = all_paragraph[0].replace("<p>", "")
         return paragraph_content
 
-    @property
     def get_text_content(self):
         # Find first paragraph
         introduction = self.get_introduction()
         introduction_with_tag = "<p>%s</p>" % introduction
-        post_content = self.text[:-len(introduction_with_tag)]
+
+        post_content = self.text[len(introduction_with_tag):]
         return post_content
 
     def __str__(self):
