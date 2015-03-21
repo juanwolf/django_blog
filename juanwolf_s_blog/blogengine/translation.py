@@ -3,7 +3,7 @@ from blogengine.models import Post, Category, Tag
 
 
 class PostTranslationOptions(TranslationOptions):
-    fields = ('title', 'text', 'slug')
+    fields = ('title', 'text', 'slug', 'keywords')
 
 
 class CategoryTranslationOptions(TranslationOptions):

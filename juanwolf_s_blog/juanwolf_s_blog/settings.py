@@ -112,6 +112,7 @@ MEDIA_URL = '/media/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'blogengine.template_context_preprocessor.get_current_path',
+    'blogengine.template_context_preprocessor.site_processor'
 )
 
 # Summernote configuration
