@@ -26,9 +26,6 @@
         <meta name="og:locale" content="fr_FR">
         <meta name="og:author" content="Jean-Loup Adde" />
         <meta name="og:type" content="article" />
-        {% language 'en' %}
-        <link rel="alternate" hreflang="en" href="http://{{ site }}{{ post.get_absolute_url }}" />
-        {%  endlanguage %}
         {% else %}
         <meta name="description" content="{{ post.get_introduction }}">
         {% if post.keywords %}
@@ -53,9 +50,6 @@
         <meta name="og:locale" content="en_GB">
         <meta name="og:author" content="Jean-Loup Adde" />
         <meta name="og:type" content="article" />
-        {% language 'fr' %}
-            <link rel="alternate" hreflang="fr" href="http://{{ site }}{{post.get_absolute_url}}" />
-        {%  endlanguage %}
         {% endif %}
     {% endblock %}
 {% endif %}
