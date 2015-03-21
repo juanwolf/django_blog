@@ -4,7 +4,7 @@
     <div class="post-content">
         <p>{{ post.get_introduction }}</p>
         {% if post.image %}
-        <img src="{{  post.get_absolute_image_url }}" />
+        <img src="{{  MEDIA_URL }}{{ post.image.name }}" />
         {% endif %}
         {{ post.get_text_content | safe }}
     </div>

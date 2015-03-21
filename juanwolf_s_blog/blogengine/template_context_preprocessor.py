@@ -9,5 +9,5 @@ def get_current_path(request):
 
 def site_processor(request):
     return {
-        'site': Site.objects.get_current()
+        'site': request.get_host()
     }

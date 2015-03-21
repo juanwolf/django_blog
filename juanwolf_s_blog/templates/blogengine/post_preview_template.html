@@ -3,7 +3,7 @@
     {% if post.image %}
     <div class="post-content-preview-with-img">
         <p class="post-content-preview-text">{{ post.get_introduction | safe | truncatewords_html:70 }}</p>
-        <img class="post-content-preview-img" src="{{  post.get_absolute_image_url }}" />
+        <img class="post-content-preview-img" src="{{  MEDIA_URL }}{{ post.image.name }}" />
     </div>
     {% else %}
     <div class="post-content-preview">
