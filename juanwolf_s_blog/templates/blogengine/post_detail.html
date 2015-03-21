@@ -4,7 +4,9 @@
     {% block head_block %}
         {% if LANGUAGE_CODE == "fr" %}
         <meta name="description" content="{{ post.get_introduction }}">
+        {% if post.keywords %}
         <meta name="keywords" content="{{ post.keywords  }}" />
+        {% endif %}
         <meta name="author" content="Jean-Loup Adde"/>
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@juan__wolf" />
@@ -25,7 +27,9 @@
         {%  endlanguage %}
         {% else %}
         <meta name="description" content="{{ post.get_introduction }}">
+        {% if post.keywords %}
         <meta name="keywords" content="{{ post.keywords  }}" />
+        {% endif %}
         <meta name="author" content="Jean-Loup Adde"/>
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@juan__wolf" />
