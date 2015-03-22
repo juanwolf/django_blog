@@ -12,3 +12,4 @@ pystache==0.5.4
 static==1.0.2
 django-jenkins==0.16.4
 Pillow==2.7
+coverage==3.7.1
