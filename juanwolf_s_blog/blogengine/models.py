@@ -26,7 +26,7 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return "/tag/%s/" % (self.slug)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
