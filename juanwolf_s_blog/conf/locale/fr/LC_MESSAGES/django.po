@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-01 17:55+0100\n"
+"POT-Creation-Date: 2015-06-01 18:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,10 @@ msgstr "Nouveaux articles"
 msgid "Older posts"
 msgstr "Anciens articles"
 
+#: templates/blogengine/post_preview_template.html:6
+msgid "Preview Image for the article : "
+msgstr "Image d'affiche pour l'article : "
+
 #: templates/blogengine/post_preview_template.html:14
 msgid "Read this post"
 msgstr "Lire cet article"
@@ -89,7 +93,9 @@ msgstr "Blog de Juan Wolf"
 #: templates/blogengine/includes/base.html:20
 #: templates/blogengine/includes/base.html:24
 msgid "A blog about Software Engineering, video-games"
-msgstr "Un blog sur la conception logicielle et ses outils ainsi que sur les jeux-vidéos"
+msgstr ""
+"Un blog sur la conception logicielle et ses outils ainsi que sur les jeux-"
+"vidéos"
 
 #: templates/blogengine/includes/base.html:70
 msgid "About"

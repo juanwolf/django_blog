@@ -2,8 +2,9 @@
     {% block post_content %}
     {% if post.image %}
     <div class="post-content-preview-with-img">
+        {% load i18n %}
         <p class="post-content-preview-text">{{ post.get_introduction | safe | truncatewords_html:70 }}</p>
-        <img class="post-content-preview-img" src="{{  MEDIA_URL }}{{ post.image.name }}" />
+        <img class="post-content-preview-img" src="{{  MEDIA_URL }}{{ post.image.name }}" alt="{% trans "Preview Image for the article : " %} {{ post.title }}"/>
     </div>
     {% else %}
     <div class="post-content-preview">
