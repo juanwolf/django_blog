@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-18 17:47+0200\n"
+"POT-Creation-Date: 2015-06-01 17:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: blogengine/models.py:43
+#: blogengine/models.py:51
 msgid "categories"
-msgstr "catégories"
+msgstr "Catégories"
 
-#: blogengine/views.py:139
+#: blogengine/views.py:140
 msgid "RSS feed - posts"
 msgstr "Flux RSS - Articles"
 
-#: blogengine/views.py:141
+#: blogengine/views.py:142
 msgid "RSS feed - blog posts"
 msgstr "Flux RSS - Articles du blog"
 
@@ -44,46 +44,6 @@ msgstr ""
 #: templates/blogengine/category_list.html:3
 msgid "Home"
 msgstr "Accueil"
-
-#: templates/blogengine/includes/base.html:9
-msgid "Juan Wolf's blog"
-msgstr "Blog de Juan Wolf"
-
-#: templates/blogengine/includes/base.html:52
-msgid "About"
-msgstr "A propos"
-
-#: templates/blogengine/includes/base_post.html:6
-msgid "Category:"
-msgstr "Catégorie :"
-
-#: templates/blogengine/includes/base_post.html:9
-msgid "Tags:"
-msgstr "Tags :"
-
-#: templates/blogengine/includes/post_template.html:18
-msgid "Share this post on:"
-msgstr "Partagez cet article sur:"
-
-#: templates/blogengine/includes/post_template.html:47
-msgid "Please enable JavaScript to view the "
-msgstr "Veuillez activer JavaScript pour voir les"
-
-#: templates/blogengine/includes/post_template.html:47
-msgid "comments powered by Disqus."
-msgstr "Commentaires fournis par Disqus."
-
-#: templates/blogengine/includes/post_template.html:48
-msgid "comments powered by"
-msgstr "Commentaires fournis par"
-
-#: templates/blogengine/includes/post_template.html:51
-msgid "Previous post"
-msgstr "Article précédent"
-
-#: templates/blogengine/includes/post_template.html:57
-msgid "Next post"
-msgstr "Article suivant"
 
 #: templates/blogengine/page_not_found.html:5
 msgid "HEY, WHAT ARE YOU DOING HERE ?!!"
@@ -113,10 +73,56 @@ msgstr "Nouveaux articles"
 msgid "Older posts"
 msgstr "Anciens articles"
 
-#: templates/blogengine/post_preview_template.html:5
+#: templates/blogengine/post_preview_template.html:14
 msgid "Read this post"
 msgstr "Lire cet article"
 
 #: templates/blogengine/tag_detail.html:21
 msgid "There's no post for this tag for the moment"
 msgstr "Il n'y a pas d'article lié à ce tag pour le moment"
+
+#: templates/blogengine/includes/base.html:9
+msgid "Juan Wolf's blog"
+msgstr "Blog de Juan Wolf"
+
+#: templates/blogengine/includes/base.html:13
+#: templates/blogengine/includes/base.html:20
+#: templates/blogengine/includes/base.html:24
+msgid "A blog about Software Engineering, video-games"
+msgstr "Un blog sur la conception logicielle et ses outils ainsi que sur les jeux-vidéos"
+
+#: templates/blogengine/includes/base.html:70
+msgid "About"
+msgstr "A propos"
+
+#: templates/blogengine/includes/base_post.html:6
+msgid "Category:"
+msgstr "Catégorie :"
+
+#: templates/blogengine/includes/base_post.html:9
+msgid "Tags:"
+msgstr "Tags :"
+
+#: templates/blogengine/includes/post_template.html:14
+msgid "Share this post on:"
+msgstr "Partagez cet article sur:"
+
+#: templates/blogengine/includes/post_template.html:43
+msgid "Please enable JavaScript to view the "
+msgstr "Veuillez activer JavaScript pour voir les"
+
+#: templates/blogengine/includes/post_template.html:43
+msgid "comments powered by Disqus."
+msgstr "Commentaires fournis par Disqus."
+
+#: templates/blogengine/includes/post_template.html:44
+msgid "comments powered by"
+msgstr "Commentaires fournis par"
+
+#: templates/blogengine/includes/post_template.html:47
+msgid "Previous post"
+msgstr "Article précédent"
+
+#: templates/blogengine/includes/post_template.html:53
+msgid "Next post"
+msgstr "Article suivant"
