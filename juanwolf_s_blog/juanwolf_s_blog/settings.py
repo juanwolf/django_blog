@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '&n7c--zvj(gzrufi08464k1y1$teq052d=o#u7_+^9s+3+)5ot'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
 
@@ -96,7 +96,7 @@ LOCALE_PATHS = ('conf/locale/',)
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
+#STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
 
 STATIC_URL = '/static/'
 
