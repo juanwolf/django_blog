@@ -9,7 +9,24 @@
     <title>{% block title %}{% endblock %} {% trans "Juan Wolf's blog" %}</title>
     {% load staticfiles %}
     <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/stylesheet.css' %}" />
-    {% block head_block %} {% endblock %}
+    {% block head_block %}
+    <meta name="description" content="{% trans "A blog about Software Engineering, video-games" %}">
+    <meta name="keywords" content="blog, juanwolf, Jean-Loup, Adde, Software, Logiciel, video-games, jeux-vidéo" />
+    <meta name="author" content="Jean-Loup Adde"/>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@juan__wolf" />
+    <meta name="twitter:creator" content="@juan__wolf" />
+    <meta name="twitter:title" content="blog.juanwolf.fr" />
+    <meta name="twitter:description" content="{% trans "A blog about Software Engineering, video-games" %}" />
+    <meta name="twitter:url" content="{{ current_path }}" />
+    <meta name="og:url" content="{{ current_path }}" />
+    <meta name="og:title" content="blog.juanwolf.fr"/>
+    <meta name="og:description" content="{% trans "A blog about Software Engineering, video-games" %}" />
+    <meta name="og:locale" content="{{ LANGUAGE_CODE }}">
+    <meta name="og:author" content="Jean-Loup Adde" />
+    <meta name="og:type" content="article" />
+
+     {% endblock %}
 </head>
 
 <body>
