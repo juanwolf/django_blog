@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 import django.conf.global_settings as DEFAULT_SETTINGS
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -30,23 +31,22 @@ ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
 
 
 # Application definition
-
 INSTALLED_APPS = (
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
-    'blogengine',
     'django.contrib.syndication',
-    'django_summernote',
-    'modeltranslation',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django_summernote',
     'django_jenkins',
+    'blogengine',
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
