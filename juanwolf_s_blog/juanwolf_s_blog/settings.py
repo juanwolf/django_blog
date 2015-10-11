@@ -27,9 +27,10 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
+                 'blog.zell']
 
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = ['127.0.0.1', 'blog.zell']
 # Application definition
 INSTALLED_APPS = (
     'modeltranslation',
