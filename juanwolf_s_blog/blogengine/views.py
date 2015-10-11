@@ -1,47 +1,46 @@
 from django.contrib.syndication.views import Feed
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils import translation
-from django.views.generic import ListView
-from blogengine.models import Category, Post, Tag
+from django.views.generic import DetailView, ListView
 from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
 
-
-class IndexView(ListView):
-    def get_context_categories(self):
-        context = super(IndexView, self).get_context_data(**self.kwargs)
-        context['categories'] = Category.objects.all()
-        return context
+from blogengine.models import Category, Post, Tag
 
 
-class CategoryDetailView(IndexView):
+class CategoryDetailView(ListView, DetailView):
     template_name = "blogengine/category_detail.html"
     context_object_name = "post_list"
 
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            category = Category.objects.get(slug_en=slug)
+            # Try to get the category if not raise an exception
+            Category.objects.get(slug_en=slug)
             translation.activate("en")
-            return Post.objects.filter(category=category)
-        except ObjectDoesNotExist:
+        except Category.DoesNotExist:
             pass
+        else:
+            posts = Post.objects.filter(category__slug_en=slug)
+            return posts
 
         try:
-            category = Category.objects.get(slug_fr=slug)
+            # Try to get the the category if not raise an exception
+            Category.objects.get(slug_fr=slug)
             translation.activate("fr")
-            return Post.objects.filter(category=category)
         except ObjectDoesNotExist:
             raise Http404
+        else:
+            return Post.objects.filter(category__slug_fr=slug)
 
-    def get_context_data(self):
+    def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         # Add in a querySet the category
-        context = self.get_context_categories()
+        self.object = self.get_queryset()
+        context = super(CategoryDetailView, self).get_context_data(**kwargs)
         slug = self.kwargs['slug']
-        request = self.request
         try:
             context['category'] = Category.objects.get(slug_en=slug)
             translation.activate("en")
@@ -55,7 +54,7 @@ class CategoryDetailView(IndexView):
         return context
 
 
-class CategoryListView(IndexView):
+class CategoryListView(ListView):
     template_name = "blogengine/category_list.html"
     context_object_name = "category_list"
 
@@ -63,76 +62,89 @@ class CategoryListView(IndexView):
         return Category.objects.all()
 
 
-class TagDetailView(IndexView):
+class TagDetailView(ListView):
     template_name = "blogengine/tag_detail.html"
+    model = Tag
 
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
-            tag = get_object_or_404(Tag, slug=slug)
-            return tag.post_set.all()
+            tag = Tag.objects.get(slug_fr=slug)
         except Tag.DoesNotExist:
-            return Post.objects.none()
+            pass
+        else:
+            posts = tag.post_set.all()
+            return posts
+        try:
+            tag = Tag.objects.get(slug_en=slug)
+        except ObjectDoesNotExist:
+            raise Http404
+        else:
+            return tag.post_set.all()
 
-    def get_context_data(self):
+    def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         # Add in a querySet the category
-        context = self.get_context_categories()
+        context = super(TagDetailView, self).get_context_data(**kwargs)
         slug = self.kwargs['slug']
-        context['tag'] = Tag.objects.get(slug=slug)
-        return context
+        try:
+            context['tag'] = Tag.objects.get(slug_fr=slug)
+            translation.activate('fr')
+            return context
+        except ObjectDoesNotExist:
+            pass
+        try:
+            context['tag'] = Tag.objects.get(slug_en=slug)
+            translation.activate('en')
+            return context
+        except ObjectDoesNotExist:
+            raise Http404
 
 
-class PostListView(IndexView):
+class PostListView(ListView):
     template_name = "blogengine/post_list.html"
     context_object_name = "post_list"
 
     def get_queryset(self):
         return Post.objects.all()
 
-    def get_context_data(self):
-        # Call the base implementation first to get a context
-        # Add in a querySet the category
-        context = self.get_context_categories()
-        return context
 
-
-class PostDetailView(IndexView):
+class PostDetailView(DetailView):
     template_name = "blogengine/post_detail.html"
     context_object_name = "post"
+    # form_class = CommentsForm
 
     def get_queryset(self):
         slug = self.kwargs['slug']
-        try:
-            post = Post.objects.get(slug_en=slug)
+        post = Post.objects.filter(slug_en=slug)
+        if post.count() > 0:
             translation.activate("en")
             return post
-        except ObjectDoesNotExist:
-            pass
-
-        try:
-            post = Post.objects.get(slug_fr=slug)
+        post = Post.objects.filter(slug_fr=slug)
+        if post.count() > 0:
             translation.activate("fr")
             return post
-        except ObjectDoesNotExist:
-            raise Http404
 
-    def get_context_data(self):
+    def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         # Add in a querySet the category
-        context = self.get_context_categories()
-        posts = Post.objects.order_by('-pub_date')
-        post = self.get_queryset()
-        i = 0
-        while not(posts[i] == post) :
-            i += 1
-        context['has_next_post'] = i > 0
-        if context['has_next_post'] :
-            context['next_post'] = posts[i - 1]
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        post = context['post']
 
-        context['has_previous_post'] = (i + 1) < len(posts)
-        if context['has_previous_post'] :
-            context['previous_post'] = posts[i + 1]
+        try:
+            next_post = post.get_next_by_pub_date()
+            context['next_post'] = next_post
+            context['has_next_post'] = True
+        except Post.DoesNotExist:
+            context['has_next_post'] = False
+
+        try:
+            previous_post = post.get_previous_by_pub_date()
+            context['has_previous_post'] = True
+            context['previous_post'] = previous_post
+        except Post.DoesNotExist:
+            context['has_previous_post'] = False
+
         return context
 
 
