@@ -123,7 +123,7 @@ TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode
-    'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
+    'iframe': False,  # or set False to use SummernoteInplaceWidget - no iframe mode
 
     # Using Summernote Air-mode
     'airMode': False,
