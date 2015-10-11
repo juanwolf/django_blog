@@ -62,7 +62,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=50, unique=True)
 
     def get_absolute_url(self):
-        return "/%s/%s/%s/" % (self.pub_date.year, self.pub_date.month, self.slug)
+        return "/%s/%s/" % (self.category.slug, self.slug)
 
     def get_absolute_image_url(self):
         return 'http://%s%s%s' % (Site.objects.get_current().domain, MEDIA_URL, self.image.name)

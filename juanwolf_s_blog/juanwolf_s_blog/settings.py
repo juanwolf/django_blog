@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 import django.conf.global_settings as DEFAULT_SETTINGS
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -26,29 +27,31 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
+                 'blog.zell']
 
-
+INTERNAL_IPS = ['127.0.0.1', 'blog.zell']
 # Application definition
-
 INSTALLED_APPS = (
+    'modeltranslation',
+    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
-    'blogengine',
     'django.contrib.syndication',
-    'django_summernote',
-    'modeltranslation',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django_summernote',
     'django_jenkins',
+    'blogengine',
 )
 
+
 MIDDLEWARE_CLASSES = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -100,8 +103,11 @@ STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
 
 STATIC_URL = '/static/'
 
+DEBUG_TOOLBAR_PATCH_SETTINGS = True
+
+
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "media"),
     '/home/juanwolf/juanwolf.fr/',
 )
 
@@ -111,14 +117,13 @@ MEDIA_URL = '/media/'
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
-    'blogengine.template_context_preprocessor.get_current_path',
-    'blogengine.template_context_preprocessor.site_processor'
+    'blogengine.template_context_preprocessor.get_categories',
 )
 
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode
-    'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
+    'iframe': False,  # or set False to use SummernoteInplaceWidget - no iframe mode
 
     # Using Summernote Air-mode
     'airMode': False,
