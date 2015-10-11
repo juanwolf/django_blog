@@ -11,6 +11,17 @@ urlpatterns = patterns('',
 
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
+
+     # Post RSS feed
+    url(r'^feeds/posts/$', PostsFeed()),
+
+    # Summernote
+    url(r'^summernote/', include('django_summernote.urls')),
+
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
+        {'sitemaps': sitemaps,
+         'template_name': 'blogengine/custom_sitemap.html'}),
+
     # Index
     url(r'^(?P<page>\d+)?/?$', PostListView.as_view(
         model=Post,
@@ -29,16 +40,6 @@ urlpatterns = patterns('',
         paginate_by=5,
         model=Category,
         )),
-
-    # Post RSS feed
-    url(r'^feeds/posts/$', PostsFeed()),
-
-    # Summernote
-    url(r'^summernote/', include('django_summernote.urls')),
-
-    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
-        {'sitemaps': sitemaps,
-         'template_name': 'blogengine/custom_sitemap.html'}),
 )
 
 
