@@ -1,11 +1,11 @@
 from django.contrib.syndication.views import Feed
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils import translation
-from django.views.generic import DetailView, ListView
 from django.utils.translation import ugettext as _
-from django.core.exceptions import ObjectDoesNotExist
+from django.views.generic import DetailView, ListView
 
 from blogengine.models import Category, Post, Tag
 
@@ -13,27 +13,34 @@ from blogengine.models import Category, Post, Tag
 class CategoryDetailView(ListView, DetailView):
     template_name = "blogengine/category_detail.html"
     context_object_name = "post_list"
+    translation = None
+    category = None
 
     def get_queryset(self):
         slug = self.kwargs['slug']
-        try:
-            # Try to get the category if not raise an exception
-            Category.objects.get(slug_en=slug)
-            translation.activate("en")
-        except Category.DoesNotExist:
-            pass
-        else:
-            posts = Post.objects.filter(category__slug_en=slug)
-            return posts
+        if not self.translation:
+            try:
+                # Try to get the category if not raise an exception
+                self.category = Category.objects.get(slug_en=slug)
+                translation.activate("en")
+                self.translation = 'en'
+            except Category.DoesNotExist:
+                pass
+            else:
+                return self.category.post_set.all().prefetch_related('tags').select_related('category')
 
-        try:
-            # Try to get the the category if not raise an exception
-            Category.objects.get(slug_fr=slug)
-            translation.activate("fr")
-        except ObjectDoesNotExist:
-            raise Http404
+            try:
+                # Try to get the the category if not raise an exception
+                self.category = Category.objects.get(slug_fr=slug)
+                translation.activate("fr")
+                self.translation = 'fr'
+            except ObjectDoesNotExist:
+                raise Http404
+            else:
+                return Post.objects.filter(category__slug_fr=slug).prefetch_related('tags').select_related('category')
         else:
-            return Post.objects.filter(category__slug_fr=slug)
+            translation.activate(self.translation)
+            return Post.objects.filter(category__slug=slug).prefetch_related('tags').select_related('category')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -41,16 +48,11 @@ class CategoryDetailView(ListView, DetailView):
         self.object = self.get_queryset()
         context = super(CategoryDetailView, self).get_context_data(**kwargs)
         slug = self.kwargs['slug']
-        try:
-            context['category'] = Category.objects.get(slug_en=slug)
-            translation.activate("en")
-        except ObjectDoesNotExist:
-            pass
-        try:
-            context['category'] = Category.objects.get(slug_fr=slug)
-            translation.activate("fr")
-        except ObjectDoesNotExist:
-            pass
+        translation.activate(self.translation)
+        if self.category:
+            context['category'] = self.category
+        else:
+            context['category'] = Category.objects.get(slug=slug)
         return context
 
 
@@ -59,12 +61,13 @@ class CategoryListView(ListView):
     context_object_name = "category_list"
 
     def get_queryset(self):
-        return Category.objects.all()
+        return Category.objects.all().prefetch_related('post_set')
 
 
 class TagDetailView(ListView):
     template_name = "blogengine/tag_detail.html"
     model = Tag
+    translation = None
 
     def get_queryset(self):
         slug = self.kwargs['slug']
@@ -74,13 +77,14 @@ class TagDetailView(ListView):
             pass
         else:
             posts = tag.post_set.all()
-            return posts
         try:
             tag = Tag.objects.get(slug_en=slug)
         except ObjectDoesNotExist:
             raise Http404
         else:
-            return tag.post_set.all()
+            posts = tag.post_set.all()
+
+        return tag.post_set.all().select_related('category').prefetch_related('tags')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -106,7 +110,7 @@ class PostListView(ListView):
     context_object_name = "post_list"
 
     def get_queryset(self):
-        return Post.objects.all()
+        return Post.objects.all().select_related('category').prefetch_related('tags')
 
 
 class PostDetailView(DetailView):
@@ -116,14 +120,14 @@ class PostDetailView(DetailView):
 
     def get_queryset(self):
         slug = self.kwargs['slug']
-        post = Post.objects.filter(slug_en=slug)
-        if post.count() > 0:
+        post = Post.objects.filter(slug_en=slug).select_related('category').prefetch_related('tags')
+        if post.exists():
             translation.activate("en")
             return post
         post = Post.objects.filter(slug_fr=slug)
-        if post.count() > 0:
+        if post.exists():
             translation.activate("fr")
-            return post
+            return post.prefetch_related('tags').select_related('category').prefetch_related('tags')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
