@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'juanwolf_s_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'juanwolfsBlogDB',
         'USER': 'bibaskend',
         'PASSWORD': '',
@@ -116,9 +116,9 @@ MEDIA_URL = '/media/'
 
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
     'blogengine.template_context_preprocessor.get_categories',
-)
+]
 
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
