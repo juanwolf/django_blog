@@ -1,10 +1,11 @@
+from datetime import datetime
+
 from django.contrib.sitemaps import Sitemap
 from django.contrib.sites.models import Site
 from django.db import models
-from datetime import datetime
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
-from xml.etree import ElementTree as etree
+
 from juanwolf_s_blog.settings import MEDIA_URL
 
 
@@ -65,7 +66,7 @@ class Post(models.Model):
         return "/%s/%s/" % (self.category.slug, self.slug)
 
     def get_absolute_image_url(self):
-        return 'http://%s%s%s' % (Site.objects.get_current().domain, MEDIA_URL, self.image.name)
+        return '/%s%s' % (MEDIA_URL, self.image.name)
 
     def get_introduction(self):
         # Find first paragraph
