@@ -1,11 +1,12 @@
 from django.contrib.syndication.views import Feed
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import translation
 from django.utils.translation import ugettext as _
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, RedirectView
 
 from blogengine.models import Category, Post, Tag
 
@@ -150,6 +151,17 @@ class PostDetailView(DetailView):
             context['has_previous_post'] = False
 
         return context
+
+
+class RedirectPostDetailView(RedirectView):
+    permanent = True
+    query_string = False
+    pattern_name = 'post-detail'
+
+    def get_redirect_url(self, *args, **kwargs):
+        post = get_object_or_404(Post, slug=kwargs['slug'])
+        kwargs['category__slug'] = post.category.slug
+        return reverse_lazy('post-detail', args=[post.category.slug, kwargs['slug']])
 
 
 class PostsFeed(Feed):
