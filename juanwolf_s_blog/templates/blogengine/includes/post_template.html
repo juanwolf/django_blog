@@ -8,24 +8,17 @@
         {% endif %}
         {{ post.get_text_content | safe }}
     </div>
-    <div id="share-buttons">
+    {% load i18n %}
+    <div class="flattr-section">
         <p>
-            {% load i18n %}
-            {% trans 'Share this post on:' %}
+            {% blocktrans %}Thanks for reading this article ! Don't hesitate to leave your opinion in the section bello or if you feel generous here's my{% endblocktrans %}
+            <a target="_blank" href="https://flattr.com/submit/auto?user_id=juanwolf&url=https://blog.juanwolf.fr&title={{ post.title }}&description={{ post.get_introduction }}&language={{ LANGUAGE_CODE }}&category=text">
+                Flattr !
+            </a>
         </p>
-        <!-- Facebook -->
-        <a href="http://www.facebook.com/sharer.php?u={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a>
-        <!-- Twitter -->
-        <a href="http://twitter.com/share?url={{current_path}}&via=juan__wolf&text='{{post.title}}'" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
-        <!-- Google+ -->
-        <a href="https://plus.google.com/share?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
-        <!-- Digg -->
-        <a href="http://www.digg.com/submit?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
-        <!-- Reddit -->
-        <a href="http://reddit.com/submit?url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
-        <!-- LinkedIn -->
-        <a href="http://www.linkedin.com/shareArticle?mini=true&url={{current_path}}" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" /></a>
+
     </div>
+
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'juanwolfsblog'; // required: replace example with your forum shortname
