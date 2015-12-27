@@ -50,8 +50,6 @@ msgid "Comments"
 msgstr "Commentaires"
 
 #: templates/blogengine/includes/base.html:9
-#, fuzzy
-#| msgid "Juan Wolf's blog"
 msgid "juanwolf's blog"
 msgstr "Blog de juanwolf"
 
@@ -80,10 +78,6 @@ msgid "Written by"
 msgstr "Écrit par"
 
 #: templates/blogengine/includes/post_template.html:14
-#, fuzzy
-#| msgid ""
-#| "Thanks for reading this article ! Don't hesitate to leave your opinion in "
-#| "the section bello or if you feel generous here's my"
 msgid ""
 "Thanks for reading this article ! Don't hesitate to leave your opinion in "
 "the section bellow or if you feel generous here's my"

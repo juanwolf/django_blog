@@ -45,11 +45,9 @@ msgstr "Home"
 
 #: templates/blogengine/comments_list.html:2
 msgid "Comments"
-msgstr ""
+msgstr "Comments"
 
 #: templates/blogengine/includes/base.html:9
-#, fuzzy
-#| msgid "Juan Wolf's blog"
 msgid "juanwolf's blog"
 msgstr "juanwolf's blog"
 
@@ -76,10 +74,6 @@ msgid "Written by"
 msgstr "Written by"
 
 #: templates/blogengine/includes/post_template.html:14
-#, fuzzy
-#| msgid ""
-#| "Thanks for reading this article ! Don't hesitate to leave your opinion in "
-#| "the section bello or if you feel generous here's my"
 msgid ""
 "Thanks for reading this article ! Don't hesitate to leave your opinion in "
 "the section bellow or if you feel generous here's my"
@@ -140,7 +134,6 @@ msgid "Preview Image for the article : "
 msgstr "Preview Image for the article: "
 
 #: templates/blogengine/post_preview_template.html:15
-#, fuzzy
 msgid "Read this post"
 msgstr "Read this post"
 
