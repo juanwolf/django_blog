@@ -76,10 +76,6 @@ msgid "Written by"
 msgstr "Written by"
 
 #: templates/blogengine/includes/post_template.html:14
-#, fuzzy
-#| msgid ""
-#| "Thanks for reading this article ! Don't hesitate to leave your opinion in "
-#| "the section bello or if you feel generous here's my"
 msgid ""
 "Thanks for reading this article ! Don't hesitate to leave your opinion in "
 "the section bellow or if you feel generous here's my"
