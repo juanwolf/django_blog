@@ -5,3 +5,4 @@ juanwolf_s_blog/django-summernote/*
 *.mo
 media/
 reports/
+virtualenv/
