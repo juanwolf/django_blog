@@ -50,8 +50,6 @@ msgid "Comments"
 msgstr "Commentaires"
 
 #: templates/blogengine/includes/base.html:9
-#, fuzzy
-#| msgid "Juan Wolf's blog"
 msgid "juanwolf's blog"
 msgstr "Blog de juanwolf"
 

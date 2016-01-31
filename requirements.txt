@@ -6,3 +6,6 @@ django-jenkins==0.18.1
 Pillow==2.7
 coverage==4.0.3
 django-debug-toolbar
+djangorestframework
+django-filter
+markdown

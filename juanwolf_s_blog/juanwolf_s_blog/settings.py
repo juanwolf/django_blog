@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django_summernote',
     'django_jenkins',
     'blogengine',
+    'rest_framework'
 )
 
 
