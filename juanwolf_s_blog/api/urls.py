@@ -7,5 +7,6 @@ router = routers.DefaultRouter()
 
 router.register(r'posts', viewset=views.PostViewSet)
 router.register(r'categories', viewset=views.CategoryViewSet)
+router.register(r'tags', viewset=views.TagViewSet)
 
 urlpatterns = router.urls

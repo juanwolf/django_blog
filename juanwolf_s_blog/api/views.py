@@ -14,7 +14,12 @@ class PostViewSet(viewsets.ReadOnlyModelViewSet):
 
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    A simple viewset to retrieve all the posts of blog.juanwolf.fr.
+    A simple viewset to retrieve all the categories of blog.juanwolf.fr.
     """
     queryset = models.Category.objects.all().prefetch_related('post_set', 'post_set__tags')
     serializer_class = serializers.CategorySerializer
+
+
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = models.Tag.objects.all()
+    serializer_class = serializers.TagSerializer
