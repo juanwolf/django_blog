@@ -6,3 +6,4 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Post
+        depth = 2
