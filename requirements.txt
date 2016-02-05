@@ -9,3 +9,4 @@ django-debug-toolbar
 djangorestframework
 django-filter
 markdown
+django-rest-swagger
