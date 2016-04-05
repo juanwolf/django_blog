@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '&n7c--zvj(gzrufi08464k1y1$teq052d=o#u7_+^9s+3+)5ot'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
                  'blog.zell']
@@ -136,4 +136,8 @@ SUMMERNOTE_CONFIG = {
 
     # Or, set editor language/locale forcely
     'lang': 'fr-FR',
+    'external_js': (
+        '//juanwolf.fr/js/lib/JQuery1.11.js',
+        '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
+    )
 }
