@@ -57,7 +57,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to=upload_path, blank=True, null=True)
     keywords = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, default="")
-    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     title = models.CharField(max_length=200, default="")
     text = models.TextField(default="")
     slug = models.SlugField(max_length=50, unique=True)

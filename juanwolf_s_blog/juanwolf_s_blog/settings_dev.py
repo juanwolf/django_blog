@@ -31,8 +31,6 @@ SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
                  'blog.zell']
 
@@ -123,10 +121,19 @@ MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
 # Template directory
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
-    'blogengine.template_context_preprocessor.get_categories',
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'OPTIONS': {
+            'context_processors': DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
+                'blogengine.template_context_preprocessor.get_categories'
+            ]
+        }
+    },
 ]
+
 
 # Summernote configuration
 SUMMERNOTE_CONFIG = {

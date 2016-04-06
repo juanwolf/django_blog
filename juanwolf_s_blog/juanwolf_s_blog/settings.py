@@ -123,6 +123,7 @@ MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
 # Template directory
+TEMPLATES = []
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
     'blogengine.template_context_preprocessor.get_categories',

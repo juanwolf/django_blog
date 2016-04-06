@@ -1,22 +1,16 @@
-from django.conf.urls import include, url, patterns
-from django.views.generic import RedirectView
-
-from blogengine.models import Post, Category, Tag, BlogSitemap
-from blogengine.views import PostListView, CategoryDetailView, PostsFeed, TagDetailView, \
-    PostDetailView, RedirectPostDetailView
+from django.conf.urls import include, url
+from blogengine import views, models
 
 sitemaps = {
-    'blog': BlogSitemap
+    'blog': models.BlogSitemap
 }
 
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     # Post RSS feed
-    url(r'^feeds/posts/$', PostsFeed()),
+    url(r'^feeds/posts/$', views.PostsFeed()),
 
     # Summernote
     url(r'^summernote/', include('django_summernote.urls')),
@@ -32,25 +26,26 @@ urlpatterns = patterns(
 
     # Index
     url(
-        r'^(?P<page>\d+)?/?$', PostListView.as_view(model=Post, paginate_by=5)
+        r'^(?P<page>\d+)?/?$', views.PostListView.as_view(model=models.Post, paginate_by=5)
     ),
     # Tags
     url(
         r'^tag/(?P<slug>[a-zA-Z0-9-]+)/?$',
-        TagDetailView.as_view(model=Tag)
+        views.TagDetailView.as_view(model=models.Tag)
     ),
     # Individual posts
     url(
         r'^(?P<category__slug>[a-zA-Z0-9\-]+)/(?P<slug>[a-zA-Z0-9-]+)/?$',
-        PostDetailView.as_view(model=Post),
+        views.PostDetailView.as_view(model=models.Post),
         name='post-detail'
     ),
     url(
         r'^(?P<pub_date__year>\d{4})/(?P<pub_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$',
-        RedirectPostDetailView.as_view()
+        views.RedirectPostDetailView.as_view()
     ),
     # Categories
     url(
-        r'^(?P<slug>[a-zA-Z0-9-]+)/?$', CategoryDetailView.as_view(paginate_by=5, model=Category)
+        r'^(?P<slug>[a-zA-Z0-9-]+)/?$',
+        views.CategoryDetailView.as_view(paginate_by=5, model=models.Category)
     ),
-)
+]
