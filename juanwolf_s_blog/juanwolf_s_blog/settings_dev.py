@@ -29,9 +29,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
                  'blog.zell']
@@ -107,7 +107,7 @@ LOCALE_PATHS = ('conf/locale/',)
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
+# STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
 
 STATIC_URL = '/static/'
 
@@ -147,3 +147,4 @@ SUMMERNOTE_CONFIG = {
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     )
 }
+
