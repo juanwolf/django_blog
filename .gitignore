@@ -1,9 +1,9 @@
 .idea/*
 *.pyc
 *.sh
-juanwolf_s_blog/django-summernote/*
+juanwolfs_blog/django-summernote/*
 *.mo
 media/
 reports/
 virtualenv/
-juanwolf_s_blog/juanwolf_s_blog/settings.ini
+juanwolfs_blog/juanwolfs_blog/settings.ini

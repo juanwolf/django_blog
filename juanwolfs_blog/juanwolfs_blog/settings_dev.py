@@ -29,9 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-TEMPLATE_DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
                  'blog.zell']
@@ -71,9 +69,9 @@ MIDDLEWARE_CLASSES = (
 
 SITE_ID = 1
 
-ROOT_URLCONF = 'juanwolf_s_blog.urls'
+ROOT_URLCONF = 'juanwolfs_blog.urls'
 
-WSGI_APPLICATION = 'juanwolf_s_blog.wsgi.application'
+WSGI_APPLICATION = 'juanwolfs_blog.wsgi.application'
 
 
 # Database
@@ -107,7 +105,7 @@ LOCALE_PATHS = ('conf/locale/',)
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
+# STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
 
 STATIC_URL = '/static/'
 
@@ -123,11 +121,19 @@ MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
 # Template directory
-TEMPLATES = []
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
-    'blogengine.template_context_preprocessor.get_categories',
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'OPTIONS': {
+            'context_processors': DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
+                'blogengine.template_context_preprocessor.get_categories'
+            ]
+        }
+    },
 ]
+
 
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
@@ -148,3 +154,4 @@ SUMMERNOTE_CONFIG = {
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     )
 }
+
