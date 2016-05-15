@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from juanwolf_s_blog.settings import MEDIA_URL
+from juanwolfs_blog.settings import MEDIA_URL
 
 
 def upload_path(self, filename):
@@ -88,6 +88,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-pub_date"]
+        index_together = [['pub_date']]
 
 
 class BlogSitemap(Sitemap):
