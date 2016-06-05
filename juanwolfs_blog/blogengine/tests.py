@@ -2,13 +2,13 @@ import feedparser
 from django.test import TestCase, LiveServerTestCase, Client
 from django.utils import timezone
 
-from blogengine.models import Post, Category, Tag
+from blogengine import models
 
 
 class PostTest(TestCase):
     def test_create_category(self):
         # Create the category
-        category = Category()
+        category = models.Category()
 
         # Add attributes
         category.name = 'python'
@@ -18,7 +18,7 @@ class PostTest(TestCase):
         category.save()
 
         # Check we can find it
-        all_categories = Category.objects.all()
+        all_categories = models.Category.objects.all()
         self.assertEqual(len(all_categories), 1)
         only_category = all_categories[0]
         self.assertEqual(only_category, category)
@@ -29,7 +29,7 @@ class PostTest(TestCase):
 
     def test_create_tag(self):
         # Create the tag
-        tag = Tag()
+        tag = models.Tag()
 
         # Add attributes
         tag.name = 'python'
@@ -39,7 +39,7 @@ class PostTest(TestCase):
         tag.save()
 
         # Check we can find it
-        all_tags = Tag.objects.all()
+        all_tags = models.Tag.objects.all()
         self.assertEqual(len(all_tags), 1)
         only_tag = all_tags[0]
         self.assertEqual(only_tag, tag)
@@ -50,19 +50,19 @@ class PostTest(TestCase):
 
     def test_create_post(self):
         # Create the category
-        category = Category()
+        category = models.Category()
         category.name = 'python'
         category.description = 'The Python programming language'
         category.save()
 
         # create the tag
-        tag = Tag()
+        tag = models.Tag()
         tag.name = 'python'
         tag.description = 'The Python programming language'
         tag.save()
 
         # Create the post
-        post = Post()
+        post = models.Post()
 
         # Set the attributes
         post.title = 'My first post'
@@ -76,7 +76,7 @@ class PostTest(TestCase):
         post.save()
 
         # Check we can find it
-        all_posts = Post.objects.all()
+        all_posts = models.Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         only_post = all_posts[0]
         self.assertEqual(only_post, post)
@@ -103,14 +103,14 @@ class PostTest(TestCase):
 
     def test_get_introduction(self):
         # Create the post
-        post = Post()
+        post = models.Post()
         # Add the text to the post
         post.text = "<p>This is my first post that is so awesome</p><p>This a second paragraph</p>"
         self.assertEqual(post.get_introduction(), "This is my first post that is so awesome")
 
     def test_get_post_content(self):
         # Create the post
-        post = Post()
+        post = models.Post()
         # Add the text to the post
         post.text = "<p>This is my first post that is so awesome</p><p>This a second paragraph</p>"
         self.assertEqual(post.get_text_content(), "<p>This a second paragraph</p>")
@@ -122,19 +122,19 @@ class PostViewTest(LiveServerTestCase):
 
     def test_index(self):
         # Create the category
-        category = Category()
+        category = models.Category()
         category.name = 'python'
         category.description = 'The Python programming language'
         category.save()
 
         # Create the tag
-        tag = Tag()
+        tag = models.Tag()
         tag.name = 'perl'
         tag.description = 'The Perl programming language'
         tag.save()
 
         # Create the post
-        post = Post()
+        post = models.Post()
         post.title = "My first post !!"
         post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.pub_date = timezone.now()
@@ -145,7 +145,7 @@ class PostViewTest(LiveServerTestCase):
         post.save()
 
         # Check post saved
-        all_posts = Post.objects.all()
+        all_posts = models.Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         self.assertEqual(all_posts[0], post)
 
@@ -175,19 +175,19 @@ class PostViewTest(LiveServerTestCase):
 
     def test_post_page(self):
         # Create the category
-        category = Category()
+        category = models.Category()
         category.name = 'python'
         category.description = 'The Python programming language'
         category.save()
 
         # Create the tag
-        tag = Tag()
+        tag = models.Tag()
         tag.name = 'perl'
         tag.description = 'The Perl programming language'
         tag.save()
 
         # Create the post
-        post = Post()
+        post = models.Post()
         post.title = 'My first post'
         post.text = '<p>Intro</p><p>This is <a href="http://127.0.0.1:8000/">my first blog post</a></p>'
         post.pub_date = timezone.now()
@@ -198,7 +198,7 @@ class PostViewTest(LiveServerTestCase):
         post.save()
 
         # Check new post saved
-        all_posts = Post.objects.all()
+        all_posts = models.Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         only_post = all_posts[0]
         self.assertEqual(only_post, post)
@@ -235,13 +235,13 @@ class PostViewTest(LiveServerTestCase):
 
     def test_category_page(self):
         # Create the category
-        category = Category()
+        category = models.Category()
         category.name = 'python'
         category.description = 'The Python programming language'
         category.save()
 
         # Create the post
-        post = Post()
+        post = models.Post()
         post.title = 'My first post'
         post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.slug = 'my-first-post'
@@ -250,7 +250,7 @@ class PostViewTest(LiveServerTestCase):
         post.save()
 
         # Check new post saved
-        all_posts = Post.objects.all()
+        all_posts = models.Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         only_post = all_posts[0]
         self.assertEqual(only_post, post)
@@ -280,20 +280,20 @@ class PostViewTest(LiveServerTestCase):
 
     def test_tag_page(self):
         # Create the tag
-        tag = Tag()
+        tag = models.Tag()
         tag.name = 'python'
         tag.description = 'The Python programming language'
         tag.save()
 
         # Create the category
-        category = Category()
+        category = models.Category()
         category.name = 'perl'
         category.description = 'The Perl programming language'
         category.save()
 
 
         # Create the post
-        post = Post()
+        post = models.Post()
         post.title = 'My first post'
         post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
         post.slug = 'my-first-post'
@@ -305,7 +305,7 @@ class PostViewTest(LiveServerTestCase):
         post.save()
 
         # Check new post saved
-        all_posts = Post.objects.all()
+        all_posts = models.Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         only_post = all_posts[0]
         self.assertEqual(only_post, post)
@@ -335,13 +335,13 @@ class PostViewTest(LiveServerTestCase):
 class FeedTest(LiveServerTestCase):
     def test_all_post_feed(self):
         # Create the category
-        category = Category()
+        category = models.Category()
         category.name = 'python'
         category.description = 'The Python programming language'
         category.save()
 
         # Create a post
-        post = Post()
+        post = models.Post()
         post.title = 'My first post'
         post.text = 'This is my first blog post'
         post.slug = 'my-first-post'
@@ -352,7 +352,7 @@ class FeedTest(LiveServerTestCase):
         post.save()
 
         # Check we can find it
-        all_posts = Post.objects.all()
+        all_posts = models.Post.objects.all()
         self.assertEqual(len(all_posts), 1)
         only_post = all_posts[0]
         self.assertEqual(only_post, post)
@@ -371,3 +371,4 @@ class FeedTest(LiveServerTestCase):
         feed_post = feed.entries[0]
         self.assertEqual(feed_post.title, post.title)
         self.assertEqual(feed_post.description, post.text)
+
