@@ -1,4 +1,6 @@
 from django.conf.urls import include, url
+from django.contrib.sitemaps.views import sitemap
+
 from blogengine import views, models
 
 sitemaps = {
@@ -17,11 +19,12 @@ urlpatterns = [
 
     url(
         r'^sitemap\.xml$',
-        'django.contrib.sitemaps.views.sitemap',
+        sitemap,
         {
             'sitemaps': sitemaps,
             'template_name': 'blogengine/custom_sitemap.html'
-        }
+        },
+        name='django.contrib.sitemaps.views.sitemap',
     ),
 
     # Index
@@ -49,3 +52,6 @@ urlpatterns = [
         views.CategoryDetailView.as_view(paginate_by=5, model=models.Category)
     ),
 ]
+
+
+
