@@ -34,7 +34,7 @@
     <nav id="blog-nav">
         <a id="brand" href="http://juanwolf.fr">juanwolf.fr</a>
         <ul id="menu-link-list" class="nav nav-pills nav-stacked">
-            {% include "blogengine/category_list.html" %}
+            {% include "category_list.html" %}
             <li id="language-selection-item">
                 <form action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
