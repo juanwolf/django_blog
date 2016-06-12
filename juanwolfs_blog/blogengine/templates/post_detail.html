@@ -1,4 +1,4 @@
-{% extends "blogengine/includes/base.html" %}
+{% extends "includes/base.html" %}
 {% load i18n %}
 {% if post.keywords %}
     {% block head_block %}
@@ -69,5 +69,5 @@
 {% endblock %}
 
 {% block content %}
-    {% include "blogengine/includes/post_template.html" %}
+    {% include "includes/post_template.html" %}
 {% endblock %}

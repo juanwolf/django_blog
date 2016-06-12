@@ -12,7 +12,7 @@ from blogengine import models
 
 
 class CategoryDetailView(ListView, DetailView):
-    template_name = "blogengine/category_detail.html"
+    template_name = "category_detail.html"
     context_object_name = "post_list"
     translation = None
     category = None
@@ -58,7 +58,7 @@ class CategoryDetailView(ListView, DetailView):
 
 
 class CategoryListView(ListView):
-    template_name = "blogengine/category_list.html"
+    template_name = "category_list.html"
     context_object_name = "category_list"
 
     def get_queryset(self):
@@ -66,7 +66,7 @@ class CategoryListView(ListView):
 
 
 class TagDetailView(ListView):
-    template_name = "blogengine/tag_detail.html"
+    template_name = "tag_detail.html"
     model = models.Tag
     translation = None
 
@@ -107,7 +107,7 @@ class TagDetailView(ListView):
 
 
 class PostListView(ListView):
-    template_name = "blogengine/post_list.html"
+    template_name = "post_list.html"
     context_object_name = "post_list"
 
     def get_queryset(self):
@@ -115,7 +115,7 @@ class PostListView(ListView):
 
 
 class PostDetailView(DetailView):
-    template_name = "blogengine/post_detail.html"
+    template_name = "post_detail.html"
     context_object_name = "post"
     # form_class = CommentsForm
 
@@ -179,7 +179,7 @@ class PostsFeed(Feed):
         return item.text
 
 
-def page_not_found_view(request, template_name='blogengine/page_not_found.html'):
+def page_not_found_view(request, template_name='page_not_found.html'):
     context = RequestContext(request)
     context['categories'] = models.Category.objects.all()
     return render_to_response(template_name, context)
