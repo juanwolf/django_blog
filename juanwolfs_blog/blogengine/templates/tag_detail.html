@@ -1,4 +1,4 @@
-{% extends "blogengine/includes/base.html" %}
+{% extends "includes/base.html" %}
 {% block language-redirection %}
     {% load i18n %}
     {% if LANGUAGE_CODE == "en" %}
@@ -16,10 +16,10 @@
     <h1>{{ tag.name }}</h1>
     <p>{{ tag.description }}</p>
     {% for post in object_list %}
-            {% include "blogengine/post_preview_template.html" %}
+        {% include "post_preview_template.html" %}
     {% empty %}
-            <p> {% trans "There's no post for this tag for the moment" %} =(
-                {% trans "All our engineers are working on it. We'll fix this problem soon." %}
-            </p>
+        <p> {% trans "There's no post for this tag for the moment" %} =(
+            {% trans "All our engineers are working on it. We'll fix this problem soon." %}
+        </p>
     {% endfor %}
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "blogengine/includes/base.html" %}
+{% extends "includes/base.html" %}
    {% block language-redirection %}
         {% load i18n %}
     {% if LANGUAGE_CODE == "en" %}
@@ -16,7 +16,7 @@
    <h1> {{ category.name }} </h1>
    <p class="description category-desc"> {{ category.description}}</p>
    {% for post in post_list %}
-        {% include "blogengine/post_preview_template.html" %}
+        {% include "post_preview_template.html" %}
    {% empty %}
         <p>{% trans "There's no post in this category for the moment" %} =(
             {% trans "All our engineers are working on it. We'll fix this problem soon." %}
