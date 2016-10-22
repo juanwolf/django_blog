@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from juanwolfs_blog.settings import MEDIA_URL
+from juanwolf_fr.settings import MEDIA_URL
 
 
 def upload_path(self, filename):
