@@ -29,12 +29,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
-                 'blog.zell']
+TEMPLATE_DEBUG = False
 
-INTERNAL_IPS = ['127.0.0.1', 'blog.zell']
+ALLOWED_HOSTS = [
+    'blog.juanwolf.fr', "juanwolf.fr", "resume.juanwolf.fr", "127.0.0.1",
+    'localhost'
+]
+
+INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
+
 # Application definition
 INSTALLED_APPS = (
     'modeltranslation',
@@ -69,9 +74,9 @@ MIDDLEWARE_CLASSES = (
 
 SITE_ID = 1
 
-ROOT_URLCONF = 'juanwolfs_blog.urls'
+ROOT_URLCONF = 'juanwolf_fr.urls'
 
-WSGI_APPLICATION = 'juanwolfs_blog.wsgi.application'
+WSGI_APPLICATION = 'juanwolf_fr.wsgi.application'
 
 
 # Database
@@ -83,8 +88,8 @@ DATABASES = {
         'NAME': config.get('database', 'DATABASE_NAME'),
         'USER': config.get('database', 'DATABASE_USER'),
         'PASSWORD': '',
-        'HOST': '', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '5432', # Set to empty string for default.
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 # Internationalization
@@ -105,7 +110,7 @@ LOCALE_PATHS = ('conf/locale/',)
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-# STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
+STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
 
 STATIC_URL = '/static/'
 
@@ -133,7 +138,6 @@ TEMPLATES = [
     },
 ]
 
-
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode
@@ -153,4 +157,3 @@ SUMMERNOTE_CONFIG = {
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     )
 }
-
