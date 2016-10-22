@@ -1,7 +1,7 @@
 # =================== Main dependencies =========================
 Django==1.9.7                                   # Main Framework
 djangorestframework==3.3.3                      # REST API Framework
-psycopg2==2.6.1                                 # PostgreSQL support
+psycopg2==2.6.2                                 # PostgreSQL support
 Pillow==3.2
 
 # ================  Additional dependencies ======================

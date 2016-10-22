@@ -29,14 +29,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'blog.zell']
 
-ALLOWED_HOSTS = ['blog.juanwolf.fr', 'localhost', '127.0.0.1',
-                 'blog.zell']
+INTERNAL_IPS = ['127.0.0.1']
 
-INTERNAL_IPS = ['127.0.0.1', 'blog.zell']
 # Application definition
 INSTALLED_APPS = (
     'modeltranslation',
@@ -71,9 +69,9 @@ MIDDLEWARE_CLASSES = (
 
 SITE_ID = 1
 
-ROOT_URLCONF = 'juanwolfs_blog.urls'
+ROOT_URLCONF = 'juanwolf_fr.urls'
 
-WSGI_APPLICATION = 'juanwolfs_blog.wsgi.application'
+WSGI_APPLICATION = 'juanwolf_fr.wsgi.application'
 
 
 # Database
@@ -85,8 +83,8 @@ DATABASES = {
         'NAME': config.get('database', 'DATABASE_NAME'),
         'USER': config.get('database', 'DATABASE_USER'),
         'PASSWORD': '',
-        'HOST': '', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '5432', # Set to empty string for default.
+        'HOST': '',  # Empty for localhost through domain sockets or 127.0.0.1
+        'PORT': '5432',  # Set to empty string for default.
     }
 }
 # Internationalization
@@ -107,7 +105,7 @@ LOCALE_PATHS = ('conf/locale/',)
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
+# STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
 
 STATIC_URL = '/static/'
 
@@ -127,18 +125,24 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'juanwolf_fr', 'templates')
+        ],
         'OPTIONS': {
-            'context_processors': DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
-                'blogengine.template_context_preprocessor.get_categories'
-            ]
+            'context_processors': (
+                DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
+                    'blogengine.template_context_preprocessor.get_categories'
+                ]
+            )
         }
     },
 ]
 
+
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode
-    'iframe': False,  # or set False to use SummernoteInplaceWidget - no iframe mode
+    'iframe': False,
 
     # Using Summernote Air-mode
     'airMode': False,
