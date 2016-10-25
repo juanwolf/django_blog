@@ -14,7 +14,15 @@ from configparser import RawConfigParser
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 
-config = RawConfigParser()
+config = RawConfigParser({
+    'secrets': {
+        'SECRET_KEY': "qwerty1234567890",
+    },
+    'database': {
+        'DATABASE_USER': 'postgres',
+        'DATABASE_NAME': 'postgres'
+    }
+})
 current_dir = os.path.dirname(__file__)
 config.read('%s/settings.ini' % current_dir)
 
