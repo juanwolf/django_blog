@@ -10,22 +10,23 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from configparser import RawConfigParser
+from configparser import ConfigParser
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 
-config = RawConfigParser({
-    'secrets': {
-        'SECRET_KEY': "qwerty1234567890",
-    },
-    'database': {
-        'DATABASE_USER': 'postgres',
-        'DATABASE_NAME': 'postgres'
-    }
+config = ConfigParser({
+    'SECRET_KEY': "qwerty1234567890",
+    'DATABASE_USER': 'postgres',
+    'DATABASE_NAME': 'postgres'
 })
 current_dir = os.path.dirname(__file__)
 config.read('%s/settings.ini' % current_dir)
 
+if not config.has_section('secrets'):
+    config.add_section('secrets')
+
+if not config.has_section('database'):
+    config.add_section('database')
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
