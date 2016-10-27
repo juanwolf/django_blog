@@ -1,0 +1,22 @@
+{
+  "name": "juanwolf.fr",
+  "authors": [
+    "Jean-Loup Adde <jean-loup.adde@juanwolf.fr>"
+  ],
+  "description": "Jean-Loup Adde's website",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://juanwolf.fr",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}
