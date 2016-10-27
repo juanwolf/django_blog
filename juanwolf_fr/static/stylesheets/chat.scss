@@ -1,0 +1,220 @@
+body header nav#chat-nav {
+    background-color: $chat-nav-background-color;
+     a#brand:hover {
+        color: $chat-nav-brand-hover-color;
+    }
+    #menu-button:hover {
+        color: $chat-nav-brand-hover-color;
+    }
+    ul#menu-link-list {
+        background-color: $chat-nav-background-color;
+        li {  
+            a:hover {
+                @include breakpoint(large) {
+                    background-color: $chat-nav-link-hover-bgc;
+                    color: $chat-nav-link-hover-color;
+                }
+                @include breakpoint(small-medium) {
+                    text-decoration: underline;
+                    background-color: inherit;
+                }
+            }
+            span.customSelect {
+                background-color: $chat-nav-select-color;
+            }
+        }
+    }
+}
+#chat-container {
+    padding-top : $container-padding-top;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 15px;
+    
+    a {
+        color: $link-color-font;
+        text-decoration: none;  
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    a:visited {
+        color: $link-color-font;
+    }
+    
+    p {
+        line-height: $blog-post-p-line-height;
+        font-size: $blog-post-p-font-size;
+        text-align: justify;
+    }
+    #chat-form {
+        object {
+            width: 100%;
+            @include breakpoint(large) {
+                height : 600px;
+            }
+            @include breakpoint(small-medium) {
+                height: 670px;
+            }
+        }
+    }
+}
+
+#chat-object {
+    body {
+        margin-bottom: 5px;
+        input#trap {
+            display: none;
+        }
+        input#name {
+            margin-bottom: 5px;
+            @include breakpoint(large) {
+                width: 40%;
+            }
+            @include breakpoint(small) {
+                width: 90%;
+            }
+        }
+        .form {
+            @include breakpoint(large) {
+                width: 70%;
+                display: inline-block;
+            }
+        }
+        #admin-state {
+            @include breakpoint(small-medium) {
+                margin-bottom: 10px;
+            }
+            @include breakpoint(large) {
+                text-align: right;
+                display: inline-block;
+                width: 30%;
+            }
+            &.admin-connected {
+                .fa-circle {
+                    color: #2ecc71
+                }
+            }
+            &.admin-disconnected {
+                .fa-circle {
+                    color: #e74c3c
+                }
+            }
+        }
+        #content {
+            height : 450px;
+            overflow-y: scroll;
+            width: 100%;
+            .message {
+                font-size: 0.9em;
+                .message-time {
+                    color: grey;
+                    font-size: $blog-post-post-edition-font-size;
+                }
+                p {
+                    margin-top: 1px;
+                    margin-bottom: 5px;
+                }
+                .message-username {
+                    font-weight: bold;
+                }
+                .message-content {
+
+                }
+            }
+        }
+        input[type="submit"] {
+            background-color : #34495e + ($color-filter * 4);
+            color: white;
+            border: 0;
+            height: inherit;
+            &:hover {
+                background-color: #34495e + ($color-filter * 5);
+            }
+        }
+        .form {
+            @include breakpoint(large) {
+                height: 2em;
+            }
+            #name {
+                height: 1.7em;
+            }
+            #connection{
+                height: 2em;
+            }
+        }
+        .send-block {
+            min-width: 100%;
+            height: 3em;
+            #field {
+                height: inherit;
+                resize: none;
+                @include breakpoint(small-medium) {
+                    display: block;
+                    width: 97%;
+                    margin-bottom: 10px;
+                }
+                @include breakpoint(large) {
+                    width: 75%;
+                }
+            }
+            span {
+                font-size: 13px;
+                line-height: 50px;
+            }
+            #send {
+                vertical-align: top;
+                margin-left: 2%;
+                @include breakpoint(small-medium) {
+                    width: 7em;
+                } 
+                @include breakpoint(large) {
+                    width: 7%;
+                }
+            }
+        }
+    }
+}
+#chat-footer {
+    background-color: $chat-footer-background-color;
+    a:hover {
+        color: $chat-footer-link-hover-color;
+    }
+    
+    #copyright {
+        text-align: center;
+        margin-bottom: 0;
+        font-size: $blog-post-post-edition-font-size;
+    }
+}
+
+// Admin style
+#admin-body {
+    height: 100%;
+    .chat-room {
+        width: 30%;
+        height: 80%;
+        .message-container {
+            height: 90%;
+            overflow-y: scroll;
+        }
+        .chat-message-form {
+            height: 8%;
+            input {
+                height: 100%;
+                &[type='text'] {
+                    width: 75%;
+                }
+            }
+        }
+        border: 1px solid grey;
+        @include breakpoint(large) {
+            display: inline-block;
+        }
+        @include breakpoint(small-medium) {
+            display: block;
+        }
+    }
+}

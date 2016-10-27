@@ -1,0 +1,187 @@
+/**
+ * Variables used for the website.
+ */
+
+// Global ---------------------------------------------------------------------
+
+$body-font-family                           : 'Open Sans', Helvetica, sans-serif;
+$color-filter                               : #121212;
+
+// Menu   ---------------------------------------------------------------------
+$menu-width									: 200px;
+$menu-height                                : 60px;
+$menu-margin-bottom                         : 10px;
+
+$menu-shadow-x                              : 5px;
+$menu-shadow-y                              : 5px;
+$menu-shadow-blur                           : 5px;
+$menu-shadow-color                          : #6F6F6F;
+
+$menu-transition-time                       : 0.15s;
+$menu-transition-type                       : ease;
+
+$menu-translate-x                           : $menu-width;
+$menu-translate-y                           : 0px;
+
+$menu-background-color                      : #2c3e50;
+$menu-background-color-hover                : $menu-background-color + $color-filter;
+$menu-background-color-callback             : $menu-background-color-hover;
+
+$menu-select-background-color               : $menu-background-color + $color-filter;
+$menu-select-border-radius                  : 2px;
+$menu-select-margin-top                     : 5px;
+$menu-select-margin-bottom                  : $menu-select-margin-top;
+$menu-select-height                         : $menu-height - ($menu-select-margin-top*2);
+
+$menu-select-inner-width                    : 110px;
+$menu-select-inner-line-height              : $menu-height 
+                                                - $menu-select-margin-bottom
+                                                - $menu-select-margin-top;
+
+
+$menu-font-color                            : white;
+$menu-font-color-hover                      : white;
+$menu-font-color-callback                   : $menu-font-color-hover;
+
+$menu-brand-font-size                       : 25px;
+$menu-brand-margin-left                     : 5%;
+$menu-brand-margin-right                    : $menu-brand-margin-left;
+$menu-brand-hover-color                     : $menu-background-color + ($color-filter * 6);
+
+$menu-link-margin-top                       : 5.5px;
+$menu-link-margin-left						: 20px;
+$menu-link-i-margin-right					: 10px;
+
+$menu-language-selection-height             : 30px;            
+
+// Body -----------------------------------------------------------------------
+
+$container-padding-top						: $menu-height + $menu-margin-bottom;
+$container-margin-left-small				: 8%;
+$container-margin-right-small				: $container-margin-left-small;
+$container-margin-left-large				: 23%;
+$container-margin-right-large				: $container-margin-left-large;
+$container-margin-bottom                    : 30px;
+
+
+$link-color-font							: #2980b9;
+$link-color-font-visited					: #8e44ad;
+
+$link-fa-background-color-resume			: #e67e22;
+$link-fa-background-color-blog				: #27ae60;
+$link-fa-background-color-chat              : #c0392b;
+$link-fa-background-color-apps				: #34495e;
+
+// Resume ---------------------------------------------------------------------
+$resume-background-color                    : #F5F5F5;
+// Submenu
+$resume-submenu-height                      : 40px;
+$resume-submenu-line-height                 : $resume-submenu-height;
+$resume-submenu-link-i-margin-left			: 10px;
+
+$resume-section-padding                     : 3%;
+$resume-section-width                       : 100%
+                                                - $resume-section-padding * 2;
+$resume-submenu-list-item-width-large       : $resume-section-width / 7;
+$resume-submenu-list-item-min-width         : 150px;
+
+$resume-section-border-color                : #bdc3c7;
+$resume-section-list-padding-right          : 40px;
+$resume-section-about-color                 : #e74c3c;
+$resume-section-about-img-max-width         : 200px;
+$resume-section-link-color-font             : $link-color-font;
+$resume-section-link-color-font-visited     : $link-color-font-visited;
+
+$resume-section-atented-color               : #f1c40f;
+$resume-section-projects-color              : #2c3e50;
+$resume-section-experiences-color           : #2980b9;
+$resume-section-skills-color                : #2ecc71;
+$resume-section-skills-info-font-size       : 16px;
+$resume-section-languages-color             : #e67e22;
+$resume-section-activities-color            : #16a085;
+
+$resume-section-border-top-size             : 5px;
+$resume-section-border-bottom-size          : 2px;
+$resume-section-border-left-size            : 1px;
+$resume-section-border-right-size           : 1px;
+
+// 404 ------------------------------------------------------------------------
+
+$not-found-title-font-size					: 50px;
+$not-found-title-margin-left				: 20px;
+
+// Blog -----------------------------------------------------------------------
+// nav
+$blog-nav-background-color                  : $link-fa-background-color-blog;
+$blog-nav-link-hover-bgc                    : $blog-nav-background-color
+                                                - $color-filter;
+$blog-nav-link-hover-color                  : white + $color-filter;
+$blog-nav-select-color                      : $blog-nav-link-hover-bgc;
+$blog-nav-brand-hover-color                 : $blog-nav-background-color
+                                                - ($color-filter *  3);
+$blog-nav-select-color                      : $blog-nav-link-hover-bgc; 
+
+$blog-nav-i-margin-right                    : $menu-link-i-margin-right;
+// Posts
+$blog-post-border-color                     : $resume-section-border-color;
+$blog-post-border-size                      : 1px;
+$blog-post-border-radius                    : 5px; 
+$blog-post-margin-bottom                    : 30px;
+$blog-post-p-line-height                    : 1.6em;
+$blog-post-p-font-size                      : 17px;
+
+$blog-post-title-letter-spacing             : -1px;
+$blog-post-title-margin-top                 : 10px;
+
+$blog-post-post-edition-font-size           : 14px;
+
+$blog-post-disqus-thread-margin-bottom      : 20px;
+
+$blog-post-pagination-height                : 40px;
+
+// Post Preview
+$blog-post-preview-text-margin-top          : 0;
+$blog-post-preview-text-margin-bottom       : 20px;
+
+$blog-post-preview-img-margin-bottom        : $blog-post-preview-text-margin-bottom;
+// Syntax highlight
+$blog-syntax-highlight-pre-padding          : 0.5em;
+$blog-syntax-highlight-pre-background-color : #f6f6f6;
+$blog-syntax-highlight-border-size          : 1px;
+$blog-syntax-highlight-border-color         : #CCCCCC;
+
+// pagination
+$blog-pagination-height                     : 40px;
+
+// Footer
+$blog-footer-background-color               : $blog-nav-background-color; 
+$blog-footer-link-hover-color               : $blog-nav-brand-hover-color; 
+
+// Chat -----------------------------------------------------------------------
+$chat-nav-background-color               : $link-fa-background-color-chat; 
+$chat-nav-link-hover-bgc                 : $chat-nav-background-color
+                                                - $color-filter;
+$chat-nav-link-hover-color               : white + $color-filter;
+$chat-nav-select-color                   : $chat-nav-link-hover-bgc;
+$chat-nav-brand-hover-color              : $chat-nav-background-color 
+                                                - ($color-filter *  3);
+$chat-nav-select-color                   : $chat-nav-link-hover-bgc;
+
+// Footer
+$chat-footer-background-color               : $chat-nav-background-color; 
+$chat-footer-link-hover-color               : $chat-nav-brand-hover-color;
+
+// Footer ---------------------------------------------------------------------
+
+$footer-background-color					: $menu-background-color;
+$footer-margin-top							: 20px;
+$footer-padding-top							: 1px;
+
+$footer-link-line-height					: 20px;
+
+$footer-font-color							: $menu-font-color;
+$footer-link-hover-font-color               : $menu-brand-hover-color;
+$footer-font-size							: 14px;
+
+$footer-social-network-margin-top			: 10px;
+$footer-social-network-margin-bottom		: 10px;

@@ -1,0 +1,87 @@
+// Stylesheet for the index page.
+
+div#container {
+    a {
+        color: $link-color-font;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    a:visited {
+        text-decoration: none;
+        color: $link-color-font-visited;
+    }
+    margin-bottom: $container-margin-bottom;
+	@include breakpoint(small-medium) {
+		margin-left: $container-margin-left-small;
+		margin-right: $container-margin-right-small;
+	}
+	
+	@include breakpoint(large) {
+		margin-left: $container-margin-left-large;
+		margin-right: $container-margin-right-large;
+	}
+    
+    p {
+        line-height: $blog-post-p-line-height;
+        @include breakpoint(medium-large) {
+            font-size: $blog-post-p-font-size;
+        }
+        text-align: justify;
+    }
+
+	#site-sections {
+			ul {
+				width: 100%;
+				padding: 0;
+				list-style: none;
+				@include breakpoint(small) {
+					text-align: center;
+				}
+				li {
+					display : inline-block;
+                                        width: 24%;
+                                        min-width: 155px;
+                                        text-align: center;
+					&:last-child {
+						width: 100%;
+				}
+				a:visited {
+					color: $link-color-font-visited;
+				}
+				a {
+					text-decoration: none;
+					color: $link-color-font;
+					p {
+						text-align: center;
+					}
+					i {
+						color: white;
+					}
+					i#background-fa-blog {
+						color: $link-fa-background-color-blog;
+					}
+					i#background-fa-resume {
+						color: $link-fa-background-color-resume;
+					}
+					i#background-fa-send {
+						color: $link-fa-background-color-chat;
+					}
+					i#background-fa-apps {
+						color: $link-fa-background-color-apps;
+					}
+
+				}
+				a:hover {
+					p {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
