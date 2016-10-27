@@ -1,0 +1,63 @@
+// Mixins for the website juanwolf.fr
+
+@mixin box-shadow($x-shadow, $y-shadow, $blur, $color) {
+    -moz-box-shadow: $x-shadow $y-shadow $blur $color;
+    -webkit-box-shadow: $x-shadow $y-shadow $blur $color;
+    -o-box-shadow: $x-shadow $y-shadow $blur $color;
+    box-shadow: $x-shadow $y-shadow $blur $color;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin triangle($size, $color) {
+    display:inline-block;
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+}
+
+@mixin translate($translate-x, $translate-y) {
+    -webkit-transform: translate($translate-x, $translate-y);
+    -moz-transform: translate($translate-x, $translate-y);
+    -o-transform: translate($translate-x, $translate-y);
+    -ms-transform: translate($translate-x, $translate-y);
+    transform: translate($translate-x, $translate-y);   
+}
+
+@mixin transition($transition-time, $transition-type) {
+    -webkit-transition: $transition-time $transition-type;
+    -moz-transition: $transition-time $transition-type;
+    -o-transition: $transition-time $transition-type;
+    transition: $transition-time $transition-type;
+}
+
+// $point is an string equals at large, medium, small.
+@mixin breakpoint($point) {
+    $breakpoint-small: "(max-width: 639px)";
+    $breakpoint-small-medium: "(max-width: 959px)";
+    $breakpoint-medium: "(min-width: 639px) and (max-width: 959px)";
+    $breakpoint-medium-large: "(min-width: 639px)";
+    $breakpoint-large: "(min-width: 960px)";
+
+    @if $point == small {
+        @media #{$breakpoint-small} { @content; }
+    }
+    @if $point == small-medium {
+        @media #{$breakpoint-small-medium} { @content; }    
+    }
+    @else if $point == medium {
+        @media #{$breakpoint-medium} { @content; }
+    }
+    @else if $point == medium-large {
+        @media #{$breakpoint-medium-large} { @content; }
+    }
+    @else if $point == large {
+        @media #{$breakpoint-large}  { @content; }
+    }
+}
