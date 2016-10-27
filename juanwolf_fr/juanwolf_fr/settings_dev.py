@@ -114,7 +114,7 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = True
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "media"),
-    '/home/juanwolf/juanwolf.fr/',
+    os.path.join(BASE_DIR, 'static'),
 )
 
 MEDIA_ROOT = 'media/'

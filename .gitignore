@@ -7,3 +7,4 @@ media/
 reports/
 virtualenv/
 juanwolfs_blog/juanwolfs_blog/settings.ini
+vendor/

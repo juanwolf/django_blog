@@ -1,0 +1,291 @@
+body div#container-resume {
+    @include breakpoint(medium-large) {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    
+    @include breakpoint(small) {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    padding-top: $container-padding-top;
+    background-color: $resume-background-color;
+    
+    #submenu {
+        ul {
+            line-height: 62px;
+            vertical-align: middle;
+            padding-left: 0;
+        }
+        li {
+            min-width: $resume-submenu-list-item-min-width;
+            width: $resume-submenu-list-item-width-large;    
+            height: $resume-submenu-height;
+            line-height: $resume-submenu-line-height;
+            list-style: none;
+            display: inline-block;
+            
+            @include breakpoint(small) {  
+                width: 70%;
+                padding-left: 30%;
+            }
+
+            a {			
+                text-decoration: none;
+                i::before {
+                    margin-right: $menu-link-i-margin-right;
+                    margin-left: $resume-submenu-link-i-margin-left;
+                }
+                
+                &:hover {
+                    text-decoration: underline;    
+                }
+            }
+        }
+    }
+    .section {
+        @include breakpoint(medium-large) {
+            padding: $resume-section-padding;
+        }
+        
+        @include breakpoint(small) {
+            padding: 10%;
+        }    
+        
+        
+        background-color: white;
+        border-width: $resume-section-border-top-size 
+            $resume-section-border-left-size
+            $resume-section-border-bottom-size 
+            $resume-section-border-right-size;
+        border-color: $resume-section-border-color;
+        border-style: solid;
+        display: inline-block;
+        margin-bottom: 5%;
+        .subtitle {
+            font-weight: bold;         
+        }
+        ul {
+            @include breakpoint(medium-large) {
+                padding-right: $resume-section-list-padding-right;
+            }
+            
+            @include breakpoint(small) {
+                padding-left: 0;    
+            }
+            list-style: none;
+            li {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+        
+        p {
+            text-align: justify;
+        }
+        
+        a {
+            color: $resume-section-link-color-font;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;    
+        }
+        a:visited {
+            color: $resume-section-link-color-font-visited;
+        }
+    }
+    
+    .middle-section {
+        @include breakpoint(large) {
+            width: 38%;
+            margin-left: 5.45%;
+            margin-right: 5.45%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        
+        @include breakpoint(medium) {
+            width: $resume-section-width;    
+        }
+        
+    }
+    
+    .full-section {
+        @include breakpoint(medium-large) {
+            width: $resume-section-width;
+        }
+    }
+    
+    .subsection {
+        @include breakpoint(large) {
+            width: 38%;
+            margin-left: 5%;
+            margin-right: 5%;
+            display: inline-block;
+            vertical-align: top;
+            
+            &:nth-child(2n+0) {
+                padding-left: $resume-section-padding;
+            }
+        }
+    }
+    a:visited {
+        color: inherit;    
+    }
+    
+    #about {
+        border-top-color: $resume-section-about-color;
+        
+        @include breakpoint(medium-large) {
+            text-align: center;
+        }
+        
+        #name-about, #profession {
+            text-align: center;
+        }
+        
+        img {
+            @include breakpoint(medium-large) {
+                width: 50%;    
+                height: auto;
+                max-width: $resume-section-about-img-max-width;
+                @include border-radius(1000px); 
+            }
+            @include breakpoint(small) {
+                display: none;
+            }
+        }
+    }
+    #about-link {
+        color: $resume-section-about-color;    
+    }
+    
+    #atented {
+        margin-left: 0;
+        border-top-color: $resume-section-atented-color;  
+        
+        li {
+            border-bottom: 1px solid $resume-section-border-color;
+        }
+        li:last-child {
+            border-bottom: 0;
+        }
+    }
+    #atented-link {
+        color: $resume-section-atented-color;
+    }
+    #projects {
+        border-top-color: $resume-section-projects-color;
+        ul {
+            li {
+                border-bottom: 1px solid $resume-section-border-color;
+            }
+            li:last-child {
+                border-bottom: 0;
+            }
+        }
+        .link-repo {
+           font-weight: normal;
+             
+        }
+        
+    }
+    #projects-link {
+        color: $resume-section-projects-color;
+    }
+    #experiences {
+        margin-right: 0;
+        border-top-color: $resume-section-experiences-color;
+        
+        li {
+            border-bottom: 1px solid $resume-section-border-color;
+        }
+        li:last-child {
+            border-bottom: 0;
+        }
+        
+    }
+    #experiences-link {
+        color: $resume-section-experiences-color;
+    }
+    #skills {
+        
+        border-top-color: $resume-section-skills-color;
+        
+        .skill-info {
+            display: inline-block;
+            font-size: $resume-section-skills-info-font-size;
+            font-weight: normal;
+        }
+        
+        ul {
+            list-style: none;
+            font-weight: bold;
+            li {
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            ul {
+                font-weight: normal;
+                
+                li {
+                    width: 100%;
+                    text-align: left;
+                    border-bottom: 1px solid $resume-section-border-color;
+                }
+                
+                li:last-child {
+                    border-bottom: none;    
+                }
+                .skill-title {
+                    display: inline-block;
+                    @include breakpoint(small-medium) {
+                        width: 70%;
+                    }
+                    @include breakpoint(large) {
+                        width: 63%;    
+                    }
+                }
+                
+                &.skill-rank {
+                    display: inline-block;
+                    i {
+                        padding-bottom: 10px;
+                    }
+                    .fa-heart {
+                        color: $resume-section-skills-color;
+                    }
+
+                    margin: 0;
+                    padding: 0;
+                    li {
+                        display: inline;
+                        border-bottom: none;
+                    }
+                }      
+            }
+        }
+    }
+    #skills-link {
+        color: $resume-section-skills-color;
+    }
+    #languages {
+        margin-left: 0;
+        border-top-color: $resume-section-languages-color;
+        .subinformation {
+            display: inline-block;   
+            margin: 0;
+        }
+    }
+    #languages-link {
+        color: $resume-section-languages-color;
+    }
+    #activities {
+        margin-right: 0;
+        border-top-color: $resume-section-activities-color;
+    }
+    #activities-link {
+        color: $resume-section-activities-color;
+    } 
+}
