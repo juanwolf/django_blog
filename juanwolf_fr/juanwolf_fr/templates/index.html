@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 {% load i18n %}
+{% load static %}
 <html lang="{{ CURRENT_LANGUAGE }}">
 
 <head>
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
-    <link type="text/css" rel="stylesheet" href="/stylesheets/stylesheet.css" />
+    <link rel="icon" type="image/png" href="{% static "img/favicon.png" %}" />
+    <link type="text/css" rel="stylesheet" href="{% static "stylesheets/stylesheet.css" %}" />
     <title>juanwolf.fr - {% trans "Le site de Jean-Loup Adde" %}</title>
     <meta name="description" content="{% trans "Le site personnel de Jean-Loup Adde. Vous pouvez retrouver son CV et son blog (programmation, jeux vidéo). Génial, n'est ce pas ?" %}" />
     <meta name="keywords" content='{% trans "Jean-Loup,Jean-Loup Adde,programmation,devops,juanwolf, juan wolf, jeux vidéo, blog, chat, CV, integrator" %}'/>
@@ -88,7 +89,7 @@
         </p>
         <p>
         {% blocktrans %} De plus, ce site est totalement gratuit et ne contiendra JAMAIS de publicités. Si jamais vous l'avez aimé et que
-        vous aimeriez participer à ce projet, j'ai ouvert un 
+        vous aimeriez participer à ce projet, j'ai ouvert un
         <a target="_blank"href="https://flattr.com/submit/auto?user_id=juanwolf&url=https://juanwolf.fr/&title=juanwolf.fr&description=Jean-Loup Adde's website&language=fr_FR&tags=programming&category=text">Flattr</a>, vous permettant de contribuer financièrement
         à la survie du site. Mais vous pouvez aussi contribuer en me donnant des idées de jeux à tester ou des idées d'articles à rédiger.
         {% endblocktrans %}
@@ -112,7 +113,7 @@
                     <a id="resume-link" href="https://resume.juanwolf.fr/">
                         <span class="fa-stack fa-lg fa-5x">
                                 <i id="background-fa-resume" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-file-text-o fa-stack-1x"></i> 
+                                <i class="fa fa-file-text-o fa-stack-1x"></i>
                             </span>
                             <p>{% trans "Mon CV" %}</p>
                     </a>
@@ -121,7 +122,7 @@
                     <a id="chat-link" href="https://chat.juanwolf.fr/">
                         <span class="fa-stack fa-lg fa-5x">
                                 <i id="background-fa-send" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-send fa-stack-1x"></i> 
+                                <i class="fa fa-send fa-stack-1x"></i>
                             </span>
                         <p>Chat</p>
                     </a>
@@ -130,7 +131,7 @@
                     <a id="didit-link" href="http://ces.juanwolf.fr">
                         <span class="fa-stack fa-lg fa-5x">
                                 <i id="background-fa-apps" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rocket fa-stack-1x"></i> 
+                                <i class="fa fa-rocket fa-stack-1x"></i>
                         </span>
                         <p>CES 2015</p>
                     </a>
@@ -167,8 +168,8 @@
             </ul>
         </div>
 
-        <script src="/js/lib/JQuery1.11.js"></script>
-        <script src="/js/index.js"></script>
+        <script src="{% static "vendor/jquery/dist/jquery.min.js" %}"></script>
+        <script src="{% static "js/index.js" %}"></script>
         <!-- Piwik -->
         <script type="text/javascript">
             var _paq = _paq || [];
@@ -185,7 +186,7 @@
                 <img src="https://stats.juanwolf.fr/piwik.php?idsite=1" style="border:0;" alt="" />
             </p>
         </noscript>
-        <script src="/js/lib/piwik.js"></script>
+        <script src="{% static "js/lib/piwik.js" %}"></script>
         <!-- End Piwik Code -->
     </footer>
 </body>

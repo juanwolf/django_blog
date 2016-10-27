@@ -1,0 +1,20 @@
+#container {
+    #not-found-title {
+		font-size: $not-found-title-font-size;
+		text-align: center;
+	}
+    #image-not-found {
+        text-align: center;
+        img {
+            width: auto;
+            height: 300px;
+            @include breakpoint(small) {
+                height: 200px;
+            }
+            
+            @include border-radius(600px);
+            @include box-shadow($menu-shadow-x, $menu-shadow-y, $menu-shadow-blur, $menu-shadow-color);
+        }
+    }
+    
+}
