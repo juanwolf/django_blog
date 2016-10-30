@@ -8,3 +8,8 @@ reports/
 virtualenv/
 juanwolfs_blog/juanwolfs_blog/settings.ini
 vendor/
+.sass-cache/
+node_modules/
+main*.js
+bower*.js
+bower*.css

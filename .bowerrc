@@ -1,3 +1,4 @@
 {
-    "directory": "juanwolf_fr/static/vendor"
+    "cwd": ".",
+    "directory": "./juanwolf_fr/static/vendor"
 }
