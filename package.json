@@ -1,0 +1,26 @@
+{
+  "name": "juanwolf.fr",
+  "version": "1.0.0",
+  "description": "Jean-Loup Adde's personnal website",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-bower-concat": "^1.0.0",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanwolf/juanwolf.fr.git"
+  },
+  "author": "Jean-Loup Adde",
+  "license": "IDGAF",
+  "bugs": {
+    "url": "https://github.com/juanwolf/juanwolf.fr/issues"
+  },
+  "homepage": "https://github.com/juanwolf/juanwolf.fr/issues"
+}
