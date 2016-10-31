@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for juanwolf_s_blog project.
 
@@ -10,7 +11,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from configparser import ConfigParser
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 
