@@ -17,7 +17,8 @@ import django.conf.global_settings as DEFAULT_SETTINGS
 config = ConfigParser({
     'SECRET_KEY': "qwerty1234567890",
     'DATABASE_USER': 'postgres',
-    'DATABASE_NAME': 'postgres'
+    'DATABASE_NAME': 'postgres',
+    'DATABASE_HOST': ''
 })
 current_dir = os.path.dirname(__file__)
 config.read('%s/settings.ini' % current_dir)
@@ -97,7 +98,7 @@ DATABASES = {
         'NAME': config.get('database', 'DATABASE_NAME'),
         'USER': config.get('database', 'DATABASE_USER'),
         'PASSWORD': '',
-        'HOST': 'db',
+        'HOST': config.get('database', 'DATABASE_HOST'),
         'PORT': '5432',
     }
 }
