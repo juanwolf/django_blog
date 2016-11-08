@@ -1,0 +1,11 @@
+language: python
+python:
+ - "3.5"
+services:
+ - postgresql
+env:
+ - DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
+install: "pip install -r requirements.txt"
+
+before_script: cd juanwolfs_blog
+script: python manage.py test
