@@ -7,5 +7,5 @@ env:
  - DATABASE_URL=postgres://postgres:@postgres:5432/python-test-app
 install: "pip install -r requirements.txt"
 
-before_script: cd juanwolfs_blog
+before_script: cd juanwolf_fr
 script: python manage.py test
