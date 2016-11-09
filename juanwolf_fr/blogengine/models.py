@@ -25,7 +25,7 @@ class Tag(models.Model):
         super(Tag, self).save()
 
     def get_absolute_url(self):
-        return "/tag/%s/" % (self.slug)
+        return "/blog/tag/%s/" % (self.slug)
 
     def __str__(self):
         return self.name
@@ -42,7 +42,7 @@ class Category(models.Model):
         super(Category, self).save()
 
     def get_absolute_url(self):
-        url = "/%s/" % self.slug
+        url = "/blog/%s/" % self.slug
         return url
 
     def __str__(self):
@@ -63,10 +63,10 @@ class Post(models.Model):
     slug = models.SlugField(max_length=50, unique=True)
 
     def get_absolute_url(self):
-        return "/%s/%s/" % (self.category.slug, self.slug)
+        return "/blog/%s/%s/" % (self.category.slug, self.slug)
 
     def get_absolute_image_url(self):
-        return '/%s%s' % (MEDIA_URL, self.image.name)
+        return '/blog/%s%s' % (MEDIA_URL, self.image.name)
 
     def get_introduction(self):
         # Find first paragraph
