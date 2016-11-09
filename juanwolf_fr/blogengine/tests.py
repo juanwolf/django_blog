@@ -150,7 +150,7 @@ class PostViewTest(LiveServerTestCase):
         self.assertEqual(all_posts[0], post)
 
         # Check the index response
-        response = self.client.get("/")
+        response = self.client.get("/blog/")
         self.assertEqual(response.status_code, 200)
 
         # Check the content of the page
@@ -358,7 +358,7 @@ class FeedTest(LiveServerTestCase):
         self.assertEqual(only_post, post)
 
         # Fetch the feed
-        response = self.client.get('/feeds/posts/')
+        response = self.client.get('/blog/feeds/posts/')
         self.assertEqual(response.status_code, 200)
 
         # Parse the feed
