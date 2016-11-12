@@ -1,14 +1,14 @@
 {% load i18n %}
 <li>
-<a id="link-home-blog" href="/">{% trans 'Home' %}</a>
+  <a id="link-home-blog" href="{% url 'blog:index' %}">{% trans 'Home' %}</a>
 </li>
 {% for category in categories %}
 <li>
-    <a id="category-{{category.slug_en}}" href="{{ category.get_absolute_url }}">
+  <a id="category-{{category.slug_en}}" href="{% url 'blog:category-detail' category.slug %}">
         {{ category.name }}
     </a>
     </li>
 {% endfor %}
 <li>
-    <a id="link-rss" href="/feeds/posts/">RSS</a>
+  <a id="link-rss" href="{% url 'blog:rss' %}">RSS</a>
 </li>

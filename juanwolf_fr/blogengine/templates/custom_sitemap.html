@@ -12,17 +12,17 @@
     {% if url.priority %}<priority>{{ url.priority }}</priority>{% endif %}
     {% language 'fr'%}
     <xhtml:link
-                 rel="alternate"
-                 hreflang="fr"
-                 href="http://blog.juanwolf.fr{{ url.item.get_absolute_url}}"
-                 />
+        rel="alternate"
+        hreflang="fr"
+        href="http://blog.juanwolf.fr{% url 'post-detail' %}"
+        />
     {% endlanguage %}
     {% language 'en'%}
     <xhtml:link
-             rel="alternate"
-             hreflang="en"
-             href="http://blog.juanwolf.fr{{ url.item.get_absolute_url}}"
-             />
+        rel="alternate"
+        hreflang="en"
+        href="http://blog.juanwolf.fr{% url 'post-detail' %}"
+        />
     {% endlanguage %}
   </url>
 
