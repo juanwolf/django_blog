@@ -22,7 +22,7 @@
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'juanwolfsblog'; // required: replace example with your forum shortname
-        var disqus_identifier = '{{ post.get_absolute_url }}' // Define to identify the current page
+        var disqus_identifier = '{% url "blog:post-detail" post.category.slug post.slug  %}' // Define to identify the current page
         var disqus_config = function () {
             this.language = "{{ LANGUAGE_CODE }}";
         };
@@ -36,13 +36,13 @@
     <noscript>{% trans 'Please enable JavaScript to view the '%} <a href="http://disqus.com/?ref_noscript">{% trans 'comments powered by Disqus.' %}</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">{% trans 'comments powered by' %} <span class="logo-disqus">Disqus</span></a>
     {% if has_previous_post %}
-    <a id="previous-article" href="{{previous_post.get_absolute_url}}">
+    <a id="previous-article" href="{% url "blog:post-detail" previous_post.category.slug previous_post.slug %}">
         &lsaquo;&lsaquo; {% trans 'Previous post' %}:
         {{previous_post.title}}
     </a>
     {% endif %}
     {% if has_next_post %}
-    <a id="next-article" href="{{next_post.get_absolute_url}}">
+    <a id="next-article" href="{% url 'blog:post-detail' next_post.category.slug next_post.slug %}">
         {% trans 'Next post' %}:
         {{next_post.title}} &rsaquo;&rsaquo;
     </a>
