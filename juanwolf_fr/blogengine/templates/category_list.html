@@ -4,7 +4,7 @@
 </li>
 {% for category in categories %}
 <li>
-    <a id="category-{{category.slug_en}}" href="{{ category.get_absolute_url }}">
+  <a id="category-{{category.slug_en}}" href="{% url 'category-detail' %}">
         {{ category.name }}
     </a>
     </li>

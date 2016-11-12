@@ -29,12 +29,15 @@ urlpatterns = [
 
     # Index
     url(
-        r'^(?P<page>\d+)?/?$', views.PostListView.as_view(model=models.Post, paginate_by=5)
+        r'^(?P<page>\d+)?/?$',
+        views.PostListView.as_view(model=models.Post, paginate_by=5),
+        name='index'
     ),
     # Tags
     url(
         r'^tag/(?P<slug>[a-zA-Z0-9-]+)/?$',
-        views.TagDetailView.as_view(model=models.Tag)
+        views.TagDetailView.as_view(model=models.Tag),
+        name='tag-detail'
     ),
     # Individual posts
     url(
@@ -43,13 +46,14 @@ urlpatterns = [
         name='post-detail'
     ),
     url(
-        r'^(?P<pub_date__year>\d{4})/(?P<pub_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$',
+        r'^(?P<pub_date__year>\d{4})/(?P<pub_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$',  # noqa
         views.RedirectPostDetailView.as_view()
     ),
     # Categories
     url(
         r'^(?P<slug>[a-zA-Z0-9-]+)/?$',
-        views.CategoryDetailView.as_view(paginate_by=5, model=models.Category)
+        views.CategoryDetailView.as_view(paginate_by=5, model=models.Category),
+        name='category-detail'
     ),
 ]
 

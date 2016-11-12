@@ -1,7 +1,7 @@
 <div class="blog-post">
     {% load i18n %}
     <span class="post-edition">{{ post.pub_date | date:"d F Y" }}</span>
-    <h1 class="post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+    <h1 class="post-title"><a href="{% url 'post-detail' post.category.slug post.slug %}">{{ post.title }}</a></h1>
     <p>
         <span class="post-category">{% trans 'Category:' %}
             <a href="{{ post.category.get_absolute_url }}">{{ post.category.name }}</a>.
