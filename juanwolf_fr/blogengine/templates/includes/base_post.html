@@ -1,14 +1,14 @@
 <div class="blog-post">
     {% load i18n %}
     <span class="post-edition">{{ post.pub_date | date:"d F Y" }}</span>
-    <h1 class="post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+    <h1 class="post-title"><a href="{% url 'blog:post-detail' post.category.slug post.slug %}">{{ post.title }}</a></h1>
     <p>
         <span class="post-category">{% trans 'Category:' %}
-            <a href="{{ post.category.get_absolute_url }}">{{ post.category.name }}</a>.
+            <a href="{% url 'blog:category-detail'  post.category.slug %}">{{ post.category.name }}</a>.
         </span>
         <span class="post-tag">{% trans 'Tags:' %}
             {% for tag in post.tags.all %}
-            <a href="{{ tag.get_absolute_url }}">#{{ tag.name }}</a>
+            <a href="{% url 'blog:tag-detail' tag.slug %}">#{{ tag.name }}</a>
             {% endfor %}
         </span>
     </p>

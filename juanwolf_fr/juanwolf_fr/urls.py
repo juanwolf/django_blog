@@ -7,10 +7,16 @@ from juanwolf_fr import views
 admin.autodiscover()
 
 urlpatterns = [
+    # Internationalization
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    # Admin
     url(r'^admin/', include(admin.site.urls)),
+    # API
     url(r'^api/docs/', include('rest_framework_swagger.urls')),
     url(r'^api/', include('api.urls')),
+    # Blog
     url(r'^blog/', include('blogengine.urls')),
+    # Index
     url(r'^$', views.Index.as_view(), name="index")
 ]
 
