@@ -12,5 +12,5 @@
     </div>
     {% endif %}
     {% load i18n %}
-    <a href="{% url "post-detail" post.category.slug post.slug %}">{% trans "Read this post" %} &rsaquo;</a>
+    <a href="{% url "blog:post-detail" post.category.slug post.slug %}">{% trans "Read this post" %} &rsaquo;</a>
     {% endblock %}
