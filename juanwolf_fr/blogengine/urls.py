@@ -3,16 +3,16 @@ from django.contrib.sitemaps.views import sitemap
 
 from blogengine import views, models
 
+app_name = 'blog'
+
 sitemaps = {
     'blog': models.BlogSitemap
 }
 
 urlpatterns = [
-    # Internationalization
-    url(r'^i18n/', include('django.conf.urls.i18n')),
 
     # Post RSS feed
-    url(r'^feeds/posts/$', views.PostsFeed()),
+    url(r'^feeds/posts/$', views.PostsFeed(), name='rss'),
 
     # Summernote
     url(r'^summernote/', include('django_summernote.urls')),
@@ -56,6 +56,3 @@ urlpatterns = [
         name='category-detail'
     ),
 ]
-
-
-

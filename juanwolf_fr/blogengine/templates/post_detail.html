@@ -59,11 +59,11 @@
 {% block language-redirection %}
     {% if LANGUAGE_CODE == "en" %}
         {% language 'fr' %}
-        value="{% url 'post-detail' post.category.slug post.slug %}"
+        value="{% url 'blog:post-detail' post.category.slug post.slug %}"
         {% endlanguage %}
     {% else %}
         {% language 'en' %}
-        value="{% url 'post-detail' post.category.slug post.slug %}"
+        value="{% url 'blog:post-detail' post.category.slug post.slug %}"
         {%  endlanguage %}
     {% endif %}
 {% endblock %}

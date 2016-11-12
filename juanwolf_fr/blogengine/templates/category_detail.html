@@ -3,11 +3,11 @@
         {% load i18n %}
     {% if LANGUAGE_CODE == "en" %}
         {% language 'fr' %}
-        value={% url 'category-detail' %}
+        value={% url 'blog:category-detail' category.slug %}
         {% endlanguage %}
     {% else %}
         {% language 'en' %}
-        value={% url 'category-detail' %}
+        value={% url 'blog:category-detail' category.slug %}
         {%  endlanguage %}
     {% endif %}
     {% endblock %}
