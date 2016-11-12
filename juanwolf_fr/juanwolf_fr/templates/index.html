@@ -64,10 +64,20 @@
                     </a>
                 </li>
                 <li id="language-selection-item">
-                    <select id="language-selection-select">
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
+                  <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden"
+                                       {% block language-redirection %}{% endblock %}/>
+                    <select name="language" id="language-select-blog">
+                      {% for lang in LANGUAGES %}
+                      <option value="{{ lang.0 }}"
+                              {% if LANGUAGE_CODE == lang.0  %}
+                              selected="selected"
+                              {% endif %}
+                              >{{ lang.1 }}</option>
+                      {% endfor %}
                     </select>
+                  </form>
                 </li>
             </ul>
             <a id="menu-button">
@@ -169,7 +179,7 @@
         </div>
 
         <script src="{% static "vendor/jquery/dist/jquery.min.js" %}"></script>
-        <script src="{% static "js/index.js" %}"></script>
+        <script src="{% static "js/main.min.js" %}"></script>
         <!-- Piwik -->
         <script type="text/javascript">
             var _paq = _paq || [];
