@@ -3,11 +3,11 @@
         {% load i18n %}
     {% if LANGUAGE_CODE == "en" %}
         {% language 'fr' %}
-        value={{ category.get_absolute_url }}
+        value={% url 'category-detail' %}
         {% endlanguage %}
     {% else %}
         {% language 'en' %}
-        value={{ category.get_absolute_url }}
+        value={% url 'category-detail' %}
         {%  endlanguage %}
     {% endif %}
     {% endblock %}

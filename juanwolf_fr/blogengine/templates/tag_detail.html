@@ -3,11 +3,11 @@
     {% load i18n %}
     {% if LANGUAGE_CODE == "en" %}
         {% language 'fr' %}
-        value={{ tag.get_absolute_url }}
+            value="{% url "tag-detail" tag.slug %}"
         {% endlanguage %}
     {% else %}
         {% language 'en' %}
-        value={{ tag.get_absolute_url }}
+            value="{% url "tag-detail" tag.slug %}"
         {%  endlanguage %}
     {% endif %}
 {% endblock %}
