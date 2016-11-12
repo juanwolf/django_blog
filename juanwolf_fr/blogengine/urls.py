@@ -3,16 +3,16 @@ from django.contrib.sitemaps.views import sitemap
 
 from blogengine import views, models
 
+app_name = 'blog'
+
 sitemaps = {
     'blog': models.BlogSitemap
 }
 
 urlpatterns = [
-    # Internationalization
-    url(r'^i18n/', include('django.conf.urls.i18n')),
 
     # Post RSS feed
-    url(r'^feeds/posts/$', views.PostsFeed()),
+    url(r'^feeds/posts/$', views.PostsFeed(), name='rss'),
 
     # Summernote
     url(r'^summernote/', include('django_summernote.urls')),
@@ -29,12 +29,15 @@ urlpatterns = [
 
     # Index
     url(
-        r'^(?P<page>\d+)?/?$', views.PostListView.as_view(model=models.Post, paginate_by=5)
+        r'^(?P<page>\d+)?/?$',
+        views.PostListView.as_view(model=models.Post, paginate_by=5),
+        name='index'
     ),
     # Tags
     url(
         r'^tag/(?P<slug>[a-zA-Z0-9-]+)/?$',
-        views.TagDetailView.as_view(model=models.Tag)
+        views.TagDetailView.as_view(model=models.Tag),
+        name='tag-detail'
     ),
     # Individual posts
     url(
@@ -43,15 +46,13 @@ urlpatterns = [
         name='post-detail'
     ),
     url(
-        r'^(?P<pub_date__year>\d{4})/(?P<pub_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$',
+        r'^(?P<pub_date__year>\d{4})/(?P<pub_date__month>\d{1,2})/(?P<slug>[a-zA-Z0-9-]+)/?$',  # noqa
         views.RedirectPostDetailView.as_view()
     ),
     # Categories
     url(
         r'^(?P<slug>[a-zA-Z0-9-]+)/?$',
-        views.CategoryDetailView.as_view(paginate_by=5, model=models.Category)
+        views.CategoryDetailView.as_view(paginate_by=5, model=models.Category),
+        name='category-detail'
     ),
 ]
-
-
-
