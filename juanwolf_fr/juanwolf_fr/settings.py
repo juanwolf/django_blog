@@ -10,9 +10,12 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+from datetime import date
 from configparser import ConfigParser
 
 import django.conf.global_settings as DEFAULT_SETTINGS
+
 
 config = ConfigParser({
     'SECRET_KEY': "qwerty1234567890",
@@ -120,7 +123,7 @@ LOCALE_PATHS = ('conf/locale/',)
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/juanwolf/juanwolf.fr/'
+STATIC_ROOT = '/srv/http/static/'
 
 STATIC_URL = '/static/'
 
@@ -129,7 +132,7 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = True
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "media"),
-    '/home/juanwolf/juanwolf.fr/',
+    os.path.join(BASE_DIR, 'static')
 )
 
 MEDIA_ROOT = 'media/'
@@ -167,3 +170,6 @@ SUMMERNOTE_CONFIG = {
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     )
 }
+
+# CUSTOM
+BIRTHDAY_DATE = date(year=1992, month=9, day=26)

@@ -7,6 +7,9 @@ from juanwolf_fr import views
 admin.autodiscover()
 
 urlpatterns = [
+    # Summernote
+    url(r'^summernote/', include('django_summernote.urls')),
+
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
     # Admin
@@ -17,7 +20,7 @@ urlpatterns = [
     # Blog
     url(r'^blog/', include('blogengine.urls')),
     # Index
-    url(r'^$', views.Index.as_view(), name="index")
+    url(r'^$', views.IndexView.as_view(), name="index")
 ]
 
 handler404 = 'blogengine.views.page_not_found_view'

@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from datetime import date
 from configparser import RawConfigParser
 
 import django.conf.global_settings as DEFAULT_SETTINGS
@@ -158,3 +159,6 @@ SUMMERNOTE_CONFIG = {
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     )
 }
+
+# CUSTOM
+BIRTHDAY_DATE = date(1992, 9, 26)
