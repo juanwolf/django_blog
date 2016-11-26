@@ -1,7 +1,7 @@
 image: python:3.5
 
 services:
-   - postgreso
+   - postgres
 
 variables:
     POSTGRES_DB: postgres
