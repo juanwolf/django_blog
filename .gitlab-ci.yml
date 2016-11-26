@@ -1,0 +1,19 @@
+image: python:3.5
+
+services:
+   - postgres
+
+before_script:
+    - cd juanwolf_fr
+
+stages:
+    - test
+    - deploy
+
+job1:
+    stage: test
+    script:
+        python manage.py tests
+    tags:
+        docker
+
