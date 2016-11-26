@@ -1,12 +1,20 @@
 image: python:3.5
 
 services:
-   - postgres
+   - postgreso
+
+variables:
+    POSTGRES_DB: postgres
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
 
 before_script:
     - pip install -r requirements.txt
     - cd juanwolf_fr
     - export DJANGO_SETTINGS_MODULE='juanwolf_fr.settings_dev'
+    - export DATABASE_HOST='postgres'
+    - export DATABASE_USER='postgres'
+    - export DATABASE_PASSWORD='postgres'
 
 stages:
     - test
@@ -14,7 +22,7 @@ stages:
 job1:
     stage: test
     script:
-        - python manage.py test
+        -   python manage.py test
     tags:
         - docker
 
