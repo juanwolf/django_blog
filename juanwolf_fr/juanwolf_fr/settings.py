@@ -12,34 +12,44 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 
 from datetime import date
-from configparser import ConfigParser
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 
 
-config = ConfigParser({
-    'SECRET_KEY': "qwerty1234567890",
-    'DATABASE_USER': 'postgres',
-    'DATABASE_NAME': 'postgres',
-    'DATABASE_HOST': ''
-})
+##############################################################################
+#                              ENV VARIABLES                                 #
+##############################################################################
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'qwerty1234567890')
+
+DATABASE_USER = os.environ.get('DATABASE_USER', 'postgres')
+DATABASE_NAME = os.environ.get('DATABASE_NAME', 'postgres')
+DATABASE_HOST = os.environ.get('DATABASE_HOST', '')
+DATABASE_PORT = os.environ.get('DATABASE_PORT', '5432')
+DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD', '')
+
+SENTRY_PROTOCOL = os.environ.get('SENTRY_PROTOCOL', '')
+SENTRY_USER = os.environ.get('SENTRY_USER', '')
+SENTRY_PASSWORD = os.environ.get('SENTRY_PASSWORD', '')
+SENTRY_URL = os.environ.get('SENTRY_URL', '')
+
+SENTRY_USED = SENTRY_URL != ''
+
 current_dir = os.path.dirname(__file__)
-config.read('%s/settings.ini' % current_dir)
-
-if not config.has_section('secrets'):
-    config.add_section('secrets')
-
-if not config.has_section('database'):
-    config.add_section('database')
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+RAVEN_CONFIG = {
+    'dsn': '%s://%s:%s@%s' % (
+        SENTRY_PROTOCOL,
+        SENTRY_USER,
+        SENTRY_PROTOCOL,
+        SENTRY_URL
+    ),
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config.get('secrets', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -70,8 +80,11 @@ INSTALLED_APPS = (
     'django_jenkins',
     'blogengine',
     'rest_framework',
-    'rest_framework_swagger'
+    'rest_framework_swagger',
 )
+
+if SENTRY_USED:
+    INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
 
 MIDDLEWARE_CLASSES = (
@@ -98,11 +111,11 @@ WSGI_APPLICATION = 'juanwolf_fr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config.get('database', 'DATABASE_NAME'),
-        'USER': config.get('database', 'DATABASE_USER'),
-        'PASSWORD': '',
-        'HOST': config.get('database', 'DATABASE_HOST'),
-        'PORT': '5432',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': DATABASE_PORT,
     }
 }
 # Internationalization
