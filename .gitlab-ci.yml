@@ -13,7 +13,7 @@ stages:
 job1:
     stage: test
     script:
-        python manage.py tests
+        - python manage.py tests
     tags:
-        docker
+        - docker
 
