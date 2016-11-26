@@ -11,7 +11,6 @@ variables:
 before_script:
     - pip install -r requirements.txt
     - cd juanwolf_fr
-    - export DJANGO_SETTINGS_MODULE='juanwolf_fr.settings_dev'
     - export DATABASE_HOST='postgres'
     - export DATABASE_USER='postgres'
     - export DATABASE_PASSWORD='postgres'
