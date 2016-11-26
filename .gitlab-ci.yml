@@ -4,11 +4,11 @@ services:
    - postgres
 
 before_script:
+    - pip install -r requirements.txt
     - cd juanwolf_fr
 
 stages:
     - test
-    - deploy
 
 job1:
     stage: test
