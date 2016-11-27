@@ -12,8 +12,6 @@ variables:
     CONTAINER_TAGGED_IMAGE : registry.gitlab.com/juanwolf/juanwolfs-blog:$CI_BUILD_TAG
 
 before_script:
-    - pip install -r requirements.txt
-    - cd juanwolf_fr
     - export DATABASE_HOST='postgres'
     - export DATABASE_USER='postgres'
     - export DATABASE_PASSWORD='postgres'
@@ -26,6 +24,8 @@ stages:
 job1:
     stage: test
     script:
+        - pip install -r requirements.txt
+        - cd juanwolf_fr
         - python manage.py test
     tags:
         - docker
