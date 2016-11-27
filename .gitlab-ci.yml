@@ -7,6 +7,9 @@ variables:
     POSTGRES_DB: postgres
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
+    CONTAINER_TEST_IMAGE: registry.gitlab.com/juanwolf/juanwolfs-blog:$CI_BUILD_REF_NAME
+    CONTAINER_RELEASE_IMAGE: registry.gitlab.com/juanwolf/juanwolfs-blog:latest
+    CONTAINER_TAGGED_IMAGE : registry.gitlab.com/juanwolf/juanwolfs-blog:$CI_BUILD_TAG
 
 before_script:
     - pip install -r requirements.txt
@@ -14,14 +17,34 @@ before_script:
     - export DATABASE_HOST='postgres'
     - export DATABASE_USER='postgres'
     - export DATABASE_PASSWORD='postgres'
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
 
 stages:
     - test
+    - build
+    - release
 
 job1:
     stage: test
     script:
-        -   python manage.py test
+        - python manage.py test
     tags:
         - docker
+
+
+build1:
+    stage: build
+    script:
+        - docker build --pull -t $CONTAINER_TEST_IMAGE .
+        - docker push $CONTAINER_TEST_IMAGE
+
+release1:
+    stage: release
+    script:
+        - docker pull $CONTAINER_TEST_IMAGE
+        - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
+        - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_TAGGED_IMAGE
+        - docker push $CONTAINER_RELEASE_IMAGE
+    only:
+        - tags
 
