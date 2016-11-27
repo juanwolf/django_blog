@@ -3,202 +3,190 @@
 {% load static %}
 <html lang="{{ CURRENT_LANGUAGE }}">
 
-<head>
+  <head>
     <meta content="width=device-width, user-scalable=no" name="viewport">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" type="image/png" href="{% static "img/favicon.png" %}" />
     <link type="text/css" rel="stylesheet" href="{% static "stylesheets/stylesheet.css" %}" />
-    <title>juanwolf.fr - {% trans "Le site de Jean-Loup Adde" %}</title>
-    <meta name="description" content="{% trans "Le site personnel de Jean-Loup Adde. Vous pouvez retrouver son CV et son blog (programmation, jeux vidéo). Génial, n'est ce pas ?" %}" />
-    <meta name="keywords" content='{% trans "Jean-Loup,Jean-Loup Adde,programmation,devops,juanwolf, juan wolf, jeux vidéo, blog, chat, CV, integrator" %}'/>
+
+    <title>juanwolf.fr - {% trans "Jean-Loup Adde's website" %}</title>
+    <meta name="description" content="{% trans "Jean-Loup Adde's personnal website. You can find his CV and his own blog (programming, video games). Awesome, isn't it?" %}">
+    <meta name="keywords" content="Jean-Loup,Jean-Loup Adde,coding,programming,developer,web developer,devops,juanwolf,juan wolf,video games,blog,chat,CV,resume,adde,jenkins,java,python" />
     <meta name="author" content="Jean-Loup Adde"/>
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@juan__wolf" />
     <meta name="twitter:creator" content="@juan__wolf" />
-    <meta name="twitter:title" content="{% trans "juanwolf.fr Le site de Jean-Loup Adde" %}" />
-    <meta name="twitter:description" content="{% trans "Le site personnel de Jean-Loup Adde. Vous pouvez retrouver son CV et son blog (programmation, jeux vidéo). Génial, n'est ce pas ?" %}" />
-    <meta name="twitter:image" content="https://juanwolf.fr/img/self-portrait-en.jpg"/>
+    <meta name="twitter:title" content="juanwolf.fr - {% trans "Jean-Loup Adde's website" %}" />
+    <meta name="twitter:description" content="{% trans "Jean-Loup Adde's personnal website. You can find his CV and his own blog (programming, video games). Awesome, isn't it?" %}" />
+    <meta name="twitter:image" content="https://juanwolf.fr/img/self-portrait-en.jpg" />
     <meta name="twitter:url" content="https://juanwolf.fr" />
     <meta name="og:url" content="https://juanwolf.fr" />
-    <meta name="og:title" content="{% trans "Le site de Jean-Loup Adde" %}" />
+    <meta name="og:title" content="juanwolf.fr - {% trans "Jean-Loup Adde's website" %}"/>
     <meta name="og:image" content="https://juanwolf.fr/img/self-portrait-en.jpg"/>
-    <meta name="og:description" content="{% trans "Le site personnel de Jean-Loup Adde. Vous pouvez retrouver son CV et son blog (programmation, jeux vidéo). Génial, n'est ce pas ?" %}" />
-    <meta name="og:locale" content="{{ CURRENT_LANGUAGE }}">
+    <meta name="og:description" content="{% trans "Jean-Loup Adde's personnal website. You can find his CV and his own blog (programming, video games). Awesome, isn't it?" %}"/>
+    <meta name="og:locale" content="{{ CURRENT_LANGUAGE }}" />
     <meta name="og:author" content="Jean-Loup Adde" />
     <meta name="og:type" content="article" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <nav>
-            <a id="brand" href="https://juanwolf.fr">juanwolf.fr</a>
-            <ul id="menu-link-list" class="nav nav-pills nav-stacked">
-                <li class="active">
-                    <a href="https://juanwolf.fr">
-                        <i class="fa fa-home fa-fw"></i>
-                        {% trans "Accueil" %}
-                    </a>
-                </li>
-                <li>
-                    <a href="https://blog.juanwolf.fr">
-                        <i class="fa fa-comment-o fa-fw"></i>
-                        Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="https://resume.juanwolf.fr">
-                        <i class="fa fa-file-text-o fa-fw"></i>
-                        CV
-                    </a>
-                </li>
-                <li>
-                    <a href="https://chat.juanwolf.fr">
-                        <i class="fa fa-send fa-fw"></i>
-                        Chat
-                    </a>
-                </li>
-                <li>
-                    <a href="http://ces.juanwolf.fr">
-                        <i class="fa fa-rocket fa-fw"></i>
-                        CES 2015
-                    </a>
-                </li>
-                <li id="language-selection-item">
-                  <form action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <input name="next" type="hidden"
-                                       {% block language-redirection %}{% endblock %}/>
-                    <select name="language" id="language-select-blog">
-                      {% for lang in LANGUAGES %}
-                      <option value="{{ lang.0 }}"
-                              {% if LANGUAGE_CODE == lang.0  %}
-                              selected="selected"
-                              {% endif %}
-                              >{{ lang.1 }}</option>
-                      {% endfor %}
-                    </select>
-                  </form>
-                </li>
-            </ul>
-            <a id="menu-button">
-                <i class="fa fa-bars fa-2x"></i>
+      <nav>
+        <a id="brand" href="https://juanwolf.fr">juanwolf.fr</a>
+        <ul id="menu-link-list" class="nav nav-pills nav-stacked">
+          <li class="active">
+            <a href="https://juanwolf.fr">
+              <i class="fa fa-home fa-fw"></i>
+              {% trans "Home" %}
             </a>
-        </nav>
+          </li>
+          <li>
+            <a href="https://blog.juanwolf.fr">
+              <i class="fa fa-comment-o fa-fw"></i>
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="https://resume.juanwolf.fr">
+              <i class="fa fa-file-text-o fa-fw"></i>
+              {% trans "Resume" %}
+            </a>
+          </li>
+          <li>
+            <a href="https://chat.juanwolf.fr">
+              <i class="fa fa-send fa-fw"></i>
+              Chat
+            </a>
+          </li>
+          <li>
+            <a href="https://ces.juanwolf.fr">
+              <i class="fa fa-rocket fa-fw"></i>
+              CES 2015
+            </a>
+          </li>
+          <li id="language-selection-item">
+            <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden"
+                                 {% block language-redirection %}{% endblock %}/>
+              <select name="language" id="language-select-blog">
+                {% for lang in LANGUAGES %}
+                <option value="{{ lang.0 }}"
+                        {% if LANGUAGE_CODE == lang.0  %}
+                        selected="selected"
+                        {% endif %}
+                        >{{ lang.1 }}</option>
+                {% endfor %}
+              </select>
+            </form>
+          </li>
+        </ul>
+        <a id="menu-button">
+          <i class="fa fa-bars fa-2x"></i>
+        </a>
+      </nav>
     </header>
     <div id="container" class="container">
-        <h1>Bienvenue cher surfeur de la toile !</h1>
-        <p>
-        {% blocktrans %}
-        Bonjour !!! Je suis Jean-Loup Adde, développeur logiciel (principalement python) de {{ age }} ans!
-        J'ai une grande passion pour toutes les technologies autour du web, dev. logiciel, intégration continue, monitoring et j'en passe.
-        D'ailleurs mon site est en quelques sortes mon laboratoire pour tester ces nouvelles technologies.
-        Tout le site est en django, jQuery, le tout est relié à un jenkins qui build des images du site et les déploie sur le registry de gitlab, etc...
-        Si vous voulez en savoir plus sur les technologies utilisées,
-        la section "<a href="http://about.juanwolf.fr">À propos</a>" est là pour répondre à toutes vos questions !
-        {% endblocktrans %}
-        </p>
-        <p>
-        {% blocktrans %} De plus, ce site est totalement gratuit et ne contiendra JAMAIS de publicités. Si jamais vous l'avez aimé et que
-        vous aimeriez participer à ce projet, j'ai ouvert un
-        <a target="_blank"href="https://flattr.com/submit/auto?user_id=juanwolf&url=https://juanwolf.fr/&title=juanwolf.fr&description=Jean-Loup Adde's website&language=fr_FR&tags=programming&category=text">Flattr</a>, vous permettant de contribuer financièrement
-        à la survie du site. Mais vous pouvez aussi contribuer en me donnant des idées de jeux à tester ou des idées d'articles à rédiger.
-        {% endblocktrans %}
-        </p>
-        <p>
-        {% trans "La section 'chat' n'est pas disponible pour le moment, elle le sera peut-être un jour (qui sait ?). Vous trouverez sur ce (magnifique) site :" %}
-        </p>
-
-        <div id="site-sections">
-            <ul>
-                <li>
-                    <a id="blog-link" href="https://blog.juanwolf.fr/">
-                        <span class="fa-stack fa-lg fa-5x">
-                                <i id="background-fa-blog" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-comment-o fa-stack-1x"></i>
-                            </span>
-                            <p>{% trans "Mon blog" %}</p>
-                    </a>
-                </li>
-                <li>
-                    <a id="resume-link" href="https://resume.juanwolf.fr/">
-                        <span class="fa-stack fa-lg fa-5x">
-                                <i id="background-fa-resume" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-file-text-o fa-stack-1x"></i>
-                            </span>
-                            <p>{% trans "Mon CV" %}</p>
-                    </a>
-                </li>
-                <li>
-                    <a id="chat-link" href="https://chat.juanwolf.fr/">
-                        <span class="fa-stack fa-lg fa-5x">
-                                <i id="background-fa-send" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-send fa-stack-1x"></i>
-                            </span>
-                        <p>Chat</p>
-                    </a>
-                </li>
-                <li>
-                    <a id="didit-link" href="http://ces.juanwolf.fr">
-                        <span class="fa-stack fa-lg fa-5x">
-                                <i id="background-fa-apps" class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rocket fa-stack-1x"></i>
-                        </span>
-                        <p>CES 2015</p>
-                    </a>
-                </li>
-                <li></li>
-            </ul>
-        </div>
+      <h1>{% trans "Welcome dear Websurfer !" %}</h1>
+      <p>{% blocktrans %}I'm Jean-Loup Adde, a {{ age }} year old software developer at <a href="http://www.claranet.co.uk">Claranet</a>.
+      I have a crush on all the technologies around the web.
+      That's why my website is kinda of a patchwork of technology.
+      For example the chat section uses node.js (it's down for the moment for security issues), the blog section uses django, I'll not list them all.
+      I really enjoyed making this website and I have written everything that I have used to make this website on the <a href="https://about.juanwolf.fr">'About' section</a>.
+      If you are interested and have any questions about anything or just to say hi do not hesitate to send me a message or a little tweet, I will appreciate it!{% endblocktrans %}
+      </p>
+      <p>
+      {% blocktrans %}This website is totally free and will never use adverts to make profits.
+      If you want to contribute of the survey of this website, I created a <a target="_blank"href="https://flattr.com/submit/auto?user_id=juanwolf&url=https://juanwolf.fr/en/&title=juanwolf.fr&description=Jean-Loup Adde's website&language=en_GB&tags=programming&category=text">Flattr account</a>, but you can also participate giving me articles ideas or video games to try !{% endblocktrans %}
+      </p>
+      <p>
+      'Did It' and the chat are not available for the moment (coming soon, hopefully). Currently, on this (awesome) website, you will be able to find;
+      </p>
+      <div id="site-sections">
+        <ul>
+          <li>
+            <a id="blog-link" href="https://blog.juanwolf.fr/">
+              <span class="fa-stack fa-lg fa-5x">
+                <i id="background-fa-blog" class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-comment-o fa-stack-1x"></i>
+              </span>
+              <p>{% trans "My blog" %}</p>
+            </a>
+          </li>
+          <li>
+            <a id="resume-link" href="https://resume.juanwolf.fr/">
+              <span class="fa-stack fa-lg fa-5x">
+                <i id="background-fa-resume" class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-file-text-o fa-stack-1x"></i>
+              </span>
+              <p>{% trans "My resume" %}</p>
+            </a>
+          </li>
+          <li>
+            <a id="chat-link" href="https://chat.juanwolf.fr/">
+              <span class="fa-stack fa-lg fa-5x">
+                <i id="background-fa-send" class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-send fa-stack-1x"></i>
+              </span>
+              <p>Chat</p>
+            </a>
+          </li>
+          <li>
+            <a id="didit-link" href="http://ces.juanwolf.fr">
+              <span class="fa-stack fa-lg fa-5x">
+                <i id="background-fa-apps" class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rocket fa-stack-1x"></i>
+              </span>
+              <p>CES 2015</p>
+            </a>
+          </li>
+          <li></li>
+        </ul>
+      </div>
     </div>
     <footer>
-        <div id="footer-section">
-            <ul id="footer-sections">
-                <li><a href="https://about.juanwolf.fr">À propos</a>
-                </li>
-                <li><a href="mailto:contact@juanwolf.fr">Contact</a>
-                </li>
-            </ul>
-
-            <ul id="footer-social-network">
-                <li>
-                    <a href='https://twitter.com/juan__wolf' class="fa fa-twitter fa-2x"></a>
-                </li>
-                <li>
-                    <a href="https://plus.google.com/101870222559537773141/" class="fa fa-google-plus fa-2x"></a>
-                </li>
-                <li>
-                    <a href="https://github.com/juanwolf" class="fa fa-github fa-2x"></a>
-                </li>
-                <li>
-                    <a href="https://bitbucket.com/juanwolf" class="fa fa-bitbucket fa-2x"></a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/profile/view?id=218328783" class="fa fa-linkedin-square fa-2x"></a>
-                </li>
-            </ul>
-        </div>
-
-        <script src="{% static "vendor/jquery/dist/jquery.min.js" %}"></script>
-        <script src="{% static "js/main.min.js" %}"></script>
-        <!-- Piwik -->
-        <script type="text/javascript">
-            var _paq = _paq || [];
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function () {
-                var u = (("https:" == document.location.protocol) ? "https" : "http") + "://stats.juanwolf.fr/";
-                _paq.push(['setTrackerUrl', u + 'piwik.php']);
-                _paq.push(['setSiteId', 1]);
-            })();
-        </script>
-        <noscript>
-            <p>
-                <img src="https://stats.juanwolf.fr/piwik.php?idsite=1" style="border:0;" alt="" />
-            </p>
-        </noscript>
-        <script src="{% static "js/lib/piwik.js" %}"></script>
-        <!-- End Piwik Code -->
+      <div id="footer-section">
+        <ul id="footer-sections">
+          <li><a href="https://about.juanwolf.fr">{% trans "About" %}</a>
+          </li>
+          <li><a href="mailto:contact@juanwolf.fr">Contact</a>
+          </li>
+        </ul>
+        <ul id="footer-social-network">
+          <li>
+            <a href='https://twitter.com/juan__wolf' class="fa fa-twitter fa-2x"></a>
+          </li>
+          <li>
+            <a href="https://plus.google.com/101870222559537773141/" class="fa fa-google-plus fa-2x"></a>
+          </li>
+          <li>
+            <a href="https://github.com/juanwolf" class="fa fa-github fa-2x"></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/profile/view?id=218328783" class="fa fa-linkedin-square fa-2x"></a>
+          </li>
+        </ul>
+      </div>
+      <script src="/js/lib/JQuery1.11.js"></script>
+      <script src="/js/index.js"></script>
+      <script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function () {
+  var u = (("https:" == document.location.protocol) ? "https" : "http") + "://stats.juanwolf.fr/";
+  _paq.push(['setTrackerUrl', u + 'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+})();
+      </script>
+      <noscript>
+        <p>
+        <img src="https://stats.juanwolf.fr/piwik.php?idsite=1" style="border:0;" alt="" />
+        </p>
+      </noscript>
+      <script src="/js/lib/piwik.js"></script>
     </footer>
-</body>
+  </body>
 
 </html>
+
