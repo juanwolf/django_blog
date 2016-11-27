@@ -37,6 +37,8 @@ build1:
     script:
         - docker build --pull -t $CONTAINER_TEST_IMAGE .
         - docker push $CONTAINER_TEST_IMAGE
+    tags:
+        - production
 
 release1:
     stage: release
@@ -45,6 +47,8 @@ release1:
         - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
         - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_TAGGED_IMAGE
         - docker push $CONTAINER_RELEASE_IMAGE
+    tags:
+        - production
     only:
         - tags
 
