@@ -4,6 +4,7 @@ MAINTAINER Jean-Loup Adde "jean-loup.adde@juanwolf.fr"
 
 # Change dash to bash
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN apt-get update
 RUN apt-get install -y python3-dev python3-setuptools python3-pip libtiff-dev \
 libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl-dev tk-dev python3-tk \
