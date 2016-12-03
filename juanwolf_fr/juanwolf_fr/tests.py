@@ -2,7 +2,7 @@ import datetime
 
 from django.test import TestCase
 
-from juanwolf_fr import views
+from juanwolf_fr import mixins
 
 
 class DateMock(datetime.date):
@@ -14,7 +14,7 @@ class DateMock(datetime.date):
 class BirthdayContextMixinTest(TestCase):
 
     def setUp(self):
-        self.contextInstance = views.BirthdayContextMixin()
+        self.contextInstance = mixins.BirthdayContextMixin()
         datetime.date = DateMock
 
     def test_get_age_should_return_age_from_settings_values(self):
