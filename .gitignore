@@ -5,7 +5,6 @@
 *.sh
 juanwolfs_blog/django-summernote/*
 *.mo
-media/
 reports/
 virtualenv/
 juanwolfs_blog/juanwolfs_blog/settings.ini
