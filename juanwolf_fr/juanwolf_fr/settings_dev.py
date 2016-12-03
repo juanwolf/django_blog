@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'django_summernote',
     'django_jenkins',
     'blogengine',
+    'resume',
     'rest_framework',
     'rest_framework_swagger'
 )
