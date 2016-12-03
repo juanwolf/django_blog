@@ -21,6 +21,7 @@ ADD . /opt/juanwolf_fr
 
 WORKDIR /opt/juanwolf_fr
 RUN bower --allow-root install
+RUN npm install -g grunt-cli
 RUN npm install
 RUN grunt
 
