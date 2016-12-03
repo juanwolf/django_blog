@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^api/', include('api.urls')),
     # Blog
     url(r'^blog/', include('blogengine.urls')),
+    # Resume
+    url(r'^resume/', include('resume.urls')),
     # Index
     url(r'^$', views.IndexView.as_view(), name="index")
 ]
