@@ -14,3 +14,4 @@ django-debug-toolbar==1.4                       # Debug tool
 django-filter==0.13                             # REST Filtering plugin
 markdown==2.6.6                                 # REST API renderer
 django-rest-swagger==0.3.7                      # REST API doc generator
+whitenoise==3.2.2                               # Serving Static files.
