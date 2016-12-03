@@ -28,7 +28,7 @@ RUN grunt
 WORKDIR /opt/juanwolf_fr/juanwolf_fr
 RUN /opt/virtualenvs/juanwolf_fr/bin/pip install -r /opt/juanwolf_fr/requirements.txt
 RUN /opt/virtualenvs/juanwolf_fr/bin/python manage.py compilemessages
-RUN /opt/virtualenvs/juanwolf_fr/bin/python manage.py collectstatic
+RUN /opt/virtualenvs/juanwolf_fr/bin/python manage.py collectstatic --no-input
 
 EXPOSE 8000
 CMD uwsgi --ini=/opt/juanwolf_fr/juanwolf.fr.ini --pidfile=/opt/juanwolf_fr/site.pid
