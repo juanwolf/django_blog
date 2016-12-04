@@ -65,34 +65,7 @@
 
 
 <footer id="blog-footer">
-    <div id="footer-section">
-        <ul id="footer-sections">
-            <li><a href="http://about.juanwolf.fr">{% trans 'About' %}</a></li>
-            <li><a href="mailto:contact@juanwolf.fr">Contact</a></li>
-        </ul>
-
-        <ul id="footer-social-network">
-            <li>
-                <a href='https://twitter.com/juan__wolf' class="fa fa-twitter fa-2x"></a>
-            </li>
-            <li>
-                <a href="https://plus.google.com/101870222559537773141/" class="fa fa-google-plus fa-2x"></a>
-            </li>
-            <li>
-                <a href="https://github.com/juanwolf" class="fa fa-github fa-2x"></a>
-            </li>
-            <li>
-                <a href="https://bitbucket.com/juanwolf" class="fa fa-bitbucket fa-2x"></a>
-            </li>
-            <li>
-                <a href="https://www.linkedin.com/profile/view?id=218328783" class="fa fa-linkedin-square fa-2x"></a>
-            </li>
-        </ul>
-        <p id="copyright">
-            <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a>
-            - Jean-Loup Adde 2014-{% now "Y" %}
-        </p>
-    </div>
+    {% include "footer-section.html" %}
     <script src="{% static 'js/lib/JQuery1.11.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
     <!-- Piwik -->
