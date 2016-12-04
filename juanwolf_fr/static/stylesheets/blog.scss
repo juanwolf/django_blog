@@ -1,5 +1,5 @@
 body header nav#blog-nav {
-    background-color: $link-fa-background-color-blog; 
+    background-color: $link-fa-background-color-blog;
     a#brand:hover {
         color: $blog-nav-brand-hover-color;
     }
@@ -9,7 +9,7 @@ body header nav#blog-nav {
     }
     ul#menu-link-list {
         background-color: $blog-nav-background-color;
-        li {  
+        li {
             &:hover {
                 background-color: $blog-nav-link-hover-bgc;
                 color: $blog-nav-link-hover-color;
@@ -51,50 +51,50 @@ body header nav#blog-nav {
     padding-top : $container-padding-top;
     padding-left: 5%;
     padding-right: 5%;
-    
+
     @include breakpoint(large) {
-        max-width: 700px;    
+        max-width: 700px;
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     a {
         color: $link-color-font;
-        text-decoration: none;  
+        text-decoration: none;
     }
-    
+
     a:hover {
         text-decoration: underline;
     }
-    
+
     a:visited {
         color: $link-color-font;
     }
-    
+
     p {
         line-height: $blog-post-p-line-height;
         font-size: $blog-post-p-font-size;
         text-align: justify;
     }
-    
+
     #blog-block {
         width: 100%;
     }
-    
+
     .blog-post {
         text-shadow: none;
         padding: 2%;
         border-bottom: $blog-post-border-size solid $blog-post-border-color;
         padding-bottom: $blog-post-margin-bottom;
-        
+
         &:last-of-type {
             border: none;
         }
-        
+
         h1 {
-            letter-spacing: $blog-post-title-letter-spacing;    
+            letter-spacing: $blog-post-title-letter-spacing;
         }
-        
+
         img {
             display: block;
             margin-left: auto;
@@ -102,51 +102,51 @@ body header nav#blog-nav {
             max-width: 100%;
             height:auto;
         }
-        
+
         table {
             border-collapse: collapse;
             width : 100%;
-            
+
             &.gitlab-comparator {
                 tr td:nth-of-type(1) {
                     width : 40%;
                 }
-                
+
             }
             tr {
                 height: $blog-post-p-line-height * 2;
                 text-align: center;
-                
+
                 td:nth-of-type(1) {
                     text-align: left;
                     font-weight: bold;
                     border-right : 1px solid grey;
                     border-bottom : none;
                 }
-                
+
                 td i {
                     font-size : 25px;
                     &.fa-check {
                         color: $blog-nav-background-color;
                     }
-                    
+
                     &.fa-times {
                         color: $chat-nav-background-color;
                     }
                 }
             }
-            
+
             thead tr td {
-                border-bottom: 1px solid grey;   
+                border-bottom: 1px solid grey;
                 font-weight: bold;
             }
         }
-        
+
         .post-edition {
             font-size: $blog-post-post-edition-font-size;
             color: grey;
         }
-        
+
         .post-title {
             margin-top: $blog-post-title-margin-top;
             color: black;
@@ -157,13 +157,13 @@ body header nav#blog-nav {
                 color: inherit;
             }
         }
-        
+
         .post-category, .post-tag {
             a {
                 color: $link-color-font;
             }
         }
-        
+
         .post-content-preview-with-img {
             .post-content-preview-text {
                 @include breakpoint(small) {
@@ -177,7 +177,7 @@ body header nav#blog-nav {
                 margin-top: $blog-post-preview-text-margin-top;
                 margin-bottom: $blog-post-preview-text-margin-bottom;
             }
-            
+
             .post-content-preview-img {
                 @include breakpoint(small) {
                     display: none;
@@ -189,12 +189,12 @@ body header nav#blog-nav {
                 margin-bottom: $blog-post-preview-img-margin-bottom;
             }
         }
-        
+
         .post-content {
             a {
                 color: $link-color-font;
             }
-            
+
             a:visited {
                 color: $link-color-font-visited;
             }
@@ -206,7 +206,7 @@ body header nav#blog-nav {
             float: right;
         }
      }
-    
+
     .pagination {
         position: relative;
         height: $blog-post-pagination-height;
@@ -219,7 +219,7 @@ body header nav#blog-nav {
             left:  0;
         }
     }
-    
+
     // 404
     #not-found-title {
 		font-size: $not-found-title-font-size;
@@ -255,11 +255,5 @@ body header nav#blog-nav {
     background-color: $link-fa-background-color-blog;
     a:hover {
         color: $blog-footer-link-hover-color;
-    }
-    
-    #copyright {
-        text-align: center;
-        margin-bottom: 0;
-        font-size: $blog-post-post-edition-font-size;
     }
 }

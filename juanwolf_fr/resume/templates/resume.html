@@ -28,61 +28,7 @@
 
   <body>
     <header>
-      <nav>
-        <a id="brand" href="https://juanwolf.fr">juanwolf.fr</a>
-        <ul id="menu-link-list" class="nav nav-pills nav-stacked">
-          <li class="active">
-            <a href="https://juanwolf.fr">
-              <i class="fa fa-home fa-fw"></i>
-              {% trans "Home" %}
-            </a>
-          </li>
-          <li>
-            <a href="https://blog.juanwolf.fr">
-              <i class="fa fa-comment-o fa-fw"></i>
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="https://resume.juanwolf.fr">
-              <i class="fa fa-file-text-o fa-fw"></i>
-              {% trans "Resume" %}
-            </a>
-          </li>
-          <li>
-            <a href="https://chat.juanwolf.fr">
-              <i class="fa fa-send fa-fw"></i>
-              Chat
-            </a>
-          </li>
-          <li>
-            <a href="http://ces.juanwolf.fr">
-              <i class="fa fa-rocket fa-fw"></i>
-              CES 2015
-            </a>
-          </li>
-          <li id="language-selection-item">
-            <form action="{% url 'set_language' %}" method="post">
-              {% csrf_token %}
-              <input name="next" type="hidden"
-                                 {% block language-redirection %}{% endblock %}/>
-              <select name="language" id="language-select-blog">
-                {% for lang in LANGUAGES %}
-                <option value="{{ lang.0 }}"
-                        {% if LANGUAGE_CODE == lang.0  %}
-                        selected="selected"
-                        {% endif %}
-                        >{{ lang.1 }}</option>
-                {% endfor %}
-              </select>
-            </form>
-          </li>
-        </ul>
-
-        <a id="menu-button">
-          <i class="fa fa-bars fa-2x"></i>
-        </a>
-      </nav>
+      {% include "navbar.html" %}
     </header>
     <div id="container-resume" class="container">
       <div id="submenu">
@@ -571,30 +517,7 @@
       </div>
     </div>
     <footer>
-      <div id="footer-section">
-        <ul id="footer-sections">
-          <li><a href="https://about.juanwolf.fr">{% trans "About" %}</a>
-          </li>
-          <li><a href="mailto:contact@juanwolf.fr">Contact</a>
-          </li>
-        </ul>
-
-        <ul id="footer-social-network">
-          <li>
-            <a href='https://twitter.com/juan__wolf' class="fa fa-twitter fa-2x"></a>
-          </li>
-          <li>
-            <a href="https://github.com/juanwolf" class="fa fa-github fa-2x"></a>
-          </li>
-          <li>
-            <a href="https://bitbucket.com/juanwolf" class="fa fa-bitbucket fa-2x"></a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/profile/view?id=218328783" class="fa fa-linkedin-square fa-2x"></a>
-          </li>
-        </ul>
-      </div>
-
+      {% include "footer-section.html" %}
       <script src="{% static "js/main.min.js" %}"></script>
       <script type="text/javascript">
 var _paq = _paq || [];
