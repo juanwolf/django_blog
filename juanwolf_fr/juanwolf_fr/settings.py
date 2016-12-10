@@ -186,7 +186,7 @@ SUMMERNOTE_CONFIG = {
     # Or, set editor language/locale forcely
     'lang': 'fr-FR',
     'external_js': (
-        '//juanwolf.fr/js/lib/JQuery1.11.js',
+        '/static/js/main.js',
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
     )
 }
