@@ -1,6 +1,6 @@
 {% load i18n %}
 <nav>
-  <a id="brand" href="{% url 'index' %}">juanwolf.fr</a>
+  <a id="brand" href="{% url "index" %}">juanwolf.fr</a>
   <ul id="menu-link-list" class="nav nav-pills nav-stacked">
     <li class="active">
       <a href="{% url "index" %}">
@@ -35,8 +35,7 @@
     <li id="language-selection-item">
       <form action="{% url 'set_language' %}" method="post">
         {% csrf_token %}
-        <input name="next" type="hidden"
-                           {% block language-redirection %}{% endblock %}/>
+        <input name="next" type="hidden" value="{{ language_redirection_url }}" />
         <select name="language" id="language-select-blog">
           {% for lang in LANGUAGES %}
           <option value="{{ lang.0 }}"

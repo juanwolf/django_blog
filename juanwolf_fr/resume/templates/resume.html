@@ -28,7 +28,8 @@
 
   <body>
     <header>
-      {% include "navbar.html" %}
+      {% url "resume" as resume_path %}
+      {% include "navbar.html" with language_redirection_url=resume_path %}
     </header>
     <div id="container-resume" class="container">
       <div id="submenu">

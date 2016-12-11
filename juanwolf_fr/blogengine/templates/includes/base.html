@@ -32,14 +32,16 @@
 <body>
 <header>
     <nav id="blog-nav">
-        <a id="brand" href="http://juanwolf.fr">juanwolf.fr</a>
+      <a id="brand" href="{% url "index" %}">juanwolf.fr</a>
         <ul id="menu-link-list" class="nav nav-pills nav-stacked">
             {% include "category_list.html" %}
             <li id="language-selection-item">
                 <form action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
                     <input name="next" type="hidden"
-                           {% block language-redirection %}{% endblock %}/>
+                    {% block language-redirection %}
+                                       value="{% url "blog:index" %}"
+                    {% endblock %}/>
                     <select name="language" id="language-select-blog">
                     {% for lang in LANGUAGES %}
                         <option value="{{ lang.0 }}"
