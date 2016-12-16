@@ -182,4 +182,6 @@ class PostsFeed(Feed):
 def page_not_found_view(request, template_name='page_not_found.html'):
     context = RequestContext(request)
     context['categories'] = models.Category.objects.all()
-    return render_to_response(template_name, context)
+    response = render_to_response(template_name, context)
+    response.status_code = 404
+    return response
