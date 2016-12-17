@@ -13,12 +13,12 @@ import os
 
 from datetime import date
 
-import django.conf.global_settings as DEFAULT_SETTINGS
-
 
 ##############################################################################
 #                              ENV VARIABLES                                 #
 ##############################################################################
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get('DEBUG', False)
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'qwerty1234567890')
 
@@ -48,12 +48,6 @@ RAVEN_CONFIG = {
     ),
 }
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
-
 TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = [
@@ -66,7 +60,6 @@ INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 # Application definition
 INSTALLED_APPS = (
     'modeltranslation',
-    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,9 +81,8 @@ if SENTRY_USED:
     INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,7 +90,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-)
+]
+
+# ADD DEBUG OPTIONS
+if DEBUG:
+    INSTALLED_APPS = ('debug_toolbar',) + INSTALLED_APPS
+
+    MIDDLEWARE_CLASSES = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ] + MIDDLEWARE_CLASSES
 
 SITE_ID = 1
 
@@ -162,11 +162,16 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'juanwolf_fr', 'templates')
         ],
         'OPTIONS': {
-            'context_processors': (
-                DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + [
-                    'blogengine.template_context_preprocessor.get_categories'
-                ]
-            )
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'blogengine.template_context_preprocessor.get_categories'
+            ]
         }
     },
 ]
