@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^blog/', include('blogengine.urls')),
     # Resume
     url(r'^resume/', include('resume.urls')),
+    url(r'^about/$', views.AboutView.as_view(), name="about"),
     # Index
     url(r'^$', views.IndexView.as_view(), name="index")
 ]

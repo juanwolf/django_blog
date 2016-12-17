@@ -1,0 +1,121 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta content="width=device-width, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="{% static "stylesheets/stylesheet.css" %}" />
+    <title>juanwolf.fr - {% trans "About" %}</title>
+  </head>
+
+  <body>
+    <header>
+      {% include "navbar.html" %}
+    </header>
+    <div id="container" class="container">
+      <h1>{% trans "About" %} juanwolf.fr</h1>
+      <h2>{% trans "Where are you ?" %}</h2>
+      <p>{% blocktrans %}
+      Welcome to my own website. You'll be able to find my resume, a blog where I'll put technical reviews (software engineering...) and video games posts. Soon, you'll be able to find a chat which gives you the possibility to talk with me (awesome isn't it?). The chat section has been written in node.js and gave me an introduction to this new technology at the time (2014). Now I want to make it again using django channelsi and remoteStorage so I can have a uniform environment using django and you can even use this application and host your own data.
+      {% endblocktrans %}
+      </p>
+      <h2>{% trans "Who am I?" %}</h2>
+      {% url "resume" as resume %}
+      <p>{% blocktrans %}I'm Jean-Loup Adde (thanks to ask). I'm a {{ age }} year old python / django developer at Airinov. If you want to know more about me, I invite you to the <a href="{{ resume}}">resume section</a>{% endblocktrans %}.</p>
+      <h2>{% trans "Why make this website?" %}</h2>
+      <p>{% blocktrans %}I wanted to make my own website first to find a internship for my end of studies (master degree in software engineering (2015)) but also to use the blog to put the stuff that I struggled to do and share it to the internet, etc... All my work is under{% endblocktrans %}
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+        creative common BY-SA 4.0
+      </a>
+      </p>
+      <p>{% blocktrans %}
+      If you want to contribute, please feel free to contact me if you have any idea of a blog post
+      or to give a little tip with{% endblocktrans %}
+      <a href="https://flattr.com/profile/juanwolf" target="_blank">
+        Flattr
+      </a>
+      .
+      </p>
+      <h2>{% trans "What did I use to make it?" %}</h2>
+      <div id="technology-list">
+        <h3>{% trans "Server" %}</h3>
+        <ul>
+          <li>
+            <a href="https://www.archlinux.org">Archlinux</a>
+          </li>
+          <li>
+            <a href="https://nginx.org">Nginx</a>
+          </li>
+          <li>
+            <a href="https://piwik.org">Piwik</a>
+          </li>
+          <li>
+            <a target="_blank" href="https://jenkins-ci.org">Jenkins</a>
+          </li>
+          <li>
+            <a target="_blank" href="http://graphite.wikidot.com/">Graphite</a>
+          </li>
+        </ul>
+        <div class="title-section">
+          <h3>{% trans "General" %}</h3>
+          <p class="code-sections">- (<a href="https://gitlab.com/juanwolf/juanwolf.fr">Code</a>)</p>
+        </div>
+        <ul>
+          <li><a href="https://fortawesome.github.io/Font-Awesome/">Font Awesome</a>
+          </li>
+          <li>
+            <a target="_blank" href="https://jquery.com">jQuery</a>
+          </li>
+        </ul>
+        <div class="title-section">
+          <h3>Blog</h3>
+          <p class="code-sections">- (<a href="https://gitlab.com/juanwolf/juanwolfs-blog/">Code</a>)</p>
+        </div>
+        <ul>
+          <li><a href="https://www.djangoproject.com/">Django</a>
+          </li>
+          <li><a href="https://disqus.com/">Disqus</a>
+          </li>
+        </ul>
+        <div class="title-section">
+          <h3>Chat ({% trans "the outdated one" %})</h3>
+          <p class="code-sections">- (<a href="https://gitlab.com/juanwolf/juanwolfs-chat/">Code</a>)</p>
+        </div>
+        <ul>
+          <li><a href="https://nodejs.org/">Node.js</a>
+          </li>
+          <li><a href="https://socket.io/">Socket.io</a>
+          </li>
+          <li><a href="https://expressjs.com/">Express.js</a>
+          </li>
+          <li><a href="https://nodemailer.com/">NodeMailer</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      {% include "footer-section.html" %}
+      <script src="{% static "js/main.min.js" %}"></script>
+      <script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function () {
+  var u = (("https:" == document.location.protocol) ? "https" : "http") + "://stats.juanwolf.fr/";
+  _paq.push(['setTrackerUrl', u + 'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+})();
+      </script>
+      <noscript>
+        <p>
+        <img src="https://stats.juanwolf.fr/piwik.php?idsite=1" style="border:0;" alt="" />
+        </p>
+      </noscript>
+    </footer>
+  </body>
+
+</html>
