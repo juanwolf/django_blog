@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-27 15:18+0000\n"
+"POT-Creation-Date: 2016-12-17 17:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,12 +32,11 @@ msgid "All our engineers are working on it. We'll fix this problem soon."
 msgstr "All our engineers are working on it. We'll fix this problem soon."
 
 #: blogengine/templates/category_list.html:3
-#: juanwolf_fr/templates/index.html:40 juanwolf_fr/templates/resume.html:37
+#: juanwolf_fr/templates/navbar.html:8
 msgid "Home"
 msgstr "Home"
 
-#: blogengine/templates/includes/base.html:9
-#: juanwolf_fr/templates/resume.html:184
+#: blogengine/templates/includes/base.html:9 resume/templates/resume.html:131
 msgid "juanwolf's blog"
 msgstr "juanwolf's blog"
 
@@ -46,11 +45,6 @@ msgstr "juanwolf's blog"
 #: blogengine/templates/includes/base.html:24
 msgid "A blog about Software Engineering, video-games"
 msgstr "A blog about Software Engineering and video-games"
-
-#: blogengine/templates/includes/base.html:70
-#: juanwolf_fr/templates/index.html:150 juanwolf_fr/templates/resume.html:576
-msgid "About"
-msgstr "About"
 
 #: blogengine/templates/includes/base_post.html:6
 msgid "Category:"
@@ -136,6 +130,77 @@ msgstr "RSS feed - posts"
 msgid "RSS feed - blog posts"
 msgstr "RSS feed - blog posts"
 
+#: juanwolf_fr/templates/about.html:12 juanwolf_fr/templates/about.html:20
+#: juanwolf_fr/templates/footer-section.html:4
+msgid "About"
+msgstr "About"
+
+#: juanwolf_fr/templates/about.html:21
+msgid "Where are you ?"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:22
+msgid ""
+"\n"
+"      Welcome to my own website. You'll be able to find my resume, a blog "
+"where I'll put technical reviews (software engineering...) and video games "
+"posts. Soon, you'll be able to find a chat which gives you the possibility "
+"to talk with me (awesome isn't it?). The chat section has been written in "
+"node.js and gave me an introduction to this new technology at the time "
+"(2014). Now I want to make it again using django channelsi and remoteStorage "
+"so I can have a uniform environment using django and you can even use this "
+"application and host your own data.\n"
+"      "
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:26
+msgid "Who am I?"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:28
+#, python-format
+msgid ""
+"I'm Jean-Loup Adde (thanks to ask). I'm a %(age)s year old python / django "
+"developer at Airinov. If you want to know more about me, I invite you to the "
+"<a href=\"%(resume)s\">resume section</a>"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:29
+msgid "Why make this website?"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:30
+msgid ""
+"I wanted to make my own website first to find a internship for my end of "
+"studies (master degree in software engineering (2015)) but also to use the "
+"blog to put the stuff that I struggled to do and share it to the internet, "
+"etc... All my work is under"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:35
+msgid ""
+"\n"
+"      If you want to contribute, please feel free to contact me if you have "
+"any idea of a blog post\n"
+"      or to give a little tip with"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:43
+msgid "What did I use to make it?"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:45
+msgid "Server"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:64
+msgid "General"
+msgstr ""
+
+#: juanwolf_fr/templates/about.html:85
+msgid "the outdated one"
+msgstr ""
+
 #: juanwolf_fr/templates/index.html:12 juanwolf_fr/templates/index.html:19
 #: juanwolf_fr/templates/index.html:24
 msgid "Jean-Loup Adde's website"
@@ -148,15 +213,11 @@ msgid ""
 "(programming, video games). Awesome, isn't it?"
 msgstr ""
 
-#: juanwolf_fr/templates/index.html:52 juanwolf_fr/templates/resume.html:49
-msgid "Resume"
-msgstr ""
-
-#: juanwolf_fr/templates/index.html:90
+#: juanwolf_fr/templates/index.html:37
 msgid "Welcome dear Websurfer !"
 msgstr ""
 
-#: juanwolf_fr/templates/index.html:91
+#: juanwolf_fr/templates/index.html:38
 #, python-format
 msgid ""
 "I'm Jean-Loup Adde, a %(age)s year old software developer at <a href="
@@ -173,7 +234,7 @@ msgid ""
 "appreciate it!"
 msgstr ""
 
-#: juanwolf_fr/templates/index.html:99
+#: juanwolf_fr/templates/index.html:46
 msgid ""
 "This website is totally free and will never use adverts to make profits.\n"
 "      If you want to contribute of the survey of this website, I created a "
@@ -184,143 +245,154 @@ msgid ""
 "but you can also participate giving me articles ideas or video games to try !"
 msgstr ""
 
-#: juanwolf_fr/templates/index.html:113
+#: juanwolf_fr/templates/index.html:50
+msgid ""
+"The chat is not available for the moment (coming soon, hopefully). "
+"Currently, on this (awesome) website, you will be able to find:"
+msgstr ""
+
+#: juanwolf_fr/templates/index.html:60
 msgid "My blog"
 msgstr ""
 
-#: juanwolf_fr/templates/index.html:122
+#: juanwolf_fr/templates/index.html:69
 msgid "My resume"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:11 juanwolf_fr/templates/resume.html:18
-#: juanwolf_fr/templates/resume.html:22
+#: juanwolf_fr/templates/navbar.html:20
+msgid "Resume"
+msgstr ""
+
+#: resume/templates/resume.html:11 resume/templates/resume.html:18
+#: resume/templates/resume.html:22
 msgid "Jean-Loup Adde's resume"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:12
+#: resume/templates/resume.html:12
 msgid ""
 "Hello, I am Jean-Loup Adde and I am a web / software developer. I am "
 "currently employed at Airinov as a django developer."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:19 juanwolf_fr/templates/resume.html:23
+#: resume/templates/resume.html:19 resume/templates/resume.html:23
 msgid "Jean-Loup Adde's resume. Programming and Ops are my main skill."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:90
+#: resume/templates/resume.html:37
 #, fuzzy
 #| msgid "About"
 msgid "About me"
 msgstr "About"
 
-#: juanwolf_fr/templates/resume.html:92
+#: resume/templates/resume.html:39
 msgid "Education"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:94
+#: resume/templates/resume.html:41
 msgid "Experience"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:96
+#: resume/templates/resume.html:43
 msgid "Projects"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:98
+#: resume/templates/resume.html:45
 msgid "Skills"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:100 juanwolf_fr/templates/resume.html:267
+#: resume/templates/resume.html:47 resume/templates/resume.html:214
 msgid "Languages"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:102
+#: resume/templates/resume.html:49
 msgid "Activities"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:107
+#: resume/templates/resume.html:54
 msgid ""
 "Jean-Loup giving an introduction of the django framework at Codeurs En Seine "
 "in Rouen."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:110
+#: resume/templates/resume.html:57
 msgid "Software developer"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:113
+#: resume/templates/resume.html:60
+#, python-format
 msgid ""
-"Hello, my name is Jean-Loup Adde and I am a 23 year old python / django "
-"developer at Airinov. I love experimenting and using new technologies around "
-"software and web development. I'm quite a passionate to make life easier for "
-"users but aswell for developers and that's why I'm huge fan of continuous "
-"intgeration and automatization. You can contact me at\n"
+"Hello, my name is Jean-Loup Adde and I am a %(age)s year old System "
+"developer at Claranet. I love experimenting and using new technologies "
+"around software and web development. I'm quite a passionate to make life "
+"easier for users but aswell for developers and that's why I'm huge fan of "
+"continuous intgeration and automatization. You can contact me at\n"
 "        <a href=\"mailto:juanwolf@juanwolf.fr\">jean-loup.adde@juanwolf.fr</"
 "a>."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:118
+#: resume/templates/resume.html:65
 msgid "Where have I studied ?"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:121
+#: resume/templates/resume.html:68
 msgid ""
 "Master degree in software development at the University of Rouen (2013-2015)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:122
+#: resume/templates/resume.html:69
 msgid ""
 "Modules studied: C++, .NET, JEE, semantic web, web security, relational "
 "database, web languages 2 (XML and technologies around it), data mining and "
 "learning, projects management, code theory, UML, distributed computing."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:125
+#: resume/templates/resume.html:72
 msgid "Erasmus exchange at the University of Valladolid (Spain) (2013-2014)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:126
+#: resume/templates/resume.html:73
 msgid ""
 "Modules studied: UML, software quality, android, projects management, "
 "parallel computing."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:129
+#: resume/templates/resume.html:76
 msgid "BSc degree in computer science at the University of Rouen (2010-2013)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:130
+#: resume/templates/resume.html:77
 msgid ""
 "Modules studied: Web languages (XHTML, CSS, PHP, JS), MMI, OOP, network "
 "programming, system programming, algorithmic, infographism, languages "
 "theory, graph theory, databases administration, communication"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:135
+#: resume/templates/resume.html:82
 msgid "Where have I worked?"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:138
+#: resume/templates/resume.html:85
 msgid "Python / Django developer at Airinov"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:140
+#: resume/templates/resume.html:87
 msgid ""
 "Developing on an existing application used by client to follow their orders. "
 "Developing an internal application to inspect multiple datas in the database "
 "and building a REST API."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:143
+#: resume/templates/resume.html:90
 msgid ""
 "Notions  viewed: Python 2.7, django, django rest framework, celery, factory-"
 "boy,  js, jQuery, bootstrap, AWS, PostgreSQL, git."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:147
+#: resume/templates/resume.html:94
 msgid "Software Developer internship at Masternaut"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:148
+#: resume/templates/resume.html:95
 msgid ""
 "Creation of an application which is connected to an elasticsearch and create "
 "automatically scenarios (simulations) to test performances of an REST API."
@@ -329,124 +401,124 @@ msgid ""
 "database to an elasticsearch (python 3)."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:149
+#: resume/templates/resume.html:96
 msgid ""
 "Notion viewed: Scala, Gatling, Java 8, JUnit, Elasticsearch, Python, "
 "Jenkins, Sonar, Graphite, Grafana, Bash, Git, GitBlit"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:153
+#: resume/templates/resume.html:100
 msgid "Webmaster internship for the city of Rouen"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:154
+#: resume/templates/resume.html:101
 msgid ""
 "Creation of a portail for 2013 summer manifestations at the city of Rouen. "
 "In charge of the front-end development of the portal and the content "
 "management with Drupal 6."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:155
+#: resume/templates/resume.html:102
 msgid ""
 "Notions viewed: PHP, CSS, HTML, SASS, unix system, web management, "
 "responsive web design, Drupal 6, Drupal theming, Git"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:160
+#: resume/templates/resume.html:107
 msgid "What have I made?"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:162
+#: resume/templates/resume.html:109
 msgid "Personal"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:167
+#: resume/templates/resume.html:114
 msgid ""
 "My own website, <a href='https://juanwolf.fr'>juanwolf.fr</a>, where you "
 "currently find yourself and have the pleasure to browse. This project "
 "contains the resume, the portal, the responsive menu and the 404 page."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:168
+#: resume/templates/resume.html:115
 msgid ""
 "Technologies used: HTML5, CSS3, javascript, SASS, jQuery 1.11, Font Awesome, "
 "Responsive Web Design, Git"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:174
+#: resume/templates/resume.html:121
 msgid ""
 "Hooks for git to block every commit that doesn't match the standard choosed "
 "by the syntax requirements of the projects. Hooks are available for python "
 "with pep8 and for javascript with jshint."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:175
+#: resume/templates/resume.html:122
 msgid "Technologies used: Bash, git."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:178
+#: resume/templates/resume.html:125
 msgid "Language router"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:180
+#: resume/templates/resume.html:127
 msgid ""
 "Router created for the language switch and management for juanwolf.fr. The "
 "language management follows the W3C requirements (cookie and autodetection "
 "with the HTTP header)."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:181
+#: resume/templates/resume.html:128
 msgid "Technologies used: Golang, javascript, git"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:186
+#: resume/templates/resume.html:133
 msgid "A blog where I write my own technical reviews and video games articles."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:187
+#: resume/templates/resume.html:134
 msgid ""
 "Technologies used: Python, Django, PostgreSQL, HTML5, CSS3, SASS, jQuery "
 "1.11, Git, Gatling, Jenkins, Travis, Gitlab CI, Grunt, Bower"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:190
+#: resume/templates/resume.html:137
 #, fuzzy
 #| msgid "juanwolf's blog"
 msgid "Juanwolf's chat"
 msgstr "juanwolf's blog"
 
-#: juanwolf_fr/templates/resume.html:192
+#: resume/templates/resume.html:139
 msgid "A chat where you can talk with me (unbelievable I know)."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:193
+#: resume/templates/resume.html:140
 msgid ""
 "Technologies used: javascript, node.js, socket.io, nodemailer, express.js, "
 "HTML5, desktop notifications, CSS3, SASS, jQuery 1.11, git."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:198
+#: resume/templates/resume.html:145
 #, fuzzy
 #| msgid "juanwolf's blog"
 msgid "juanwolf's blog app"
 msgstr "juanwolf's blog"
 
-#: juanwolf_fr/templates/resume.html:200
+#: resume/templates/resume.html:147
 msgid ""
 "A ionic 2 application retrieving informations from the REST API of the blog."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:201
+#: resume/templates/resume.html:148
 msgid "Technologies used: Ionic 2, AngularJS 2, SASS, CSS3, SASS, Git"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:205
+#: resume/templates/resume.html:152
 msgid ""
 "Blog application for <a href='http://www.codeursenseine.com/' "
 "target='_blank'>Codeurs En Seine 2015</a>"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:208
+#: resume/templates/resume.html:155
 msgid ""
 "Little django application live coded during the presentation <a "
 "target='_blank' href='http://www.codeursenseine.com/2015/speakers."
@@ -454,19 +526,19 @@ msgid ""
 "2015</a>"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:210
+#: resume/templates/resume.html:157
 msgid "Technologies used: HTML5, Bootstrap, git, django, reveal.js"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:215
+#: resume/templates/resume.html:162
 msgid "University"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:218
+#: resume/templates/resume.html:165
 msgid "DRUMS - Discovery, Retrieval & Understanding of Music System"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:220
+#: resume/templates/resume.html:167
 #, python-format
 msgid ""
 "Project joining together all the promotion (33 students) 2014/2015 of the "
@@ -489,13 +561,13 @@ msgid ""
 "              "
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:229
+#: resume/templates/resume.html:176
 msgid ""
 "Technologies used: Jenkins, nexus, apache, tomcat 7, maven, spring, angular "
 "js, html5, css3."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:234
+#: resume/templates/resume.html:181
 msgid ""
 "A web platform for chessboard games. It was a six month project assigned as "
 "part of the project management module. I was given the task to develop the "
@@ -503,120 +575,120 @@ msgid ""
 "university. Role: System administrator and technical chief."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:235
+#: resume/templates/resume.html:182
 msgid ""
 "Technologies used: code igniter, PHP 5, HTML5, CSS3, node.js, jQuery 1.9, "
 "bash"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:238
+#: resume/templates/resume.html:185
 msgid "Resume Manager REST Server"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:240
+#: resume/templates/resume.html:187
 msgid ""
 "A server that provides XML resumes. Based on a REST architecture, only the "
 "GET and PUT are implemented."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:241
+#: resume/templates/resume.html:188
 msgid "Technologies used: java 7, spring, git"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:246
+#: resume/templates/resume.html:193
 msgid ""
 "A Phonegap application that uses the XML REST Server. Only the GET and PUT "
 "methods are implemented."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:247
+#: resume/templates/resume.html:194
 msgid ""
 "Technologies used: phonegap, HTML5, CSS3, jQuery 2.0, ajax, jQuery Mobile "
 "1.4.2"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:251
+#: resume/templates/resume.html:198
 msgid ""
 "A swing application about the rush hour game (<a href='https://www.jeu.fr/"
 "jeu/rush_hour_2' target='_blank'>A web version of the game</a>)."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:252
+#: resume/templates/resume.html:199
 msgid "Technologies used: swing, java 6"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:255
+#: resume/templates/resume.html:202
 msgid "Web calendar"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:256
+#: resume/templates/resume.html:203
 msgid ""
 "A web application that gives the user the ability to manage events and "
 "customize their own calendar."
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:257
+#: resume/templates/resume.html:204
 msgid ""
 "Technologies used: XHTML, CSS 2, javascript, PHP 5, MySQL, ajax, jQuery 1.9"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:264
+#: resume/templates/resume.html:211
 msgid "What can I use ?"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:264
+#: resume/templates/resume.html:211
 msgid "(Ranked by preference of what I enjoy using)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:478
+#: resume/templates/resume.html:425
 msgid "Databases"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:513
+#: resume/templates/resume.html:460
 msgid "Servers"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:550
+#: resume/templates/resume.html:497
 msgid "What languages can I speak?"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:552
+#: resume/templates/resume.html:499
 msgid "French"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:553
+#: resume/templates/resume.html:500
 msgid "Native language"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:555
+#: resume/templates/resume.html:502
 msgid "English"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:556 juanwolf_fr/templates/resume.html:559
+#: resume/templates/resume.html:503 resume/templates/resume.html:506
 msgid "Conversational and professionnal skills"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:558
+#: resume/templates/resume.html:505
 msgid "Spanish"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:564
+#: resume/templates/resume.html:511
 msgid "What do I enjoy doing?"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:566
+#: resume/templates/resume.html:513
 msgid "Music (Guitar, Ukulele, MAO)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:567
+#: resume/templates/resume.html:514
 msgid "Video games (RPG, FPS)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:568
+#: resume/templates/resume.html:515
 msgid "Sport (Tennis, Football, Running 5k, 10k)"
 msgstr ""
 
-#: juanwolf_fr/templates/resume.html:569
+#: resume/templates/resume.html:516
 msgid "Experimenting with and using new technologies"
 msgstr ""
 
