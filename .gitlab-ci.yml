@@ -35,7 +35,7 @@ build1:
     stage: build
     script:
         - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-        - docker build --pull -t $CONTAINER_TEST_IMAGE .
+        - docker build --pull -t $CONTAINER_TEST_IMAGE -f ./docker/Dockerfile .
         - docker push $CONTAINER_TEST_IMAGE
     tags:
         - production
