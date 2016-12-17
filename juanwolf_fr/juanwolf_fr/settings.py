@@ -174,7 +174,7 @@ TEMPLATES = [
 # Summernote configuration
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode
-    'iframe': False,  # or set False to use SummernoteInplaceWidget - no iframe mode
+    'iframe': True,
 
     # Using Summernote Air-mode
     'airMode': False,
@@ -186,8 +186,10 @@ SUMMERNOTE_CONFIG = {
     # Or, set editor language/locale forcely
     'lang': 'fr-FR',
     'external_js': (
-        '/static/js/main.js',
         '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'
+    ),
+    'internal_js': (
+        '/static/js/main.min.js',
     )
 }
 
