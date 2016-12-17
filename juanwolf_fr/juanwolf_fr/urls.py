@@ -2,9 +2,13 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 
+from rest_framework_swagger.views import get_swagger_view
+
 from juanwolf_fr import views
 
 admin.autodiscover()
+
+schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
     # Summernote
@@ -15,7 +19,7 @@ urlpatterns = [
     # Admin
     url(r'^admin/', include(admin.site.urls)),
     # API
-    url(r'^api/docs/', include('rest_framework_swagger.urls')),
+    url(r'^api/docs/', schema_view),
     url(r'^api/', include('api.urls')),
     # Blog
     url(r'^blog/', include('blogengine.urls')),

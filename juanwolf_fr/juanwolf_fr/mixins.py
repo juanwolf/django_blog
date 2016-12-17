@@ -22,4 +22,3 @@ class BirthdayContextMixin(generic.base.ContextMixin):
         context = super(BirthdayContextMixin, self).get_context_data(**kwargs)
         context['age'] = self.get_age()
         return context
-
