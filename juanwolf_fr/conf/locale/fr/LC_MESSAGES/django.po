@@ -417,7 +417,7 @@ msgstr ""
 
 #: resume/templates/resume.html:106
 msgid "What have I made?"
-msgstr ""
+msgstr "Qu'ai-je créé ?"
 
 #: resume/templates/resume.html:108
 msgid "Personal"
