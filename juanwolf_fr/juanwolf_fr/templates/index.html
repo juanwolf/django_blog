@@ -35,11 +35,12 @@
     </header>
     <div id="container" class="container">
       <h1>{% trans "Welcome dear Websurfer !" %}</h1>
+      {% url 'about' as about_url %}
       <p>{% blocktrans %}I'm Jean-Loup Adde, a {{ age }} year old software developer at <a href="http://www.claranet.co.uk">Claranet</a>.
       I have a crush on all the technologies around the web.
       That's why my website is kinda of a patchwork of technology.
       For example the chat section uses node.js (it's down for the moment for security issues), the blog section uses django, I'll not list them all.
-      I really enjoyed making this website and I have written everything that I have used to make this website on the <a href="{% url 'about' %}">'About' section</a>.
+      I really enjoyed making this website and I have written everything that I have used to make this website on the <a href="{{ about_url }}">'About' section</a>.
       If you are interested and have any questions about anything or just to say hi do not hesitate to send me a message or a little tweet, I will appreciate it!{% endblocktrans %}
       </p>
       <p>
