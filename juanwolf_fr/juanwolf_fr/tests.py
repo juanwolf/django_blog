@@ -1,22 +1,17 @@
 import datetime
 
 from django.test import TestCase
+from freezegun import freeze_time
 
 from juanwolf_fr import mixins
-
-
-class DateMock(datetime.date):
-    @classmethod
-    def today(cls):
-        return cls(2016, 11, 25)
 
 
 class BirthdayContextMixinTest(TestCase):
 
     def setUp(self):
         self.contextInstance = mixins.BirthdayContextMixin()
-        datetime.date = DateMock
 
+    @freeze_time("2016-11-26")
     def test_get_age_should_return_age_from_settings_values(self):
         birthday_date = datetime.date(2000, 1, 1)
         age_expected = 16
