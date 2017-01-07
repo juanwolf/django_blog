@@ -1,0 +1,24 @@
+{% load i18n %}
+<div id="footer-section">
+  <ul id="footer-sections">
+    <li><a href="{% url "about" %}">{% trans 'About' %}</a></li>
+    <li><a href="mailto:contact@juanwolf.fr">Contact</a></li>
+  </ul>
+
+  <ul id="footer-social-network">
+    <li>
+      <a href='https://twitter.com/juan__wolf' class="fa fa-twitter fa-2x"></a>
+    </li>
+    <li>
+      <a href="https://github.com/juanwolf" class="fa fa-github fa-2x"></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/jean-loup-adde-81314b61" class="fa fa-linkedin-square fa-2x"></a>
+    </li>
+  </ul>
+  <p id="copyright">
+  <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC 4.0 BY-SA</a>
+  - Jean-Loup Adde 2014-{% now "Y" %}
+  </p>
+</div>
+
