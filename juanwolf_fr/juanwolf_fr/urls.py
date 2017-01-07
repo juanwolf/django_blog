@@ -22,12 +22,7 @@ urlpatterns = [
     url(r'^api/docs/', schema_view),
     url(r'^api/', include('api.urls')),
     # Blog
-    url(r'^blog/', include('blogengine.urls')),
-    # Resume
-    url(r'^resume/', include('resume.urls')),
-    url(r'^about/$', views.AboutView.as_view(), name="about"),
-    # Index
-    url(r'^$', views.IndexView.as_view(), name="index")
+    url(r'', include('blogengine.urls')),
 ]
 
 handler404 = 'blogengine.views.page_not_found_view'

@@ -72,7 +72,6 @@ INSTALLED_APPS = (
     'django_summernote',
     'django_jenkins',
     'blogengine',
-    'resume',
     'rest_framework',
     'rest_framework_swagger',
 )
@@ -158,9 +157,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
-        'DIRS': [
-            os.path.join(BASE_DIR, 'juanwolf_fr', 'templates')
-        ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
