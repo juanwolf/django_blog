@@ -20,6 +20,7 @@ from datetime import date
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
+ALLOWED_HOSTS_STRING = os.environ.get('ALLOWED_HOSTS', '*')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'qwerty1234567890')
 
 DATABASE_USER = os.environ.get('DATABASE_USER', 'postgres')
@@ -50,10 +51,7 @@ RAVEN_CONFIG = {
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = [
-    'blog.juanwolf.fr', "juanwolf.fr", "resume.juanwolf.fr", "127.0.0.1",
-    'localhost'
-]
+ALLOWED_HOSTS = ALLOWED_HOSTS_STRING.split(',')
 
 INTERNAL_IPS = ['127.0.0.1', '0.0.0.0']
 
