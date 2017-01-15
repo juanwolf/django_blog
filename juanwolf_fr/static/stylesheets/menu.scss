@@ -1,0 +1,175 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: $body-font-family;
+
+    header nav {
+		position: fixed;
+		z-index: 2;
+		top: 0;
+        display : inline-block;
+        background-color : $menu-background-color;
+        color : $menu-font-color;
+        margin-bottom: $menu-margin-bottom;
+        width : 100%;
+        height : $menu-height;
+        line-height: $menu-height;
+
+        #brand {
+            display: inline-block;
+            float: left;
+            margin-left: $menu-brand-margin-left;
+            margin-right: $menu-brand-margin-right;
+            font-size: $menu-brand-font-size;
+        }
+
+        a {
+            display: inline-block;
+            color: $menu-font-color;
+            text-decoration: none;
+            @include breakpoint(large) {
+                text-align: center;
+            }
+            &:hover {
+                color: $menu-brand-hover-color;
+            }
+        }
+
+        ul {
+            @include breakpoint(small-medium) {
+                padding: 0;
+                margin: 0;
+                position: fixed;
+                top: $menu-height;
+                bottom: 0;
+                width: $menu-translate-x;
+                right: -$menu-translate-x;
+                height: 100%;
+
+                @include transition($menu-transition-time, $menu-transition-type);
+
+                &.active-false {
+                    @include translate(0px, 0px);
+                }
+                &.active-true {
+                    background-color: $menu-background-color;
+                    @include translate(-$menu-translate-x, 0px);
+                }
+            }
+            margin-top : 0;
+
+            li {
+                list-style: none;
+                float: left;
+                line-height: $menu-height;
+
+                &:hover {
+                    background-color: $menu-background-color-hover;
+                }
+
+                @include breakpoint(large) {
+                    display: inline-block;
+                }
+
+				@include breakpoint(large) {
+					width: 10%;
+				}
+
+				/*@include breakpoint(medium) {
+					width: 15%;
+				}*/
+
+                @include breakpoint(small-medium) {
+                    width: $menu-width;
+                    clear: both;
+					padding-left: $menu-link-margin-left;
+                }
+
+                a {
+                    display: block;
+					.fa {
+						@include breakpoint(large) {
+							display: none;
+						}
+						margin-right: $menu-link-i-margin-right;
+					}
+
+                }
+
+                a:hover {
+                    background-color: inherit;
+                    color: $menu-font-color-hover;
+                }
+
+                &#language-selection-item {
+                    height: $menu-height;
+                    @include breakpoint(large) {
+                        margin-left: 10%;
+                        width: 175px;
+                    }
+
+                    @include breakpoint(small-medium) {
+                        margin-top: 5%;
+                    }
+                    .customSelect {
+                        @include border-radius($menu-select-border-radius);
+                        @include breakpoint(large) {
+                            width: 70%;
+
+                        }
+                        margin-top: $menu-select-margin-top;
+                        margin-bottom: $menu-select-margin-bottom;
+                        width: 65%;
+                        height: 40px;
+                        padding-left: 10px;
+                        background-color: $menu-select-background-color;
+                        height: $menu-select-height;
+
+                    }
+
+                    .customSelectInner {
+                        width: $menu-select-inner-width;
+                        line-height: $menu-select-inner-line-height;
+                        vertical-align: top;
+                        &:after {
+                            @include breakpoint(large) {
+                                padding-left: 50%;
+                            }
+                            @include breakpoint(small-medium) {
+                                padding-left: 30%;
+                            }
+                            font-family: FontAwesome;
+                            content: "\F0D7";
+                        }
+                    }
+                }
+            }
+        }
+
+        #menu-button {
+            @include breakpoint(large) {
+                display: none;
+            }
+            float: right;
+            margin-top: $menu-link-margin-top;
+            margin-right: 5%;
+            cursor: pointer;
+        }
+    }
+
+    .container {
+		z-index: 1;
+		padding-top : $container-padding-top;
+        @include breakpoint(small-medium) {
+            @include transition($menu-transition-time, $menu-transition-type);
+
+            &.active-false {
+                @include translate(0px, 0px);
+            }
+
+            &.active-true {
+                @include translate(-$menu-translate-x, 0px);
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+// Stylesheet for the about page.
+
+#technology-list {
+	ul {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+	a:visited {
+		color: $link-color-font-visited;
+	}
+	a {
+		text-decoration: none;
+		color: $link-color-font;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	
+	h3 {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.code-sections {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
