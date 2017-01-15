@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta content="width=device-width, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}{% endblock %} {% trans "juanwolf's blog" %}</title>
+    {% load staticfiles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'stylesheets/stylesheet.css' %}" />
+    {% block head_block %}
+    <meta name="description" content="{% trans "A blog about Software Engineering, video-games" %}">
+    <meta name="keywords" content="blog, juanwolf, Jean-Loup, Adde, Software, Logiciel, video-games, jeux-vidéo" />
+    <meta name="author" content="Jean-Loup Adde"/>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@juan__wolf" />
+    <meta name="twitter:creator" content="@juan__wolf" />
+    <meta name="twitter:title" content="blog.juanwolf.fr" />
+    <meta name="twitter:description" content="{% trans "A blog about Software Engineering, video-games" %}" />
+    <meta name="twitter:url" content="{{ current_path }}" />
+    <meta name="og:url" content="{{ current_path }}" />
+    <meta name="og:title" content="blog.juanwolf.fr"/>
+    <meta name="og:description" content="{% trans "A blog about Software Engineering, video-games" %}" />
+    <meta name="og:locale" content="{{ LANGUAGE_CODE }}">
+    <meta name="og:author" content="Jean-Loup Adde" />
+    <meta name="og:type" content="article" />
+
+     {% endblock %}
+</head>
+
+<body>
+<header>
+    <nav id="blog-nav">
+      <a id="brand" href="https://juanwolf.fr">juanwolf.fr</a>
+        <ul id="menu-link-list" class="nav nav-pills nav-stacked">
+            {% include "category_list.html" %}
+            <li id="language-selection-item">
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden"
+                    {% block language-redirection %}
+                                       value="{% url "blog:index" %}"
+                    {% endblock %}/>
+                    <select name="language" id="language-select-blog">
+                    {% for lang in LANGUAGES %}
+                        <option value="{{ lang.0 }}"
+                            {% if LANGUAGE_CODE == lang.0  %}
+                                selected="selected"
+                            {% endif %}
+                        >{{ lang.1 }}</option>
+                    {% endfor %}
+                    </select>
+
+                </form>
+            </li>
+        </ul>
+        <a id="menu-button">
+            <i class="fa fa-bars fa-2x"></i>
+        </a>
+    </nav>
+</header>
+
+<div id="blog-container" class="container">
+    {% block content %} {% endblock %}
+</div>
+
+
+<footer id="blog-footer">
+    {% include "includes/footer-section.html" %}
+    <script src="{% static 'js/lib/JQuery1.11.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.juanwolf.fr/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 2]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="http://stats.juanwolf.fr/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+</footer>
+</body>
+</html>

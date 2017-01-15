@@ -1,0 +1,25 @@
+{% extends "includes/base.html" %}
+{% block language-redirection %}
+    {% load i18n %}
+    {% if LANGUAGE_CODE == "en" %}
+        {% language 'fr' %}
+            value="{% url "blog:tag-detail" tag.slug %}"
+        {% endlanguage %}
+    {% else %}
+        {% language 'en' %}
+            value="{% url "blog:tag-detail" tag.slug %}"
+        {%  endlanguage %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% load i18n %}
+    <h1>{{ tag.name }}</h1>
+    <p>{{ tag.description }}</p>
+    {% for post in object_list %}
+        {% include "post_preview_template.html" %}
+    {% empty %}
+        <p> {% trans "There's no post for this tag for the moment" %} =(
+            {% trans "All our engineers are working on it. We'll fix this problem soon." %}
+        </p>
+    {% endfor %}
+{% endblock %}

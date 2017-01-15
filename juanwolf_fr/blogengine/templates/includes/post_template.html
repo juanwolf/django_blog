@@ -1,0 +1,50 @@
+{% extends "includes/base_post.html" %}
+
+{% block post_content %}
+    <div class="post-content">
+        <p>{{ post.get_introduction }}</p>
+        {% if post.image %}
+        <img src="{{  MEDIA_URL }}{{ post.image.name }}" />
+        {% endif %}
+        {{ post.get_text_content | safe }}
+    </div>
+    {% load i18n %}
+    <div class="flattr-section">
+        <p>
+            {% blocktrans %}Thanks for reading this article ! Don't hesitate to leave your opinion in the section bellow or if you feel generous here's my{% endblocktrans %}
+            <a target="_blank" href="https://flattr.com/submit/auto?user_id=juanwolf&url=https://blog.juanwolf.fr&title={{ post.title }}&description={{ post.get_introduction }}&language={{ LANGUAGE_CODE }}&category=text">
+                Flattr !
+            </a>
+        </p>
+
+    </div>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'juanwolfsblog'; // required: replace example with your forum shortname
+        var disqus_identifier = '{% url "blog:post-detail" post.category.slug post.slug  %}' // Define to identify the current page
+        var disqus_config = function () {
+            this.language = "{{ LANGUAGE_CODE }}";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    {% load i18n %}
+    <noscript>{% trans 'Please enable JavaScript to view the '%} <a href="http://disqus.com/?ref_noscript">{% trans 'comments powered by Disqus.' %}</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">{% trans 'comments powered by' %} <span class="logo-disqus">Disqus</span></a>
+    {% if has_previous_post %}
+    <a id="previous-article" href="{% url "blog:post-detail" previous_post.category.slug previous_post.slug %}">
+        &lsaquo;&lsaquo; {% trans 'Previous post' %}:
+        {{previous_post.title}}
+    </a>
+    {% endif %}
+    {% if has_next_post %}
+    <a id="next-article" href="{% url 'blog:post-detail' next_post.category.slug next_post.slug %}">
+        {% trans 'Next post' %}:
+        {{next_post.title}} &rsaquo;&rsaquo;
+    </a>
+    {% endif %}
+{% endblock %}

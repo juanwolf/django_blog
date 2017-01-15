@@ -1,0 +1,24 @@
+{
+  "name": "juanwolf.fr",
+  "authors": [
+    "Jean-Loup Adde <jean-loup.adde@juanwolf.fr>"
+  ],
+  "description": "Jean-Loup Adde's website",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://juanwolf.fr",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "custom-select": "https://github.com/adamcoulombe/jquery.customSelect.git",
+    "font-awesome": "fontawesome#^4.7.0",
+    "highlightjs": "^9.7.0"
+  }
+}

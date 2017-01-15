@@ -1,0 +1,259 @@
+body header nav#blog-nav {
+    background-color: $link-fa-background-color-blog;
+    a#brand:hover {
+        color: $blog-nav-brand-hover-color;
+    }
+    #menu-button:hover {
+        color: $blog-nav-brand-hover-color;
+        cursor: pointer;
+    }
+    ul#menu-link-list {
+        background-color: $blog-nav-background-color;
+        li {
+            &:hover {
+                background-color: $blog-nav-link-hover-bgc;
+                color: $blog-nav-link-hover-color;
+            }
+            a:hover {
+                background-color: inherit;
+            }
+            span.customSelect {
+                background-color: $blog-nav-select-color;
+            }
+            @include breakpoint(small-medium) {
+                a:before {
+                    font-family: FontAwesome;
+                    margin-right: $blog-nav-i-margin-right;
+                }
+                #link-home-blog:before {
+                    content: "\f015";
+                }
+
+                #category-video-games:before {
+                    content: "\f11b";
+                }
+
+                #category-other:before {
+                    content: "\f0f4";
+                }
+
+                #category-programming:before {
+                    content: "\f121";
+                }
+                #link-rss:before {
+                    content: "\f09e";
+                }
+            }
+        }
+    }
+}
+#blog-container {
+    padding-top : $container-padding-top;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    @include breakpoint(large) {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    a {
+        color: $link-color-font;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:visited {
+        color: $link-color-font;
+    }
+
+    p {
+        line-height: $blog-post-p-line-height;
+        font-size: $blog-post-p-font-size;
+        text-align: justify;
+    }
+
+    #blog-block {
+        width: 100%;
+    }
+
+    .blog-post {
+        text-shadow: none;
+        padding: 2%;
+        border-bottom: $blog-post-border-size solid $blog-post-border-color;
+        padding-bottom: $blog-post-margin-bottom;
+
+        &:last-of-type {
+            border: none;
+        }
+
+        h1 {
+            letter-spacing: $blog-post-title-letter-spacing;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right:auto;
+            max-width: 100%;
+            height:auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width : 100%;
+
+            &.gitlab-comparator {
+                tr td:nth-of-type(1) {
+                    width : 40%;
+                }
+
+            }
+            tr {
+                height: $blog-post-p-line-height * 2;
+                text-align: center;
+
+                td:nth-of-type(1) {
+                    text-align: left;
+                    font-weight: bold;
+                    border-right : 1px solid grey;
+                    border-bottom : none;
+                }
+
+                td i {
+                    font-size : 25px;
+                    &.fa-check {
+                        color: $blog-nav-background-color;
+                    }
+
+                    &.fa-times {
+                        color: $chat-nav-background-color;
+                    }
+                }
+            }
+
+            thead tr td {
+                border-bottom: 1px solid grey;
+                font-weight: bold;
+            }
+        }
+
+        .post-edition {
+            font-size: $blog-post-post-edition-font-size;
+            color: grey;
+        }
+
+        .post-title {
+            margin-top: $blog-post-title-margin-top;
+            color: black;
+            a {
+                color: inherit;
+            }
+            a:visited {
+                color: inherit;
+            }
+        }
+
+        .post-category, .post-tag {
+            a {
+                color: $link-color-font;
+            }
+        }
+
+        .post-content-preview-with-img {
+            .post-content-preview-text {
+                @include breakpoint(small) {
+                    width: 100%;
+                }
+                display: inline-block;
+                @include breakpoint(medium-large) {
+                    width: 70%;
+                }
+                vertical-align: middle;
+                margin-top: $blog-post-preview-text-margin-top;
+                margin-bottom: $blog-post-preview-text-margin-bottom;
+            }
+
+            .post-content-preview-img {
+                @include breakpoint(small) {
+                    display: none;
+                }
+                display: inline-block;
+                margin-left: 3%;
+                vertical-align: middle;
+                width: 25%;
+                margin-bottom: $blog-post-preview-img-margin-bottom;
+            }
+        }
+
+        .post-content {
+            a {
+                color: $link-color-font;
+            }
+
+            a:visited {
+                color: $link-color-font-visited;
+            }
+        }
+        #discus_thread {
+            margin-bottom: $blog-post-disqus-thread-margin-bottom;
+        }
+        #next-article {
+            float: right;
+        }
+     }
+
+    .pagination {
+        position: relative;
+        height: $blog-post-pagination-height;
+        #next-page {
+            position:absolute;
+            right: 0;
+        }
+        #previous-page {
+            position:absolute;
+            left:  0;
+        }
+    }
+
+    // 404
+    #not-found-title {
+		font-size: $not-found-title-font-size;
+		text-align: center;
+	}
+    #image-not-found {
+        text-align: center;
+        img {
+            width: auto;
+            height: 300px;
+            @include breakpoint(small) {
+                height: 200px;
+            }
+
+            @include border-radius(600px);
+            @include box-shadow($menu-shadow-x, $menu-shadow-y, $menu-shadow-blur, $menu-shadow-color);
+        }
+    }
+    #not-found-text {
+        text-align: center;
+    }
+
+    #share-buttons img {
+        width: 35px;
+        padding: 5px;
+        border: 0;
+        box-shadow: 0;
+        display: inline;
+    }
+}
+
+#blog-footer {
+    background-color: $link-fa-background-color-blog;
+    a:hover {
+        color: $blog-footer-link-hover-color;
+    }
+}

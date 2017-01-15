@@ -1,0 +1,15 @@
+div#container {
+
+	#not-found-title {
+		font-size: $not-found-title-font-size;
+		text-align: center;
+	}
+	#not-found-animation {
+		text-align: center;
+		
+		#last-cog {
+			position: relative;
+			bottom: 40px;	
+		}
+	}
+}
