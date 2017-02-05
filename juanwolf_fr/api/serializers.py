@@ -6,6 +6,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Post
+        fields = "__all__"
         depth = 2
 
 
@@ -21,3 +22,4 @@ class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Tag
+        fields = "__all__"
