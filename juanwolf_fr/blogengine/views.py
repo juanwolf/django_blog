@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.views.generic import DetailView, ListView, RedirectView
+from django.contrib.sitemaps import Sitemap
 
 from blogengine import models
 
@@ -28,7 +29,8 @@ class CategoryDetailView(ListView, DetailView):
             except models.Category.DoesNotExist:
                 pass
             else:
-                return self.category.post_set.all().prefetch_related('tags').select_related('category')
+                return self.category.post_set.all().prefetch_related(
+                        'tags').select_related('category')
 
             try:
                 # Try to get the the category if not raise an exception
@@ -38,10 +40,14 @@ class CategoryDetailView(ListView, DetailView):
             except models.Category.DoesNotExist:
                 raise Http404
             else:
-                return models.Post.objects.filter(category__slug_fr=slug).prefetch_related('tags').select_related('category')
+                return models.Post.objects.filter(
+                        category__slug_fr=slug
+                    ).prefetch_related('tags').select_related('category')
         else:
             translation.activate(self.translation)
-            return models.Post.objects.filter(category__slug=slug).prefetch_related('tags').select_related('category')
+            return models.Post.objects.filter(
+                category__slug=slug
+            ).prefetch_related('tags').select_related('category')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -76,16 +82,13 @@ class TagDetailView(ListView):
             tag = models.Tag.objects.get(slug_fr=slug)
         except models.Tag.DoesNotExist:
             pass
-        else:
-            posts = tag.post_set.all()
         try:
             tag = models.Tag.objects.get(slug_en=slug)
         except models.Tag.DoesNotExist:
             raise Http404
-        else:
-            posts = tag.post_set.all()
 
-        return tag.post_set.all().select_related('category').prefetch_related('tags')
+        return tag.post_set.all().select_related(
+            'category').prefetch_related('tags')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -111,7 +114,8 @@ class PostListView(ListView):
     context_object_name = "post_list"
 
     def get_queryset(self):
-        return models.Post.objects.all().select_related('category').prefetch_related('tags')
+        return models.Post.objects.all().select_related(
+            'category').prefetch_related('tags')
 
 
 class PostDetailView(DetailView):
@@ -121,14 +125,16 @@ class PostDetailView(DetailView):
 
     def get_queryset(self):
         slug = self.kwargs['slug']
-        post = models.Post.objects.filter(slug_en=slug).select_related('category').prefetch_related('tags')
+        post = models.Post.objects.filter(slug_en=slug).select_related(
+            'category').prefetch_related('tags')
         if post.exists():
             translation.activate("en")
             return post
         post = models.Post.objects.filter(slug_fr=slug)
         if post.exists():
             translation.activate("fr")
-            return post.prefetch_related('tags').select_related('category').prefetch_related('tags')
+            return post.prefetch_related('tags').select_related(
+                'category').prefetch_related('tags')
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -161,7 +167,8 @@ class RedirectPostDetailView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         post = get_object_or_404(models.Post, slug=kwargs['slug'])
         kwargs['category__slug'] = post.category.slug
-        return reverse_lazy('post-detail', args=[post.category.slug, kwargs['slug']])
+        return reverse_lazy(
+            'post-detail', args=[post.category.slug, kwargs['slug']])
 
 
 class PostsFeed(Feed):

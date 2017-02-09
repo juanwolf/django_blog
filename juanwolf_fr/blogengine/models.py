@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from django.contrib.sitemaps import Sitemap
-from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -95,6 +94,7 @@ class BlogSitemap(Sitemap):
     changefreq = "daily"
     priority = 0.5
     i18n = True
+    protocol = "https"
 
     def items(self):
         return Post.objects.all()
