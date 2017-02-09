@@ -22,7 +22,7 @@ urlpatterns = [
         sitemap,
         {
             'sitemaps': sitemaps,
-            'template_name': 'blogengine/custom_sitemap.html'
+            'template_name': 'custom_sitemap.html'
         },
         name='django.contrib.sitemaps.views.sitemap',
     ),
