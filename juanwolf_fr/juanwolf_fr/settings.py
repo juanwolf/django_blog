@@ -44,7 +44,7 @@ RAVEN_CONFIG = {
     'dsn': '%s://%s:%s@%s' % (
         SENTRY_PROTOCOL,
         SENTRY_USER,
-        SENTRY_PROTOCOL,
+        SENTRY_PASSWORD,
         SENTRY_URL
     ),
 }
