@@ -74,18 +74,16 @@ class CategoryListView(ListView):
 class TagDetailView(ListView):
     template_name = "tag_detail.html"
     model = models.Tag
-    translation = None
 
     def get_queryset(self):
         slug = self.kwargs['slug']
         try:
             tag = models.Tag.objects.get(slug_fr=slug)
         except models.Tag.DoesNotExist:
-            pass
-        try:
-            tag = models.Tag.objects.get(slug_en=slug)
-        except models.Tag.DoesNotExist:
-            raise Http404
+            try:
+                tag = models.Tag.objects.get(slug_en=slug)
+            except models.Tag.DoesNotExist:
+                raise Http404
 
         return tag.post_set.all().select_related(
             'category').prefetch_related('tags')
@@ -98,15 +96,14 @@ class TagDetailView(ListView):
         try:
             context['tag'] = models.Tag.objects.get(slug_fr=slug)
             translation.activate('fr')
-            return context
         except models.Tag.DoesNotExist:
-            pass
-        try:
-            context['tag'] = models.Tag.objects.get(slug_en=slug)
-            translation.activate('en')
-            return context
-        except models.Tag.DoesNotExist:
-            raise Http404
+            try:
+                context['tag'] = models.Tag.objects.get(slug_en=slug)
+                translation.activate('en')
+            except models.Tag.DoesNotExist:
+                raise Http404
+
+        return context
 
 
 class PostListView(ListView):

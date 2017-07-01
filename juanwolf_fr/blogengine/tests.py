@@ -1,5 +1,6 @@
 import feedparser
 from django.test import TestCase, LiveServerTestCase, Client
+from django.utils import translation
 from django.utils import timezone
 
 from blogengine import models
@@ -283,6 +284,8 @@ class PostViewTest(LiveServerTestCase):
         tag = models.Tag()
         tag.name = 'python'
         tag.description = 'The Python programming language'
+        tag.slug_en = "python-en"
+        tag.slug_fr = "python-fr"
         tag.save()
 
         # Create the category
@@ -291,11 +294,11 @@ class PostViewTest(LiveServerTestCase):
         category.description = 'The Perl programming language'
         category.save()
 
-
         # Create the post
         post = models.Post()
         post.title = 'My first post'
-        post.text = 'This is <a href="http://127.0.0.1:8000/">my first blog post</a>'
+        post.text = ('This is <a href="http://127.0.0.1:8000/">my first blog '
+                     'post</a>')
         post.slug = 'my-first-post'
         post.pub_date = timezone.now()
         post.category = category
@@ -317,19 +320,37 @@ class PostViewTest(LiveServerTestCase):
         response = self.client.get(tag_url)
         self.assertEqual(response.status_code, 200)
 
+        translation.activate("fr")
+        # Fetch the tag
+        response_fr = self.client.get("/tag/python-fr")
+        self.assertEqual(response_fr.status_code, 200)
+
         # Check the tag name is in the response
-        self.assertTrue(bytes(post.tags.all()[0].name, 'utf-8') in response.content)
+        self.assertTrue(
+            bytes(post.tags.all()[0].name, 'utf-8') in response.content
+        )
 
         # Check the post text is in the response
         self.assertTrue(bytes(post.text, 'utf-8') in response.content)
 
         # Check the post date is in the response
-        self.assertTrue(bytes(str(post.pub_date.year), 'utf-8') in response.content)
-        self.assertTrue(bytes(post.pub_date.strftime('%b'), 'utf-8') in response.content)
-        self.assertTrue(bytes(str(post.pub_date.day), 'utf-8') in response.content)
+        self.assertTrue(
+            bytes(str(post.pub_date.year), 'utf-8') in response.content
+        )
+        self.assertTrue(
+            bytes(post.pub_date.strftime('%b'), 'utf-8') in response.content
+        )
+        self.assertTrue(
+            bytes(str(post.pub_date.day), 'utf-8') in response.content
+        )
 
         # Check the link is marked up properly
-        self.assertTrue(bytes('<a href="http://127.0.0.1:8000/">my first blog post</a>', 'utf-8') in response.content)
+        self.assertTrue(
+            bytes(
+                '<a href="http://127.0.0.1:8000/">my first blog post</a>',
+                'utf-8'
+            ) in response.content
+        )
 
 
 class FeedTest(LiveServerTestCase):
@@ -371,4 +392,3 @@ class FeedTest(LiveServerTestCase):
         feed_post = feed.entries[0]
         self.assertEqual(feed_post.title, post.title)
         self.assertEqual(feed_post.description, post.text)
-
