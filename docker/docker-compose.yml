@@ -1,26 +1,28 @@
-version: '2'
+version: '3'
 services:
-    db:
-        image: postgres
-        environment:
-            - POSTGRES_USER=${POSTGRES_USER}
-            - POSTGRES_DB=${POSTGRES_DB}
-    django:
-        build:
-          context: ../
-          dockerfile: docker/Dockerfile-dev
-        ports:
-            - "8000:8000"
-        links:
-            - db
-        environment:
-            - DATABASE_USER=${POSTGRES_USER}
-            - DATABASE_NAME=${POSTGRES_DB}
-            - DATABASE_HOST=db
-            - DEBUG=True
-        volumes:
-            - ../:/opt/juanwolf_fr
-        command: ../docker/entrypoint.sh
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - ~/docker/volumes/postgresql:/var/lib/postgresql/data
+  django:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-dev
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    env_file:
+      - .env
+    environment:
+      - DATABASE_HOST=db
+      - DEBUG=True
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ../:/opt/juanwolf_fr
 
 
 
