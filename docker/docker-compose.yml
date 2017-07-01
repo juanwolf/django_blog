@@ -10,7 +10,7 @@ services:
   django:
     build:
       context: ../
-      dockerfile: docker/Dockerfile-dev
+      dockerfile: docker/Dockerfile
     ports:
       - "8000:8000"
     links:
@@ -21,6 +21,7 @@ services:
       - DATABASE_HOST=db
       - DEBUG=True
       - PYTHONUNBUFFERED=1
+    command: /opt/virtualenvs/juanwolf_fr/bin/python manage.py runserver 0.0.0.0:8000
     volumes:
       - ../:/opt/juanwolf_fr
 
