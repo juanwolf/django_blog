@@ -36,6 +36,8 @@ SENTRY_URL = os.environ.get('SENTRY_URL', '')
 
 SENTRY_USED = SENTRY_URL != ''
 
+DATADOG_AGENT_HOSTNAME = os.environ.get("DATADOG_AGENT_HOSTNAME", "")
+
 current_dir = os.path.dirname(__file__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -78,7 +80,7 @@ if SENTRY_USED:
     INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -93,9 +95,23 @@ MIDDLEWARE_CLASSES = [
 if DEBUG:
     INSTALLED_APPS = ('debug_toolbar',) + INSTALLED_APPS
 
-    MIDDLEWARE_CLASSES = [
+    MIDDLEWARE = [
         'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ] + MIDDLEWARE_CLASSES
+    ] + MIDDLEWARE
+
+
+# ADD DATADOG SUPPORT
+if DATADOG_AGENT_HOSTNAME:
+    INSTALLED_APPS += ('ddtrace.contrib.django',)
+    MIDDLEWARE = [
+        "ddtrace.contrib.django.TraceMiddleware",
+    ] + MIDDLEWARE
+    DATADOG_TRACE = {
+        "AGENT_HOSTNAME": DATADOG_AGENT_HOSTNAME,
+        'DEFAULT_SERVICE': 'blog',
+        'TAGS': {'env': 'production'},
+        'ENABLED': True
+    }
 
 SITE_ID = 1
 
