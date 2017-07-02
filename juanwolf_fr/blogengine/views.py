@@ -2,7 +2,7 @@ from django.contrib.syndication.views import Feed
 
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.utils import translation
 from django.utils.translation import ugettext as _
@@ -184,8 +184,10 @@ class PostsFeed(Feed):
 
 
 def page_not_found_view(request, template_name='page_not_found.html'):
-    context = RequestContext(request)
-    context['categories'] = models.Category.objects.all()
-    response = render_to_response(template_name, context)
+    context = RequestContext(
+        request,
+        {"categories": models.Category.objects.all()}
+    )
+    response = render(request, template_name, context.flatten())
     response.status_code = 404
     return response
