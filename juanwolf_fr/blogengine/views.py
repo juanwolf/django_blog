@@ -7,7 +7,6 @@ from django.template import RequestContext
 from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.views.generic import DetailView, ListView, RedirectView
-from django.contrib.sitemaps import Sitemap
 
 from blogengine import models
 
@@ -132,6 +131,7 @@ class PostDetailView(DetailView):
             translation.activate("fr")
             return post.prefetch_related('tags').select_related(
                 'category').prefetch_related('tags')
+        raise Http404
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
