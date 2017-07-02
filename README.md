@@ -1,17 +1,25 @@
-# juanwolf.fr
+# blog.juanwolf.fr
 
-You can find here the code base of the website that you can find at https://juanwolf.fr.
+[![Build Status](https://travis-ci.org/juanwolf/blog.juanwolf.fr.svg?branch=master)](https://travis-ci.org/juanwolf/blog.juanwolf.fr)
+
+You can find here the code base of the website that you can find at https://blog.juanwolf.fr.
 
 ## How to run it?
 
 ### Generate a .env file
 ```
 $ cat .env
-POSTGRES_USER=postgres
-POSTGRES_DB=my_db
+DATABASE_USER=user
+DATABASE_NAME=blog
+DATABASE_HOST=db
+SENTRY_PROTOCOL=http
+SENTRY_USER=james_bond
+SENTRY_PASSWORD=ouioui
+SENTRY_URL=sentry.mywebsite.com/project_id
+DATADOG_AGENT_HOSTNAME=dd
 ```
-
 ### RUN IT
+
 ```
 docker-compose up
 ```
@@ -55,18 +63,19 @@ Go to localhost:8000/admin and you should be able to log on with the credentials
 
 The following environment variables are available to setup:
 
-| Name              |   Default Value     | Type expected  |
-|-------------------|---------------------|----------------|
-| SECRET_KEY        |  qwerty1234567890   | String         |
-| DEBUG             |  False              | Boolean        |
-| DTABASE_USER      |  postgres           | String         |
-| DATABASE_NAME     |  postgres           | String         |
-| DATABASE_HOST     |  ''                 | String         |
-| DATABASE_PASSWORD | ''                  | String         |
-| SENTRY_PROTOCOL   | ''                  | String         |
-| SENTRY_USER       | ''                  | String         |
-| SENTRY_PASSWORD   | ''                  | String         |
-| SENTRY_URL        | ''                  | String         |
+| Name                     |   Default Value     | Type expected  |
+|--------------------------|---------------------|----------------|
+| SECRET_KEY               |  qwerty1234567890   | String         |
+| DEBUG                    |  False              | Boolean        |
+| DTABASE_USER             |  postgres           | String         |
+| DATABASE_NAME            |  postgres           | String         |
+| DATABASE_HOST            |  ''                 | String         |
+| DATABASE_PASSWORD        | ''                  | String         |
+| SENTRY_PROTOCOL          | ''                  | String         |
+| SENTRY_USER              | ''                  | String         |
+| SENTRY_PASSWORD          | ''                  | String         |
+| SENTRY_URL               | ''                  | String         |
+| DATADOG_AGENT_HOSTNAME   | ''                  | String         |
 
 ## License
 
