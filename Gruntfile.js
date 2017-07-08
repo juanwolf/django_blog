@@ -33,6 +33,11 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
+            option: {
+                mangle: {
+                    reserved: ["_paq"]
+                }
+            },
             build: {
                 src: "./juanwolf_fr/static/js/main.js",
                 dest: "./juanwolf_fr/static/js/main.min.js"
@@ -41,7 +46,8 @@ module.exports = function(grunt) {
         sass: {
             dist: {                            // Target
                 options: {                       // Target options
-                    style: 'compressed'
+                    style: 'compressed',
+                    sourcemap: "none"
                 },
                 files: {                         // Dictionary of files
                     // 'destination': 'source'
@@ -56,4 +62,4 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.registerTask('default', ['bower_concat', 'concat', 'uglify', 'sass']);
-}
+};
