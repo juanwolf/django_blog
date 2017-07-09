@@ -19,6 +19,7 @@
     "jquery": "^3.1.1",
     "custom-select": "https://github.com/adamcoulombe/jquery.customSelect.git",
     "font-awesome": "fontawesome#^4.7.0",
-    "highlightjs": "^9.7.0"
+    "highlightjs": "^9.7.0",
+    "piwik": "https://stats.juanwolf.fr/piwik.js"
   }
 }
