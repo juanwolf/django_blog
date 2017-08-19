@@ -4,7 +4,6 @@ from django.conf import settings
 
 from rest_framework_swagger.views import get_swagger_view
 
-from juanwolf_fr import views
 
 admin.autodiscover()
 
@@ -22,7 +21,7 @@ urlpatterns = [
     url(r'^api/docs/', schema_view),
     url(r'^api/', include('api.urls')),
     # Blog
-    url(r'', include('blogengine.urls')),
+    url(r'', include('blogengine.urls', namespace="blog")),
 ]
 
 handler404 = 'blogengine.views.page_not_found_view'
