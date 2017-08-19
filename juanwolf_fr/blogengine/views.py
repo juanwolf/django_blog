@@ -165,7 +165,7 @@ class RedirectPostDetailView(RedirectView):
         post = get_object_or_404(models.Post, slug=kwargs['slug'])
         kwargs['category__slug'] = post.category.slug
         return reverse_lazy(
-            'post-detail', args=[post.category.slug, kwargs['slug']])
+            'blog:post-detail', args=[post.category.slug, kwargs['slug']])
 
 
 class PostsFeed(Feed):
